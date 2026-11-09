@@ -40,6 +40,8 @@ pub fn init<R: tauri::Runtime>() -> TauriPlugin<R> {
             space_account_sign_in,
             space_account_sign_out,
             space_account_request,
+            space_store_get,
+            space_store_set,
         ])
         .build()
 }
@@ -245,4 +247,44 @@ pub async fn space_account_request<R: Runtime>(
         }
     }
     Ok(SpaceReply { status, body })
+}
+
+const STORE_NAMES: [&str; 1] = ["instance-map"];
+
+fn store_path<R: Runtime>(
+    app: &tauri::AppHandle<R>,
+    name: &str,
+) -> Result<PathBuf> {
+    if !STORE_NAMES.contains(&name) {
+        return Err(anyhow!("unknown store").into());
+    }
+    let dir = app
+        .path()
+        .app_data_dir()
+        .context("could not find the app data folder")?;
+    std::fs::create_dir_all(&dir).ok();
+    Ok(dir.join(format!("3ellwa-{name}.json")))
+}
+
+/// Small durable key files (shared by the dev and installed app, unlike web storage).
+#[tauri::command]
+pub async fn space_store_get<R: Runtime>(
+    app: tauri::AppHandle<R>,
+    name: String,
+) -> Result<Option<String>> {
+    Ok(std::fs::read_to_string(store_path(&app, &name)?).ok())
+}
+
+#[tauri::command]
+pub async fn space_store_set<R: Runtime>(
+    app: tauri::AppHandle<R>,
+    name: String,
+    value: String,
+) -> Result<()> {
+    if value.len() > 2_000_000 {
+        return Err(anyhow!("too large").into());
+    }
+    std::fs::write(store_path(&app, &name)?, value)
+        .context("could not save")?;
+    Ok(())
 }

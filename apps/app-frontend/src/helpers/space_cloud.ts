@@ -2,6 +2,7 @@
  * 3ellwa Space cloud features: instance sync + restore, shared setups, skins sync, friends, presence.
  * Everything goes through the signed-in 3ellwa account (spaceRequest keeps the token in Rust).
  */
+import { invoke } from '@tauri-apps/api/core'
 import { ref } from 'vue'
 
 import type { AppEvents } from '@/providers/app-events'
@@ -59,17 +60,30 @@ let appEvents: AppEvents | null = null
 const MAP_KEY = 'space-instance-map-v1'
 
 type MapState = { local: Record<string, string>; hash: Record<string, string> }
-function loadMap(): MapState {
+// The id map lives in a file in the app data folder (shared by every build of the app),
+// with web storage only as a one-time fallback for older versions.
+async function loadMap(): Promise<MapState> {
 	try {
-		const raw = window.localStorage.getItem(MAP_KEY)
+		const raw = await invoke<string | null>('plugin:space-account|space_store_get', {
+			name: 'instance-map',
+		})
 		if (raw) return JSON.parse(raw) as MapState
+	} catch {
+		// fall through
+	}
+	try {
+		const legacy = window.localStorage.getItem(MAP_KEY)
+		if (legacy) return JSON.parse(legacy) as MapState
 	} catch {
 		// ignore
 	}
 	return { local: {}, hash: {} }
 }
-function saveMap(m: MapState) {
-	window.localStorage.setItem(MAP_KEY, JSON.stringify(m))
+async function saveMap(m: MapState): Promise<void> {
+	await invoke('plugin:space-account|space_store_set', {
+		name: 'instance-map',
+		value: JSON.stringify(m),
+	})
 }
 
 function hashString(s: string): string {
@@ -149,7 +163,7 @@ export function syncInstances(): Promise<void> {
 		cloudStatus.value = { ...cloudStatus.value, busy: true, error: null }
 		try {
 			const local = (await listInstances()).filter(isInstalled)
-			const map = loadMap()
+			const map = await loadMap()
 			const manifests = new Map<string, { syncId: string; m: Manifest; localId: string }>()
 			for (const inst of local) {
 				let syncId = map.local[inst.id]
@@ -197,7 +211,7 @@ export function syncInstances(): Promise<void> {
 						.filter(([id]) => !have.has(id) && !doc.deleted[id])
 						.map(([syncId, m]) => ({ syncId, ...m }))
 						.sort((a, b) => a.name.localeCompare(b.name))
-					saveMap(map)
+					await saveMap(map)
 					cloudStatus.value = { busy: false, last: Date.now(), error: null }
 					return
 				}
@@ -245,11 +259,11 @@ async function createFromManifest(m: Manifest, syncId: string | null): Promise<R
 		}
 	}
 	if (syncId) {
-		const map = loadMap()
+		const map = await loadMap()
 		map.local[instanceId] = syncId
 		const fresh = (await listInstances()).find((i) => i.id === instanceId)
 		if (fresh) map.hash[syncId] = manifestHash(await buildManifest(fresh))
-		saveMap(map)
+		await saveMap(map)
 	}
 	return { name, installed, failed }
 }

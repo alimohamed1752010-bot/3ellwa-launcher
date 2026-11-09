@@ -152,6 +152,8 @@ fn main() {
                         "space_account_sign_in",
                         "space_account_sign_out",
                         "space_account_request",
+                        "space_store_get",
+                        "space_store_set",
                     ])
                     .default_permission(
                         DefaultPermissionRule::AllowAllCommands,

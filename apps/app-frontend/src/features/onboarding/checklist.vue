@@ -61,6 +61,9 @@ const steps = computed(() => [
 	},
 ])
 
+// Hide the panel once every step is crossed off (the backend flag still waits for a Modrinth sign-in that no longer exists here).
+const allDone = computed(() => steps.value.every((step) => step.complete))
+
 const accordionButtonClass = computed(
 	() =>
 		`flex w-full cursor-pointer items-center justify-between rounded-t-2xl border border-solid border-button-border bg-button-bg p-3 text-left text-contrast transition-[filter] hover:brightness-110${collapsedCornersVisible.value ? ' rounded-b-2xl' : ''}`,
@@ -83,7 +86,7 @@ onUnmounted(() => clearTimeout(collapseTimer))
 
 <template>
 	<div
-		v-if="isReady && showChecklist"
+		v-if="isReady && showChecklist && !allDone"
 		class="border-0 border-b-[1px] border-solid border-[--brand-gradient-border] px-3 p-4"
 	>
 		<Accordion
