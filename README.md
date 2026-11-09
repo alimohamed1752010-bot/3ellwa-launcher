@@ -1,48 +1,34 @@
-<picture>
-	<source media="(prefers-color-scheme: light)" srcset=".github/assets/monorepo_cover_light.png">
-	<img alt="Modrinth Monorepo Cover" src=".github/assets/monorepo_cover.png">
-</picture>
+# 3ellwa Space
 
-![Issues](https://img.shields.io/github/issues-raw/Modrinth/code?color=c78aff&label=issues&style=for-the-badge)
-![Pull Requests](https://img.shields.io/github/issues-pr-raw/Modrinth/code?color=c78aff&label=PRs&style=for-the-badge)
-![Contributors](https://img.shields.io/github/contributors/Modrinth/code?color=c78aff&label=contributors&style=for-the-badge)
-![Lines of Code](https://img.shields.io/endpoint?url=https://loctopus.creeperkatze.dev/github/modrinth/code/badge?style=flat&logoColor=white&color=c78aff&style=for-the-badge)
-![Commit Activity](https://img.shields.io/github/commit-activity/m/Modrinth/code?color=c78aff&label=commits&style=for-the-badge)
-![Last Commit](https://img.shields.io/github/last-commit/Modrinth/code?color=c78aff&label=last%20commit&style=for-the-badge)
+A free Minecraft launcher for friends. No ads, no paid tiers, every mod you already know.
 
-## Modrinth Monorepo
+3ellwa Space is a fork of the open-source [Modrinth App](https://github.com/modrinth/code), rebranded and extended with an optional **3ellwa account** (sign in with Discord at [3ellwa.space](https://3ellwa.space)) that syncs your settings, instances and skins, adds friends and share codes, and shows "Playing 3ellwa Space" on Discord.
 
-Welcome to the Modrinth Monorepo, the primary codebase for the Modrinth website, app, API and documentation. It contains ![Lines of code](https://img.shields.io/endpoint?url=https://loctopus.creeperkatze.dev/github/modrinth/code/badge%3Fformat%3Dhuman&logoColor=white&color=black&label=) lines of code and has ![Contributors](https://img.shields.io/github/contributors/Modrinth/code?color=black&label=) contributors!
+- Download: https://3ellwa.space/download
+- Privacy: https://3ellwa.space/privacy (what the account stores, and how to delete it)
+- Not affiliated with Mojang, Microsoft or Modrinth. Mods and modpacks are still downloaded from Modrinth's public library.
 
-If you're not a developer and you've stumbled upon this repository, you can access the web interface on the [Modrinth website](https://modrinth.com) and download the latest release of the app [here](https://modrinth.com/app).
+## Build it yourself (Windows)
 
-## Development
+Needs Node 24+, pnpm, Rust (the toolchain in `rust-toolchain.toml`), the Visual Studio C++ build tools and a JDK 17 or newer.
 
-This repository contains several projects. For detailed development information, please refer to their respective guides:
+```
+pnpm install
+cp packages/app-lib/.env.prod packages/app-lib/.env
+pnpm app:dev                      # development window
+cd apps/app
+pnpm tauri build --config tauri-release.conf.json --bundles nsis   # installer
+```
 
-| Project       | Directory              | Guide                                                     |
-| ------------- | ---------------------- | --------------------------------------------------------- |
-| Website       | `apps/frontend`        | [Guide](https://docs.modrinth.com/contributing/knossos/)  |
-| App           | `apps/app`             | [Guide](https://docs.modrinth.com/contributing/theseus/)  |
-| API           | `apps/labrinth`        | [Guide](https://docs.modrinth.com/contributing/labrinth/) |
-| Documentation | `apps/docs`            | [Guide](https://docs.modrinth.com/contributing/docs/)     |
+Release builds are signed for the updater with a private key that is not in this repository.
 
-Shared libraries live in `packages/`.
+## Where things are
 
-## Contributing
-
-We welcome contributions! Before submitting any contributions, please read our [contributing guidelines](https://docs.modrinth.com/contributing/getting-started/).
-
-If you plan to fork this repository for your own purposes, please review our [copying guidelines](COPYING.md).
-
-## Security
-
-If you discover a security vulnerability within our codebase, please follow our [responsible disclosure guidelines](https://modrinth.com/legal/security).
-
-## Support
-
-If you need help with the Modrinth web interface or app, please visit our [support page](https://support.modrinth.com). For general inquiries, you can also join our [Discord server](https://discord.modrinth.com).
+- `apps/app` and `apps/app-frontend`: the desktop app (Tauri 2, Rust and Vue)
+- `apps/app/src/api/space_account.rs` and `apps/app-frontend/src/helpers/space_*.ts`: the 3ellwa account (sign-in, sync, friends, share codes)
+- `packages/app-lib`: the launcher core
+- The account server (Cloudflare Worker) lives in a separate repository: `3ellwa-space-site`
 
 ## License
 
-All packages in this repository are licensed under their respective licenses. See the [copying guidelines](COPYING.md) for details, including restrictions on Modrinth branding.
+AGPL-3.0, same as the Modrinth App it is based on. See `COPYING.md`. Modrinth's name and logo are not part of this license and are not used here.
