@@ -81,12 +81,12 @@ const copied = ref(false)
 const messages = defineMessages({
 	playWithAppTitle: {
 		id: 'servers.play.card.app.title',
-		defaultMessage: 'Play with Modrinth App',
+		defaultMessage: 'Play with 3ellwa Space App',
 	},
 	playWithAppDescription: {
 		id: 'servers.play.card.app.description',
 		defaultMessage:
-			'The easiest way to play is with the Modrinth App, which automatically installs all the required content for you and the players on your server.',
+			'The easiest way to play is with the 3ellwa Space App, which automatically installs all the required content for you and the players on your server.',
 	},
 	playServerButton: {
 		id: 'servers.play.card.app.play-button',

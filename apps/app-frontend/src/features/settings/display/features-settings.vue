@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {
 	defineMessages,
-	injectAuth,
 	injectNotificationManager,
 	injectUserPreferences,
 	Slider,
@@ -12,6 +11,7 @@ import {
 import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
 import { onBeforeUnmount, onMounted } from 'vue'
 
+import { spaceAccount } from '@/helpers/space_account.ts'
 import { useAppSettings } from '@/composables/use-app-settings.ts'
 import {
 	QUICK_INSTANCE_LIMIT_MAX,
@@ -31,7 +31,7 @@ import { screenshotKeys } from '@/pages/instance/query-options.ts'
 
 const appSettings = useAppSettings()
 const { formatMessage } = useVIntl()
-const auth = injectAuth()
+
 const { handleError } = injectNotificationManager()
 const { updatePreferences } = injectUserPreferences()
 const settingsModal = injectAppSettingsModal()
@@ -50,7 +50,7 @@ const messages = defineMessages({
 	},
 	syncAcrossDevicesSignedOutTooltip: {
 		id: 'app.features-settings.sync-across-devices.signed-out-tooltip',
-		defaultMessage: 'Sign into a Modrinth account to sync settings.',
+		defaultMessage: 'Sign into a 3ellwa account to sync settings.',
 	},
 	instancePagesTitle: {
 		id: 'app.features-settings.instance-pages.title',
@@ -153,7 +153,7 @@ const settingsMutation = useMutation({
 		value: FeaturesSettingsState
 		updateQuickInstanceCount: boolean
 	}) => {
-		if (value.syncFeaturesAcrossDevices && auth.user.value) {
+		if (value.syncFeaturesAcrossDevices && spaceAccount.value) {
 			await updatePreferences({
 				behavior: {
 					show_jump_in: value.showJumpIn,
@@ -261,14 +261,14 @@ onBeforeUnmount(() => {
 			</div>
 			<span
 				v-tooltip="
-					!auth.user.value ? formatMessage(messages.syncAcrossDevicesSignedOutTooltip) : undefined
+					!spaceAccount.value ? formatMessage(messages.syncAcrossDevicesSignedOutTooltip) : undefined
 				"
 				class="inline-flex shrink-0"
 			>
 				<Toggle
 					id="sync-features-across-devices"
-					:model-value="Boolean(auth.user.value) && current.syncFeaturesAcrossDevices"
-					:disabled="!auth.user.value"
+					:model-value="Boolean(spaceAccount.value) && current.syncFeaturesAcrossDevices"
+					:disabled="!spaceAccount.value"
 					aria-labelledby="sync-features-across-devices-label"
 					@update:model-value="current.syncFeaturesAcrossDevices = $event"
 				/>

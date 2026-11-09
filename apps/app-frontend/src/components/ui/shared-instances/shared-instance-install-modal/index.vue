@@ -544,12 +544,12 @@ const messages = defineMessages({
 	inviteWarning: {
 		id: 'app.modal.install-to-play.invite-warning',
 		defaultMessage:
-			'This invite was created by another Modrinth user, not Modrinth. Only accept invites from people you trust.',
+			'This invite was created by another 3ellwa Space user, not 3ellwa Space. Only accept invites from people you trust.',
 	},
 	inviteWarningWithCreator: {
 		id: 'app.modal.install-to-play.invite-warning-with-creator',
 		defaultMessage:
-			'This invite was created by <creator>{username}</creator>, not Modrinth. Only accept invites from people you trust.',
+			'This invite was created by <creator>{username}</creator>, not 3ellwa Space. Only accept invites from people you trust.',
 	},
 	reportDescription: {
 		id: 'app.modal.install-to-play.report-description',

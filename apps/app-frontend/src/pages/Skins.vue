@@ -75,16 +75,16 @@ const EARS_NOTICE_PLACEHOLDER = '__EARS_MOD_NAME__'
 const messages = defineMessages({
 	modrinthPrideSection: {
 		id: 'app.skins.section.modrinth-pride',
-		defaultMessage: 'Modrinth Pride',
+		defaultMessage: '3ellwa Space Pride',
 	},
 	modrinthPrideTooltip: {
 		id: 'app.skins.section.modrinth-pride.tooltip',
 		defaultMessage:
-			'You received these skins for donating to a Modrinth Pride fundraiser during Pride Month.',
+			'You received these skins for donating to a 3ellwa Space Pride fundraiser during Pride Month.',
 	},
 	modrinthSection: {
 		id: 'app.skins.section.modrinth',
-		defaultMessage: 'Modrinth',
+		defaultMessage: '3ellwa Space',
 	},
 	defaultSkinsSection: {
 		id: 'app.skins.section.default-skins',

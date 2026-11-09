@@ -1,25 +1,26 @@
 <script setup lang="ts">
 import { CheckIcon, RadioButtonIcon } from '@modrinth/assets'
 import { Accordion, defineMessages, useVIntl } from '@modrinth/ui'
-import { computed, onUnmounted, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 
+import {
+	refreshSpaceAccount,
+	spaceAccount,
+	spaceAccountReady,
+	spaceSignIn,
+} from '@/helpers/space_account'
 import { injectOnboardingChecklist } from '@/providers/onboarding-checklist'
 
 const emit = defineEmits<{
 	'create-instance': []
 	'login-minecraft': []
-	'login-modrinth': []
 }>()
 
 const { formatMessage } = useVIntl()
-const {
-	hasCreatedInstance,
-	hasLoggedIntoMinecraft,
-	hasLoggedIntoModrinth,
-	isReady,
-	showChecklist,
-} = injectOnboardingChecklist()
+const { hasCreatedInstance, hasLoggedIntoMinecraft, isReady, showChecklist } =
+	injectOnboardingChecklist()
 const collapsedCornersVisible = ref(false)
+onMounted(refreshSpaceAccount)
 let collapseTimer: ReturnType<typeof setTimeout> | undefined
 
 const messages = defineMessages({
@@ -34,10 +35,6 @@ const messages = defineMessages({
 	loginMinecraft: {
 		id: 'onboarding-checklist.login-minecraft',
 		defaultMessage: 'Sign in to Minecraft',
-	},
-	loginModrinth: {
-		id: 'onboarding-checklist.login-modrinth',
-		defaultMessage: 'Sign in to Modrinth',
 	},
 })
 
@@ -55,10 +52,12 @@ const steps = computed(() => [
 		action: () => emit('login-minecraft'),
 	},
 	{
-		id: 'login-modrinth',
-		label: formatMessage(messages.loginModrinth),
-		complete: hasLoggedIntoModrinth.value,
-		action: () => emit('login-modrinth'),
+		id: 'login-space',
+		label: 'Sign in to 3ellwa Space',
+		complete: spaceAccountReady.value && !!spaceAccount.value,
+		action: () => {
+			spaceSignIn().catch(() => {})
+		},
 	},
 ])
 

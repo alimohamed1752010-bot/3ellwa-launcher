@@ -370,7 +370,7 @@ const messages = defineMessages({
 	suspendedNotice: {
 		id: 'servers.listing.notice.suspended',
 		defaultMessage:
-			'Your server has been suspended. Please contact Modrinth Support for more information.',
+			'Your server has been suspended. Please contact 3ellwa Space Support for more information.',
 	},
 	copyCodeToClipboardTooltip: {
 		id: 'servers.listing.copy-code-tooltip',

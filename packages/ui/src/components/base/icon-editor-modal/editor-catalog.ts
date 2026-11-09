@@ -198,7 +198,7 @@ const names = defineMessages({
 	wrench: { id: 'instance.icon-editor.symbol.create-wrench', defaultMessage: 'Wrench' },
 	wrenchRinth: {
 		id: 'instance.icon-editor.symbol.wrenth-rinth',
-		defaultMessage: 'Modrinth Wrench',
+		defaultMessage: '3ellwa Space Wrench',
 	},
 	zombie: { id: 'instance.icon-editor.symbol.zombie', defaultMessage: 'Zombie' },
 	fabric: { id: 'instance.icon-editor.symbol.fabric', defaultMessage: 'Fabric' },

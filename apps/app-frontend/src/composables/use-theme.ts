@@ -32,7 +32,7 @@ function loadPreferredTheme(): ColorTheme {
 		}
 	}
 
-	return 'dark'
+	return 'oled'
 }
 
 function loadPreferredDarkTheme(): DarkTheme {
@@ -45,7 +45,7 @@ function loadPreferredDarkTheme(): DarkTheme {
 		// storage blocked or full
 	}
 
-	return 'dark'
+	return 'oled'
 }
 
 const preferred = ref<ColorTheme>(loadPreferredTheme())

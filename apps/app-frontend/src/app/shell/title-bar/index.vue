@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { ChevronLeftIcon, ChevronRightIcon, RightArrowIcon } from '@modrinth/assets'
-import { defineMessages, IconButton, TextLogo, useVIntl } from '@modrinth/ui'
+import { defineMessages, IconButton, useVIntl } from '@modrinth/ui'
 import { useRouter } from 'vue-router'
+
+import logoUrl from '@/assets/3ellwa-logo.png'
 
 import AppActionBar from './action-bar.vue'
 import Breadcrumbs from './breadcrumbs.vue'
@@ -33,7 +35,10 @@ const messages = defineMessages({
 		class="app-title-bar relative z-[2] flex bg-bg-raised pl-1 [grid-area:status] [.mac-traffic-lights_&]:pl-20"
 	>
 		<div data-tauri-drag-region class="flex min-w-0 flex-1 items-center overflow-hidden p-2">
-			<TextLogo class="h-7 w-auto shrink-0 text-contrast pointer-events-none" />
+			<div class="flex shrink-0 items-center gap-2 pointer-events-none">
+				<img :src="logoUrl" alt="" class="size-7 shrink-0" />
+				<span class="text-base font-semibold leading-none text-contrast">3ellwa Space</span>
+			</div>
 			<div data-tauri-drag-region class="ml-2 flex shrink-0 items-center gap-2">
 				<IconButton
 					type="outlined"

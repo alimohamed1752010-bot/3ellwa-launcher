@@ -142,7 +142,7 @@ const messages = defineMessages({
 	ownerUpdateDescription: {
 		id: 'app.modal.update-to-play.owner-description',
 		defaultMessage:
-			'These changes were pushed from another Modrinth App installation. Unpushed changes to shared content on this installation will be replaced.',
+			'These changes were pushed from another 3ellwa Space installation. Unpushed changes to shared content on this installation will be replaced.',
 	},
 	addedLabel: {
 		id: 'app.modal.update-to-play.shared-instance-added-label',

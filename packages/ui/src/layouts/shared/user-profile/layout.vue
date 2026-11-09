@@ -587,7 +587,7 @@ const messages = defineMessages({
 	},
 	githubPopupBlockedMessage: {
 		id: 'profile.details.error.github-popup-blocked',
-		defaultMessage: 'Allow pop-ups for Modrinth, then try again.',
+		defaultMessage: 'Allow pop-ups for 3ellwa Space, then try again.',
 	},
 	paymentMethodsLabel: {
 		id: 'profile.details.label.payment-methods',
@@ -603,11 +603,11 @@ const messages = defineMessages({
 	},
 	bioFallbackUser: {
 		id: 'profile.bio.fallback.user',
-		defaultMessage: 'A Modrinth user.',
+		defaultMessage: 'A 3ellwa Space user.',
 	},
 	bioFallbackCreator: {
 		id: 'profile.bio.fallback.creator',
-		defaultMessage: 'A Modrinth creator.',
+		defaultMessage: 'A 3ellwa Space creator.',
 	},
 	collectionLabel: {
 		id: 'profile.label.collection',
@@ -656,7 +656,7 @@ const messages = defineMessages({
 	officialAccountBio: {
 		id: 'profile.official-account.bio',
 		defaultMessage:
-			'The official user account of Modrinth. Get support at <support-link></support-link> or via email at <email></email>',
+			'The official user account of 3ellwa Space. Get support at <support-link></support-link> or via email at <email></email>',
 	},
 	blockButton: {
 		id: 'profile.button.block',
@@ -689,7 +689,7 @@ const messages = defineMessages({
 	blockUserAdmonitionBody: {
 		id: 'profile.block-user.admonition-body',
 		defaultMessage:
-			'{username} will not be able to send you friend requests, invite you to shared instances or invite you to Modrinth Hosting servers.',
+			'{username} will not be able to send you friend requests, invite you to shared instances or invite you to 3ellwa Space Hosting servers.',
 	},
 	blockUserSuccessTitle: {
 		id: 'profile.block-user.success-title',

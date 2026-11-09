@@ -227,7 +227,7 @@ const settingPaymentMethodId = ref<string | null>(null)
 const messages = defineMessages({
 	title: {
 		id: 'billing.resubscribe-modal.title',
-		defaultMessage: 'Resubscribe to Modrinth Hosting',
+		defaultMessage: 'Resubscribe to 3ellwa Space Hosting',
 	},
 	description: {
 		id: 'billing.resubscribe-modal.description',
@@ -236,7 +236,7 @@ const messages = defineMessages({
 	},
 	planItem: {
 		id: 'billing.resubscribe-modal.plan-item',
-		defaultMessage: 'Modrinth Hosting ({plan})',
+		defaultMessage: '3ellwa Space Hosting ({plan})',
 	},
 	taxItem: { id: 'billing.resubscribe-modal.tax-item', defaultMessage: 'Tax' },
 	planSmall: { id: 'billing.resubscribe-modal.plan.small', defaultMessage: 'Small' },

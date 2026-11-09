@@ -5,7 +5,7 @@ const THEME_STYLE = `
 		--modrinth-usp-divider: #34363c;
 		--modrinth-usp-text: #b0bac5;
 		--modrinth-usp-contrast: #ffffff;
-		--modrinth-usp-brand: #1bd96a;
+		--modrinth-usp-brand: #00aaff;
 		--modrinth-usp-link: #4f9cff;
 		--modrinth-usp-accent-contrast: #000000;
 		--modrinth-usp-shadow: rgba(0, 0, 0, 0.1) 0 4px 6px -1px,

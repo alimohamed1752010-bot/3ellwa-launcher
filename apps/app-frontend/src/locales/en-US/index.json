@@ -135,7 +135,7 @@
     "message": "Accept all"
   },
   "app.ads-consent.body": {
-    "message": "Ads make Modrinth possible and fund creator payouts. Our partners may store or access cookies in the app to personalize ads and measure performance."
+    "message": "Ads make 3ellwa Space possible and fund creator payouts. Our partners may store or access cookies in the app to personalize ads and measure performance."
   },
   "app.ads-consent.manage": {
     "message": "Manage preferences"
@@ -144,7 +144,7 @@
     "message": "Reject all"
   },
   "app.ads-consent.title": {
-    "message": "Your privacy and how ads support Modrinth"
+    "message": "Your privacy and how ads support 3ellwa Space"
   },
   "app.appearance-settings.compact-mode.description": {
     "message": "Display library instances in a compact row layout."
@@ -165,7 +165,7 @@
     "message": "Hide nametag"
   },
   "app.appearance-settings.minimize-launcher.description": {
-    "message": "Minimize Modrinth App when Minecraft starts."
+    "message": "Minimize 3ellwa Space when Minecraft starts."
   },
   "app.appearance-settings.minimize-launcher.title": {
     "message": "Minimize app"
@@ -189,7 +189,7 @@
     "message": "Hide right sidebar"
   },
   "app.appearance-settings.unknown-pack-warning.description": {
-    "message": "Show a safety warning before installing a Modrinth Pack (.mrpack) that isn't hosted on Modrinth."
+    "message": "Show a safety warning before installing a 3ellwa Space Pack (.mrpack) that isn't hosted on 3ellwa Space."
   },
   "app.appearance-settings.unknown-pack-warning.title": {
     "message": "Warn me before installing unknown modpacks"
@@ -207,7 +207,7 @@
     "message": "Home and content"
   },
   "app.behavior-settings.hidden-instances.description": {
-    "message": "Instances you've hidden from your library on this device. Hidden instances aren't synced with your Modrinth account."
+    "message": "Instances you've hidden from your library on this device. Hidden instances aren't synced with your 3ellwa Space account."
   },
   "app.behavior-settings.hidden-instances.empty": {
     "message": "You haven't hidden any instances yet."
@@ -222,7 +222,7 @@
     "message": "Hidden instances"
   },
   "app.behavior-settings.refocus-on-game-close.description": {
-    "message": "Bring Modrinth App to the foreground when Minecraft exits."
+    "message": "Bring 3ellwa Space to the foreground when Minecraft exits."
   },
   "app.behavior-settings.refocus-on-game-close.title": {
     "message": "Refocus app when Minecraft closes"
@@ -234,7 +234,7 @@
     "message": "Use these behavior settings everywhere you're signed in. Turn this off to keep separate settings on this device."
   },
   "app.behavior-settings.sync-across-devices.signed-out-tooltip": {
-    "message": "Sign into a Modrinth account to sync settings."
+    "message": "Sign into a 3ellwa Space account to sync settings."
   },
   "app.behavior-settings.sync-across-devices.title": {
     "message": "Sync behavior across devices"
@@ -489,7 +489,7 @@
     "message": "Use these feature settings everywhere you're signed in. Turn this off to keep separate settings on this device."
   },
   "app.features-settings.sync-across-devices.signed-out-tooltip": {
-    "message": "Sign into a Modrinth account to sync settings."
+    "message": "Sign into a 3ellwa Space account to sync settings."
   },
   "app.features-settings.sync-across-devices.title": {
     "message": "Sync features across devices"
@@ -531,16 +531,16 @@
     "message": "View instance"
   },
   "app.hosting.update-required.description": {
-    "message": "You need to update to use Modrinth Hosting through the Modrinth App"
+    "message": "You need to update to use 3ellwa Space Hosting through 3ellwa Space"
   },
   "app.hosting.update-required.download": {
     "message": "Download to update"
   },
   "app.hosting.update-required.rinthbot-alt": {
-    "message": "Excited Modrinth Bot"
+    "message": "Excited 3ellwa Space Bot"
   },
   "app.hosting.update-required.title": {
-    "message": "Modrinth App update required"
+    "message": "3ellwa Space update required"
   },
   "app.install.phase.downloading_content": {
     "message": "Downloading content"
@@ -648,7 +648,7 @@
     "message": "Your changes haven't been shared yet"
   },
   "app.instance.admonitions.shared-instance.owner-update-body": {
-    "message": "You pushed an update to this shared instance from another Modrinth App installation. Download the latest changes to keep managing it from here."
+    "message": "You pushed an update to this shared instance from another 3ellwa Space installation. Download the latest changes to keep managing it from here."
   },
   "app.instance.admonitions.shared-instance.owner-update-button": {
     "message": "Download update"
@@ -900,13 +900,13 @@
     "message": "Sign in as"
   },
   "app.instance.shared-instance-wrong-account.signed-out-header": {
-    "message": "You need to sign in to Modrinth"
+    "message": "You need to sign in to 3ellwa Space"
   },
   "app.instance.shared-instance-wrong-account.user-admonition-body-v2": {
     "message": "to receive updates for this shared instance."
   },
   "app.instance.shared-instance-wrong-account.warning-header": {
-    "message": "You are using the wrong Modrinth account"
+    "message": "You are using the wrong 3ellwa Space account"
   },
   "app.instance.shortcut.created": {
     "message": "Shortcut created"
@@ -1380,7 +1380,7 @@
     "message": "Library"
   },
   "app.library.unpublish-and-leave-shared-instances.modal.admonition-body": {
-    "message": "{unpublishCount, plural, one {The # shared instance you own will be deleted from Modrinth's servers, and people using it} other {The # shared instances you own will be deleted from Modrinth's servers, and people using them}} will stop receiving updates. {leaveCount, plural, one {You'll lose access to the other shared instance and need a new invite to rejoin it.} other {You'll lose access to the other # shared instances and need a new invite to rejoin them.}} All of them will be removed from your library."
+    "message": "{unpublishCount, plural, one {The # shared instance you own will be deleted from 3ellwa Space's servers, and people using it} other {The # shared instances you own will be deleted from 3ellwa Space's servers, and people using them}} will stop receiving updates. {leaveCount, plural, one {You'll lose access to the other shared instance and need a new invite to rejoin it.} other {You'll lose access to the other # shared instances and need a new invite to rejoin them.}} All of them will be removed from your library."
   },
   "app.library.unpublish-and-leave-shared-instances.modal.admonition-header": {
     "message": "Unpublishing and leaving shared instances"
@@ -1389,7 +1389,7 @@
     "message": "Unpublish and leave {count} shared instances"
   },
   "app.library.unpublish-shared-instance.modal.admonition-body": {
-    "message": "{count, plural, one {This deletes the shared instance from Modrinth's servers. People using it in the Modrinth App will stop receiving updates, and it will be removed from your library.} other {This deletes these shared instances from Modrinth's servers. People using them in the Modrinth App will stop receiving updates, and they will be removed from your library.}}"
+    "message": "{count, plural, one {This deletes the shared instance from 3ellwa Space's servers. People using it in 3ellwa Space will stop receiving updates, and it will be removed from your library.} other {This deletes these shared instances from 3ellwa Space's servers. People using them in 3ellwa Space will stop receiving updates, and they will be removed from your library.}}"
   },
   "app.library.unpublish-shared-instance.modal.admonition-header": {
     "message": "{count, plural, one {Unpublishing shared instance} other {Unpublishing # shared instances}}"
@@ -1425,10 +1425,10 @@
     "message": "Install"
   },
   "app.modal.install-to-play.invite-warning": {
-    "message": "This invite was created by another Modrinth user, not Modrinth. Only accept invites from people you trust."
+    "message": "This invite was created by another 3ellwa Space user, not 3ellwa Space. Only accept invites from people you trust."
   },
   "app.modal.install-to-play.invite-warning-with-creator": {
-    "message": "This invite was created by <creator>{username}</creator>, not Modrinth. Only accept invites from people you trust."
+    "message": "This invite was created by <creator>{username}</creator>, not 3ellwa Space. Only accept invites from people you trust."
   },
   "app.modal.install-to-play.managed-content.modpack-header": {
     "message": "Modpack content"
@@ -1503,7 +1503,7 @@
     "message": "Pushed from another installation"
   },
   "app.modal.update-to-play.owner-description": {
-    "message": "These changes were pushed from another Modrinth App installation. Unpushed changes to shared content on this installation will be replaced."
+    "message": "These changes were pushed from another 3ellwa Space installation. Unpushed changes to shared content on this installation will be replaced."
   },
   "app.modal.update-to-play.owner-header": {
     "message": "Update available"
@@ -1542,10 +1542,10 @@
     "message": "Loading profile..."
   },
   "app.nav.modrinth-account": {
-    "message": "Modrinth account"
+    "message": "3ellwa Space account"
   },
   "app.nav.modrinth-hosting": {
-    "message": "Modrinth Hosting"
+    "message": "3ellwa Space Hosting"
   },
   "app.nav.remove-account": {
     "message": "Remove account"
@@ -1554,13 +1554,13 @@
     "message": "Screenshots"
   },
   "app.nav.sign-in-to-modrinth-account": {
-    "message": "Sign into Modrinth"
+    "message": "Sign into 3ellwa Space"
   },
   "app.nav.switch-account": {
     "message": "Switch account"
   },
   "app.nav.upgrade-to-modrinth-plus": {
-    "message": "Upgrade to Modrinth+"
+    "message": "Upgrade to 3ellwa Space Plus"
   },
   "app.nav.view-profile": {
     "message": "View profile"
@@ -1776,7 +1776,7 @@
     "message": "Export ZIP"
   },
   "app.screenshots.selection.global-export-filename": {
-    "message": "Modrinth screenshots.zip"
+    "message": "3ellwa Space screenshots.zip"
   },
   "app.screenshots.selection.instance-export-filename": {
     "message": "{instance} screenshots.zip"
@@ -1821,7 +1821,7 @@
     "message": "Share servers with friends"
   },
   "app.settings.app-version": {
-    "message": "Modrinth App {version}"
+    "message": "3ellwa Space {version}"
   },
   "app.settings.default-instance-options.environment-variables.description": {
     "message": "Environment variables set when launching an instance."
@@ -2088,7 +2088,7 @@
     "message": "Some of your instances cannot use this setting"
   },
   "app.settings.game-options.compatibility.reason.launcher-controlled": {
-    "message": "This setting is managed by Modrinth’s launch settings."
+    "message": "This setting is managed by 3ellwa Space’s launch settings."
   },
   "app.settings.game-options.custom-value.placeholder": {
     "message": "Enter a value"
@@ -2922,16 +2922,16 @@
     "message": "macOS"
   },
   "app.settings.privacy.ads-consent.intro": {
-    "message": "Ads make Modrinth possible and fund creator payouts. Our partners may store or access cookies in the app to personalize ads and measure performance. You can opt out or manage your preferences below."
+    "message": "Ads make 3ellwa Space possible and fund creator payouts. Our partners may store or access cookies in the app to personalize ads and measure performance. You can opt out or manage your preferences below."
   },
   "app.settings.privacy.discord-rich-presence.description": {
-    "message": "Show Modrinth App as your current activity on Discord. This does not affect Rich Presence added to instances by mods. Requires an app restart."
+    "message": "Show 3ellwa Space as your current activity on Discord. This does not affect Rich Presence added to instances by mods. Requires an app restart."
   },
   "app.settings.privacy.discord-rich-presence.title": {
     "message": "Discord Rich Presence"
   },
   "app.settings.privacy.telemetry.description": {
-    "message": "Modrinth collects anonymized analytics and usage data to improve our user experience and customize your experience. By disabling this option, you opt out and your data will no longer be collected."
+    "message": "3ellwa Space does not collect analytics or usage data. This option has no effect in this build."
   },
   "app.settings.privacy.telemetry.title": {
     "message": "Telemetry"
@@ -2964,7 +2964,7 @@
     "message": "Browse for an app directory"
   },
   "app.settings.resource-management.app-directory.description": {
-    "message": "Where Modrinth App stores instances and other files. Changes take effect after restarting the app."
+    "message": "Where 3ellwa Space stores instances and other files. Changes take effect after restarting the app."
   },
   "app.settings.resource-management.app-directory.select": {
     "message": "Select a new app directory"
@@ -2973,7 +2973,7 @@
     "message": "App directory"
   },
   "app.settings.resource-management.debug-info.description": {
-    "message": "Export app logs and diagnostic data to a ZIP file to share with Modrinth support."
+    "message": "Export app logs and diagnostic data to a ZIP file to share when asking for help."
   },
   "app.settings.resource-management.debug-info.export": {
     "message": "Export debug info"
@@ -3135,7 +3135,7 @@
     "message": "These settings changed elsewhere"
   },
   "app.settings.synced-options.game-settings.custom-empty": {
-    "message": "Settings added by mods will appear here after Modrinth finds them in one of your instances."
+    "message": "Settings added by mods will appear here after 3ellwa Space finds them in one of your instances."
   },
   "app.settings.synced-options.game-settings.description": {
     "message": "Use the same game options across your instances."
@@ -3315,7 +3315,7 @@
     "message": "Copy ad details"
   },
   "app.settings.troubleshooting.report-ad.description": {
-    "message": "Seen an inappropriate or offensive ad? Copy its details while it's showing and send them to <support>Modrinth Support</support>. We'll review it and remove it."
+    "message": "Seen an inappropriate or offensive ad? Copy its details while it's showing and send them to <support>3ellwa Space Support</support>. We'll review it and remove it."
   },
   "app.settings.troubleshooting.report-ad.no-ad.text": {
     "message": "Wait for the ad to load, then try again."
@@ -3480,13 +3480,13 @@
     "message": "MINECON Earth 2017"
   },
   "app.skins.section.modrinth": {
-    "message": "Modrinth"
+    "message": "3ellwa Space"
   },
   "app.skins.section.modrinth-pride": {
-    "message": "Modrinth Pride"
+    "message": "3ellwa Space Pride"
   },
   "app.skins.section.modrinth-pride.tooltip": {
-    "message": "You received these skins for donating to a Modrinth Pride fundraiser during Pride Month."
+    "message": "You received these skins for donating to a 3ellwa Space Pride fundraiser during Pride Month."
   },
   "app.skins.section.mounts-of-mayhem": {
     "message": "Mounts of Mayhem"
@@ -3522,10 +3522,10 @@
     "message": "Toggle on"
   },
   "app.survey.body": {
-    "message": "Would you mind answering a few questions about your experience with Modrinth App?"
+    "message": "Would you mind answering a few questions about your experience with 3ellwa Space?"
   },
   "app.survey.footer": {
-    "message": "This feedback will go directly to the Modrinth team and help guide future updates!"
+    "message": "This feedback will go directly to the 3ellwa Space team and help guide future updates!"
   },
   "app.survey.no-thanks": {
     "message": "No thanks"
@@ -3534,7 +3534,7 @@
     "message": "Take survey"
   },
   "app.survey.title": {
-    "message": "Hey there Modrinth user!"
+    "message": "Hey there 3ellwa Space user!"
   },
   "app.sync-instances-update.choose-source.data-packs": {
     "message": "Choose which instance to copy your data packs from. These packs are only used for the initial sync, and you can edit them from any instance afterward."
@@ -3621,13 +3621,13 @@
     "message": "Synced resource packs"
   },
   "app.update-popup.body.download-complete": {
-    "message": "Modrinth App v{version} has finished downloading. Reload to update now, or automatically when you close Modrinth App."
+    "message": "3ellwa Space v{version} has finished downloading. Reload to update now, or automatically when you close 3ellwa Space."
   },
   "app.update-popup.body.linux": {
-    "message": "Modrinth App v{version} is available. Use your package manager to update for the latest features and fixes!"
+    "message": "3ellwa Space v{version} is available. Use your package manager to update for the latest features and fixes!"
   },
   "app.update-popup.body.metered": {
-    "message": "Modrinth App v{version} is available now! Since you're on a metered network, we didn't automatically download it."
+    "message": "3ellwa Space v{version} is available now! Since you're on a metered network, we didn't automatically download it."
   },
   "app.update-popup.changelog": {
     "message": "Changelog"
@@ -3678,7 +3678,7 @@
     "message": "Skip"
   },
   "app.welcome-screen.title": {
-    "message": "Welcome to Modrinth"
+    "message": "Welcome to 3ellwa Space"
   },
   "app.world.server-modal.placeholder-address": {
     "message": "example.modrinth.gg"
@@ -3747,10 +3747,10 @@
     "message": "It may be different from their Minecraft username!"
   },
   "friends.add-friend.username.placeholder": {
-    "message": "Enter Modrinth username..."
+    "message": "Enter 3ellwa Space username..."
   },
   "friends.add-friend.username.title": {
-    "message": "What's your friend's Modrinth username?"
+    "message": "What's your friend's 3ellwa Space username?"
   },
   "friends.add-friends-to-share": {
     "message": "<link>Add friends</link> to see what they're playing!"
@@ -3795,10 +3795,10 @@
     "message": "{title} - {count}"
   },
   "friends.sign-in-to-add-friends": {
-    "message": "<link>Sign in to a Modrinth account</link> to add friends and see what they're playing!"
+    "message": "<link>Sign in to a 3ellwa Space account</link> to add friends and see what they're playing!"
   },
   "hosting.play.account-changed": {
-    "message": "Your Modrinth account changed. Press Play server again to continue."
+    "message": "Your 3ellwa Space account changed. Press Play server again to continue."
   },
   "hosting.play.no-address": {
     "message": "This server does not have a connection address yet."
@@ -3828,7 +3828,7 @@
     "message": "Unlinking..."
   },
   "installation-settings.shared-instance.unpublish-description": {
-    "message": "Remove this shared instance from Modrinth and stop sending updates to anyone using it. Your local instance will not be affected."
+    "message": "Remove this shared instance from 3ellwa Space and stop sending updates to anyone using it. Your local instance will not be affected."
   },
   "installation-settings.unlink-shared-instance.modal.admonition-body": {
     "message": "This only affects your local instance. Your installed content will stay on this device, and the shared instance and other people using it will not be affected."
@@ -3840,7 +3840,7 @@
     "message": "Unlink shared instance"
   },
   "installation-settings.unpublish-shared-instance.modal.admonition-body": {
-    "message": "This deletes the shared instance from Modrinth's servers. People using it in the Modrinth App will stop receiving updates, but your local instance and its content will stay on this device."
+    "message": "This deletes the shared instance from 3ellwa Space's servers. People using it in 3ellwa Space will stop receiving updates, but your local instance and its content will stay on this device."
   },
   "instance.action.create-shortcut": {
     "message": "Create shortcut"
@@ -4278,7 +4278,7 @@
     "message": "Network error"
   },
   "instance.shared-instance.owner-behind.text": {
-    "message": "A newer version was pushed from another Modrinth App installation. Download it, then try again."
+    "message": "A newer version was pushed from another 3ellwa Space installation. Download it, then try again."
   },
   "instance.shared-instance.owner-behind.title": {
     "message": "Couldn't push update"
@@ -4449,7 +4449,7 @@
     "message": "Create an account"
   },
   "modal.modrinth-account-required.description": {
-    "message": "You'll need to sign into your Modrinth account before you can use this feature."
+    "message": "You'll need to sign into your 3ellwa Space account before you can use this feature."
   },
   "modal.modrinth-account-required.header": {
     "message": "Account required"
@@ -4458,10 +4458,10 @@
     "message": "Open browser again"
   },
   "modal.modrinth-account-required.sign-in-button": {
-    "message": "Sign in to Modrinth"
+    "message": "Sign in to 3ellwa Space"
   },
   "modal.modrinth-account-required.sign-in-heading": {
-    "message": "Sign in to a Modrinth account"
+    "message": "Sign in to a 3ellwa Space account"
   },
   "modal.modrinth-account-required.signing-in-header": {
     "message": "Signing in"
@@ -4479,7 +4479,7 @@
     "message": "Sign in to Minecraft"
   },
   "onboarding-checklist.login-modrinth": {
-    "message": "Sign in to Modrinth"
+    "message": "Sign in to 3ellwa Space"
   },
   "onboarding-checklist.title": {
     "message": "Getting started"

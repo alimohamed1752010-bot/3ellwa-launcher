@@ -142,7 +142,7 @@ const messages = defineMessages({
 	},
 	modrinthTeamLabel: {
 		id: 'omorphia.component.badge.label.modrinth-team',
-		defaultMessage: 'Modrinth Team',
+		defaultMessage: '3ellwa Space Team',
 	},
 	pendingLabel: {
 		id: 'omorphia.component.badge.label.pending',

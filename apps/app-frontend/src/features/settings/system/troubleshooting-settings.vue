@@ -65,7 +65,7 @@ const messages = defineMessages({
 	debugInfoDescription: {
 		id: 'app.settings.resource-management.debug-info.description',
 		defaultMessage:
-			'Export app logs and diagnostic data to a ZIP file to share with Modrinth support.',
+			'Export app logs and diagnostic data to a ZIP file to share when asking for help.',
 	},
 	exportDebugInfo: {
 		id: 'app.settings.resource-management.debug-info.export',
@@ -78,7 +78,7 @@ const messages = defineMessages({
 	reportAdDescription: {
 		id: 'app.settings.troubleshooting.report-ad.description',
 		defaultMessage:
-			"Seen an inappropriate or offensive ad? Copy its details while it's showing and send them to <support>Modrinth Support</support>. We'll review it and remove it.",
+			"Seen an inappropriate or offensive ad? Copy its details while it's showing and send them to <support>3ellwa Space Support</support>. We'll review it and remove it.",
 	},
 	copyAdDetails: {
 		id: 'app.settings.troubleshooting.report-ad.copy',
@@ -275,39 +275,6 @@ async function handleCopyAdDetails() {
 			</Button>
 			<p class="m-0 leading-tight text-secondary">
 				{{ formatMessage(messages.debugInfoDescription) }}
-			</p>
-		</div>
-		<div class="flex flex-col gap-2.5">
-			<h2 class="m-0 text-lg font-semibold text-contrast">
-				{{ formatMessage(messages.reportAdTitle) }}
-			</h2>
-			<Button
-				id="copy-ad-details"
-				class="w-fit"
-				:disabled="copyingAdDetails || copiedAdDetails"
-				@click="handleCopyAdDetails"
-			>
-				<LoaderCircleIcon
-					v-if="copyingAdDetails"
-					class="motion-safe:animate-spin"
-					aria-hidden="true"
-				/>
-				<CheckIcon v-else-if="copiedAdDetails" class="text-green" aria-hidden="true" />
-				<CopyIcon v-else aria-hidden="true" />
-				{{ formatMessage(copiedAdDetails ? messages.copiedAdDetails : messages.copyAdDetails) }}
-			</Button>
-			<p class="m-0 leading-tight text-secondary">
-				<IntlFormatted :message-id="messages.reportAdDescription">
-					<template #support="{ children }">
-						<button
-							type="button"
-							class="inline cursor-pointer border-0 bg-transparent p-0 text-[length:inherit] leading-[inherit] text-blue hover:underline"
-							@click="openSupport"
-						>
-							<component :is="() => children" />
-						</button>
-					</template>
-				</IntlFormatted>
 			</p>
 		</div>
 		<div class="flex items-center justify-between gap-4">

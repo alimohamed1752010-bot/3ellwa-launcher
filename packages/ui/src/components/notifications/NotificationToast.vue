@@ -303,12 +303,12 @@ const messages = defineMessages({
 	instanceQuarantined: {
 		id: 'notifications.instance-quarantined.body',
 		defaultMessage:
-			'Your shared instance "<entity>{entity}</entity>" has been locked by the Modrinth moderation team.',
+			'Your shared instance "<entity>{entity}</entity>" has been locked by the 3ellwa Space moderation team.',
 	},
 	instanceQuarantinedMember: {
 		id: 'notifications.instance-quarantined-member.body',
 		defaultMessage:
-			'The shared instance "<entity>{entity}</entity>" has been locked by the Modrinth moderation team.',
+			'The shared instance "<entity>{entity}</entity>" has been locked by the 3ellwa Space moderation team.',
 	},
 	dismissNotification: {
 		id: 'notifications.dismiss',

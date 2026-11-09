@@ -255,7 +255,7 @@ function selectCustom() {
 				class="w-full flex flex-col gap-4 rounded-2xl bg-brand-inverted border-brand-highlight border border-solid p-5 h-full"
 				:style="{
 					backgroundImage:
-						'radial-gradient(86.12% 101.64% at 95.97% 94.07%, rgba(27, 217, 106, 0.23) 0%, rgba(14, 115, 56, 0.2) 100%)',
+						'radial-gradient(86.12% 101.64% at 95.97% 94.07%, rgba(0, 170, 255, 0.23) 0%, rgba(7, 80, 130, 0.2) 100%)',
 				}"
 			>
 				<div>

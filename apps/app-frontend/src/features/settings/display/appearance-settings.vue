@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {
 	AppearanceSettingsLayout,
-	injectAuth,
 	injectUserPreferences,
 	provideAppearanceSettings,
 	useSavable,
@@ -9,6 +8,7 @@ import {
 import { platform } from '@tauri-apps/plugin-os'
 import { computed, onBeforeUnmount, onMounted, watch } from 'vue'
 
+import { spaceAccount } from '@/helpers/space_account.ts'
 import { useAppSettings } from '@/composables/use-app-settings.ts'
 import { type ColorTheme, isDarkTheme, useTheme } from '@/composables/use-theme.ts'
 import { injectAppSettingsModal } from '@/features/settings/app-settings-modal/context'
@@ -16,7 +16,7 @@ import { type AppSettings, get, set } from '@/helpers/settings.ts'
 
 const theme = useTheme()
 const appSettings = useAppSettings()
-const auth = injectAuth()
+
 const { updatePreferences } = injectUserPreferences()
 const settingsModal = injectAppSettingsModal()
 const os = platform()
@@ -43,7 +43,7 @@ const { saved, current, changes, saving, hasChanges, reset, save } = useSavable(
 		const value = current.value
 		if (
 			value.syncAcrossDevices &&
-			auth.user.value &&
+			spaceAccount.value &&
 			(appearanceChanges.theme !== undefined || appearanceChanges.syncAcrossDevices !== undefined)
 		) {
 			await updatePreferences({
@@ -140,7 +140,7 @@ provideAppearanceSettings({
 			value: computed(() => current.value.syncAcrossDevices),
 			set: setSyncAcrossDevices,
 		},
-		syncDisabled: computed(() => !auth.user.value),
+		syncDisabled: computed(() => !spaceAccount.value),
 	},
 	advancedRendering: {
 		value: computed(() => current.value.advancedRendering),

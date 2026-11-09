@@ -15,6 +15,7 @@ pub mod onboarding_checklist;
 pub mod process;
 pub mod reports;
 pub mod settings;
+pub mod space_account;
 pub mod shortcuts;
 pub mod tags;
 mod thumbnails;

@@ -2,7 +2,7 @@ use std::sync::{Arc, atomic::AtomicBool};
 
 use discord_rich_presence::{
     DiscordIpc, DiscordIpcClient,
-    activity::{Activity, Assets},
+    activity::{Activity, Assets, Timestamps},
 };
 use sqlx::SqlitePool;
 use tokio::sync::RwLock;
@@ -18,7 +18,7 @@ impl DiscordGuard {
     /// Initialize discord IPC client, and attempt to connect to it
     /// If it fails, it will still return a DiscordGuard, but the client will be unconnected
     pub fn init() -> crate::Result<DiscordGuard> {
-        let dipc = DiscordIpcClient::new("1123683254248148992");
+        let dipc = DiscordIpcClient::new("1569408417733546075");
 
         Ok(DiscordGuard {
             client: Arc::new(RwLock::new(dipc)),
@@ -73,8 +73,8 @@ impl DiscordGuard {
 
         let activity = Activity::new().state(msg).assets(
             Assets::new()
-                .large_image("modrinth_simple")
-                .large_text("Modrinth Logo"),
+                .large_image("logo")
+                .large_text("3ellwa Space"),
         );
 
         // Attempt to set the activity
@@ -92,6 +92,48 @@ impl DiscordGuard {
             res?;
         }
 
+        Ok(())
+    }
+
+    /// Show what is being played: instance name on top, game version and loader below,
+    /// with a "playing for" timer. Respects the Discord Rich Presence setting.
+    pub async fn set_playing(
+        &self,
+        instance_name: &str,
+        game_line: &str,
+        reconnect_if_fail: bool,
+        pool: &SqlitePool,
+    ) -> crate::Result<()> {
+        let settings = crate::state::Settings::get(pool).await?;
+        if !settings.discord_rpc {
+            return Ok(self.clear_activity(true).await?);
+        }
+        if !self.retry_if_not_ready().await {
+            return Ok(());
+        }
+
+        let activity = Activity::new()
+            .details(instance_name)
+            .state(game_line)
+            .timestamps(
+                Timestamps::new().start(chrono::Utc::now().timestamp_millis()),
+            )
+            .assets(
+                Assets::new()
+                    .large_image("logo")
+                    .large_text("3ellwa Space"),
+            );
+
+        let mut client = self.client.write().await;
+        let res = client.set_activity(activity.clone());
+        if reconnect_if_fail {
+            if let Err(_e) = res {
+                client.reconnect()?;
+                return Ok(client.set_activity(activity)?);
+            }
+        } else {
+            res?;
+        }
         Ok(())
     }
 

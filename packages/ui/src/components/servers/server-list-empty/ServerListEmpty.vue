@@ -102,11 +102,11 @@ const { formatMessage } = useVIntl()
 const messages = defineMessages({
 	modrinthHostingLabel: {
 		id: 'servers.list-empty.modrinth-hosting-label',
-		defaultMessage: 'Modrinth Hosting',
+		defaultMessage: '3ellwa Space Hosting',
 	},
 	noServersDescription: {
 		id: 'servers.list-empty.no-servers-description',
-		defaultMessage: 'Install mods, invite friends, and play together all from the Modrinth App.',
+		defaultMessage: 'Install mods, invite friends, and play together all from the 3ellwa Space App.',
 	},
 	oneClickModInstallsTitle: {
 		id: 'servers.list-empty.one-click-mod-installs-title',
@@ -130,7 +130,7 @@ const messages = defineMessages({
 	},
 	playWithFriendsDescription: {
 		id: 'servers.list-empty.play-with-friends-description',
-		defaultMessage: 'Invite friends to play your server with one-click play from the Modrinth App.',
+		defaultMessage: 'Invite friends to play your server with one-click play from the 3ellwa Space App.',
 	},
 	newServerButton: {
 		id: 'servers.list-empty.new-server-button',
@@ -146,7 +146,7 @@ const messages = defineMessages({
 	},
 	signInButton: {
 		id: 'servers.list-empty.sign-in-button',
-		defaultMessage: 'Sign in to Modrinth',
+		defaultMessage: 'Sign in to 3ellwa Space',
 	},
 })
 

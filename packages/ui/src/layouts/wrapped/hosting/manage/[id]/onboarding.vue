@@ -83,7 +83,7 @@ const props = defineProps<{ siteUrl: string }>()
 const messages = defineMessages({
 	welcomeTitle: {
 		id: 'servers.setup.onboarding.welcome.title',
-		defaultMessage: 'Welcome to Modrinth Hosting',
+		defaultMessage: 'Welcome to 3ellwa Space Hosting',
 	},
 	welcomeDescription: {
 		id: 'servers.setup.onboarding.welcome.description',
@@ -104,7 +104,7 @@ const messages = defineMessages({
 	chooseWhatToPlayDescription: {
 		id: 'servers.setup.onboarding.step.choose.description',
 		defaultMessage:
-			'Pick your favorite modpack from Modrinth, or choose a loader and add the mods you want.',
+			'Pick your favorite modpack from 3ellwa Space, or choose a loader and add the mods you want.',
 	},
 	configureWorldTitle: {
 		id: 'servers.setup.onboarding.step.configure-world.title',
@@ -122,7 +122,7 @@ const messages = defineMessages({
 	inviteFriendsDescription: {
 		id: 'servers.setup.onboarding.step.invite-friends.description',
 		defaultMessage:
-			'Invite friends to your server with a link and let them join in one click from the Modrinth App.',
+			'Invite friends to your server with a link and let them join in one click from the 3ellwa Space App.',
 	},
 })
 

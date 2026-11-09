@@ -7,7 +7,6 @@ import {
 	HeartHandshakeIcon,
 	LanguagesIcon,
 	LightBulbIcon,
-	ModrinthIcon,
 	PaintbrushIcon,
 	RefreshCwIcon,
 	Settings2Icon,
@@ -32,10 +31,10 @@ import { getVersion } from '@tauri-apps/api/app'
 import { platform as getOsPlatform, version as getOsVersion } from '@tauri-apps/plugin-os'
 import { computed, ref } from 'vue'
 
+import logoUrl from '@/assets/3ellwa-logo.png'
 import { useAppSettings } from '@/composables/use-app-settings.ts'
 import PrivacySettings from '@/features/settings/account/privacy-settings.vue'
-import ProfileSettings from '@/features/settings/account/profile-settings.vue'
-import SocialSettings from '@/features/settings/account/social-settings.vue'
+import SpaceAccountSettings from '@/features/settings/account/space-account-settings.vue'
 import AppearanceSettings from '@/features/settings/display/appearance-settings.vue'
 import BehaviorSettings from '@/features/settings/display/behavior-settings.vue'
 import FeatureFlagSettings from '@/features/settings/display/feature-flag-settings.vue'
@@ -132,16 +131,13 @@ const tabs = [
 		developerOnly: true,
 	},
 	{
-		name: commonSettingsMessages.profile,
+		name: defineMessage({
+			id: 'app.settings.tabs.space-account',
+			defaultMessage: '3ellwa Account',
+		}),
 		category: tabCategories.account,
 		icon: UserIcon,
-		content: ProfileSettings,
-	},
-	{
-		name: commonSettingsMessages.social,
-		category: tabCategories.account,
-		icon: HeartHandshakeIcon,
-		content: SocialSettings,
+		content: SpaceAccountSettings,
 	},
 	{
 		name: defineMessage({
@@ -266,7 +262,7 @@ function show() {
 }
 
 function showProfile(): void {
-	const profileTabIndex = availableTabs.value.findIndex((tab) => tab.content === ProfileSettings)
+	const profileTabIndex = availableTabs.value.findIndex((tab) => tab.content === SpaceAccountSettings)
 	modal.value?.show(undefined, profileTabIndex >= 0 ? profileTabIndex : undefined)
 }
 
@@ -351,7 +347,7 @@ const messages = defineMessages({
 	},
 	appVersion: {
 		id: 'app.settings.app-version',
-		defaultMessage: 'Modrinth App {version}',
+		defaultMessage: '3ellwa Space {version}',
 	},
 	macos: {
 		id: 'app.settings.operating-system.macos',
@@ -407,7 +403,7 @@ const messages = defineMessages({
 						}"
 						@click="devModeCount"
 					>
-						<ModrinthIcon aria-hidden="true" class="w-6 h-6" />
+						<img :src="logoUrl" alt="" aria-hidden="true" class="w-6 h-6" />
 					</button>
 					<div v-if="appInfo" class="max-w-[200px]">
 						<p class="m-0">

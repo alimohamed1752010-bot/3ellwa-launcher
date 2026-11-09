@@ -5,6 +5,8 @@ use std::{env, fs};
 
 fn main() {
     println!("cargo::rerun-if-changed=.env");
+    // new migration files must trigger a rebuild so sqlx::migrate!() embeds them
+    println!("cargo::rerun-if-changed=migrations");
     println!("cargo::rerun-if-changed=java/gradle");
     println!("cargo::rerun-if-changed=java/src");
     println!("cargo::rerun-if-changed=java/build.gradle.kts");

@@ -14,7 +14,7 @@ const messages = defineMessages({
 	unpublishDescription: {
 		id: 'server.settings.sharing.unpublish-description',
 		defaultMessage:
-			'Remove the shared instance for this server from Modrinth and stop sending content updates to players. Your server and its content will not be affected.',
+			'Remove the shared instance for this server from 3ellwa Space and stop sending content updates to players. Your server and its content will not be affected.',
 	},
 	unpublishConfirmation: {
 		id: 'server.settings.sharing.unpublish-confirmation',

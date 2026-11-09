@@ -226,12 +226,12 @@ const messages = defineMessages({
 	},
 	signInHeading: {
 		id: 'modal.modrinth-account-required.sign-in-heading',
-		defaultMessage: 'Sign in to a Modrinth account',
+		defaultMessage: 'Sign in to a 3ellwa Space account',
 	},
 	description: {
 		id: 'modal.modrinth-account-required.description',
 		defaultMessage:
-			"You'll need to sign into your Modrinth account before you can use this feature.",
+			"You'll need to sign into your 3ellwa Space account before you can use this feature.",
 	},
 	createAccountButton: {
 		id: 'modal.modrinth-account-required.create-account-button',
@@ -239,7 +239,7 @@ const messages = defineMessages({
 	},
 	signInButton: {
 		id: 'modal.modrinth-account-required.sign-in-button',
-		defaultMessage: 'Sign in to Modrinth',
+		defaultMessage: 'Sign in to 3ellwa Space',
 	},
 	continueInBrowserHeading: {
 		id: 'modal.modrinth-account-required.continue-in-browser-heading',

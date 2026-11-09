@@ -168,7 +168,7 @@ const messages = defineMessages({
 	},
 	searchPlaceholder: {
 		id: 'sharing.invite-players-modal.search-placeholder',
-		defaultMessage: 'Enter Modrinth username',
+		defaultMessage: 'Enter 3ellwa Space username',
 	},
 	addButton: {
 		id: 'sharing.invite-players-modal.add',

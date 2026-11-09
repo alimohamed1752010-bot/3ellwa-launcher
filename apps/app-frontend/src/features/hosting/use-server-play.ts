@@ -61,7 +61,7 @@ export type ServerPlayModals = {
 const messages = defineMessages({
 	accountChanged: {
 		id: 'hosting.play.account-changed',
-		defaultMessage: 'Your Modrinth account changed. Press Play server again to continue.',
+		defaultMessage: 'Your 3ellwa Space account changed. Press Play server again to continue.',
 	},
 	worldChanged: {
 		id: 'hosting.play.world-changed',

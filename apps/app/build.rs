@@ -145,6 +145,19 @@ fn main() {
                     ),
             )
             .plugin(
+                "space-account",
+                InlinedPlugin::new()
+                    .commands(&[
+                        "space_account_get",
+                        "space_account_sign_in",
+                        "space_account_sign_out",
+                        "space_account_request",
+                    ])
+                    .default_permission(
+                        DefaultPermissionRule::AllowAllCommands,
+                    ),
+            )
+            .plugin(
                 "onboarding-checklist",
                 InlinedPlugin::new()
                     .commands(&[

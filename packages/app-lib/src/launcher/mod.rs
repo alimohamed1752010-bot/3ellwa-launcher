@@ -1287,7 +1287,22 @@ pub async fn launch_minecraft(
     let _ = state
         .presence
         .discord_rpc
-        .set_activity(&format!("Playing {}", instance.name), true, &state.pool)
+        .set_playing(
+            &instance.name,
+            &format!(
+                "Minecraft {}{}",
+                content_set.game_version,
+                match content_set.loader {
+                    ModLoader::Vanilla => "",
+                    ModLoader::Forge => " with Forge",
+                    ModLoader::Fabric => " with Fabric",
+                    ModLoader::Quilt => " with Quilt",
+                    ModLoader::NeoForge => " with NeoForge",
+                }
+            ),
+            true,
+            &state.pool,
+        )
         .await;
 
     let _ = state

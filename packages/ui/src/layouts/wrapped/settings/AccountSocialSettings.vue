@@ -451,7 +451,7 @@ const messages = defineMessages({
 	},
 	friendRequestsDescription: {
 		id: 'settings.social.friend-requests.description',
-		defaultMessage: 'Control who can send you friend requests on Modrinth.',
+		defaultMessage: 'Control who can send you friend requests on 3ellwa Space.',
 	},
 	sharedInstanceInvitesTitle: {
 		id: 'settings.social.shared-instance-invites.title',
@@ -467,7 +467,7 @@ const messages = defineMessages({
 	},
 	hostingAccessDescription: {
 		id: 'settings.social.hosting-access.description',
-		defaultMessage: 'Control who can invite you to manage a Modrinth Hosting server.',
+		defaultMessage: 'Control who can invite you to manage a 3ellwa Space Hosting server.',
 	},
 	everyone: {
 		id: 'settings.social.interaction-source.everyone',
@@ -503,7 +503,7 @@ const messages = defineMessages({
 	},
 	blockedUsersDescription: {
 		id: 'settings.social.blocked-users.description',
-		defaultMessage: 'These are the users you have blocked on Modrinth. They cannot:',
+		defaultMessage: 'These are the users you have blocked on 3ellwa Space. They cannot:',
 	},
 	friendRequestsRestriction: {
 		id: 'settings.social.blocked-users.restriction.friend-requests',
@@ -515,7 +515,7 @@ const messages = defineMessages({
 	},
 	hostingRestriction: {
 		id: 'settings.social.blocked-users.restriction.hosting',
-		defaultMessage: 'Invite you to manage a Modrinth Hosting server.',
+		defaultMessage: 'Invite you to manage a 3ellwa Space Hosting server.',
 	},
 	userColumn: {
 		id: 'settings.social.blocked-users.column.user',
@@ -543,12 +543,12 @@ const messages = defineMessages({
 	},
 	signInRequiredTitle: {
 		id: 'settings.social.sign-in-required.title',
-		defaultMessage: 'Modrinth account required',
+		defaultMessage: '3ellwa Space account required',
 	},
 	signInRequiredDescription: {
 		id: 'settings.social.sign-in-required.description',
 		defaultMessage:
-			'You can control who can interact with you, and manage blocked users with a Modrinth Account',
+			'You can control who can interact with you, and manage blocked users with a 3ellwa Space Account',
 	},
 	loadError: {
 		id: 'settings.social.blocked-users.load-error',

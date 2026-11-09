@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {
 	defineMessages,
-	injectAuth,
 	injectNotificationManager,
 	injectUserPreferences,
 	Toggle,
@@ -11,6 +10,7 @@ import {
 import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
 import { onBeforeUnmount, onMounted } from 'vue'
 
+import { spaceAccount } from '@/helpers/space_account.ts'
 import { useAppSettings } from '@/composables/use-app-settings.ts'
 import { injectAppSettingsModal } from '@/features/settings/app-settings-modal/context'
 import HiddenInstancesSettings from '@/features/settings/display/hidden-instances-settings/index.vue'
@@ -24,7 +24,7 @@ import {
 
 const appSettings = useAppSettings()
 const { formatMessage } = useVIntl()
-const auth = injectAuth()
+
 const { handleError } = injectNotificationManager()
 const { updatePreferences } = injectUserPreferences()
 const settingsModal = injectAppSettingsModal()
@@ -42,7 +42,7 @@ const messages = defineMessages({
 	},
 	syncAcrossDevicesSignedOutTooltip: {
 		id: 'app.behavior-settings.sync-across-devices.signed-out-tooltip',
-		defaultMessage: 'Sign into a Modrinth account to sync settings.',
+		defaultMessage: 'Sign into a 3ellwa account to sync settings.',
 	},
 	startupAndNavigationTitle: {
 		id: 'app.behavior-settings.startup-and-navigation.title',
@@ -62,7 +62,7 @@ const messages = defineMessages({
 	},
 	minimizeLauncherDescription: {
 		id: 'app.appearance-settings.minimize-launcher.description',
-		defaultMessage: 'Minimize Modrinth App when Minecraft starts.',
+		defaultMessage: 'Minimize 3ellwa Space when Minecraft starts.',
 	},
 	refocusOnGameCloseTitle: {
 		id: 'app.behavior-settings.refocus-on-game-close.title',
@@ -70,7 +70,7 @@ const messages = defineMessages({
 	},
 	refocusOnGameCloseDescription: {
 		id: 'app.behavior-settings.refocus-on-game-close.description',
-		defaultMessage: 'Bring Modrinth App to the foreground when Minecraft exits.',
+		defaultMessage: 'Bring 3ellwa Space to the foreground when Minecraft exits.',
 	},
 	defaultLandingPageHome: {
 		id: 'app.appearance-settings.default-landing-page.home',
@@ -119,7 +119,7 @@ const messages = defineMessages({
 	unknownPackWarningDescription: {
 		id: 'app.appearance-settings.unknown-pack-warning.description',
 		defaultMessage:
-			"Show a safety warning before installing a Modrinth Pack (.mrpack) that isn't hosted on Modrinth.",
+			"Show a safety warning before installing a 3ellwa Space Pack (.mrpack) that isn't hosted on 3ellwa Space.",
 	},
 	skipNonEssentialWarningsTitle: {
 		id: 'app.appearance-settings.skip-non-essential-warnings.title',
@@ -165,7 +165,7 @@ const settingsMutation = useMutation({
 	mutationKey: appSettingsKeys.update,
 	scope: { id: 'app-settings' },
 	mutationFn: async (value: BehaviorSettingsState) => {
-		if (value.syncBehaviorAcrossDevices && auth.user.value) {
+		if (value.syncBehaviorAcrossDevices && spaceAccount.value) {
 			await updatePreferences({
 				behavior: {
 					minimize_app: value.minimizeApp,
@@ -251,14 +251,14 @@ onBeforeUnmount(() => {
 			</div>
 			<span
 				v-tooltip="
-					!auth.user.value ? formatMessage(messages.syncAcrossDevicesSignedOutTooltip) : undefined
+					!spaceAccount.value ? formatMessage(messages.syncAcrossDevicesSignedOutTooltip) : undefined
 				"
 				class="inline-flex shrink-0"
 			>
 				<Toggle
 					id="sync-behavior-across-devices"
-					:model-value="Boolean(auth.user.value) && current.syncBehaviorAcrossDevices"
-					:disabled="!auth.user.value"
+					:model-value="Boolean(spaceAccount.value) && current.syncBehaviorAcrossDevices"
+					:disabled="!spaceAccount.value"
 					aria-labelledby="sync-behavior-across-devices-label"
 					@update:model-value="current.syncBehaviorAcrossDevices = $event"
 				/>

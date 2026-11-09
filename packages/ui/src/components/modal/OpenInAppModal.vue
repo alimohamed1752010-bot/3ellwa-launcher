@@ -126,11 +126,11 @@ const { formatMessage } = useVIntl()
 const messages = defineMessages({
 	openingApp: {
 		id: 'modal.open-in-app.title',
-		defaultMessage: 'Opening Modrinth App',
+		defaultMessage: 'Opening 3ellwa Space App',
 	},
 	whyUseApp: {
 		id: 'modal.open-in-app.why-use',
-		defaultMessage: 'Why use the Modrinth App',
+		defaultMessage: 'Why use the 3ellwa Space App',
 	},
 	benefitLaunch: {
 		id: 'modal.open-in-app.benefit.launch',
@@ -146,11 +146,11 @@ const messages = defineMessages({
 	},
 	openingAutomatically: {
 		id: 'modal.open-in-app.opening-automatically',
-		defaultMessage: 'The Modrinth App will open automatically...',
+		defaultMessage: 'The 3ellwa Space App will open automatically...',
 	},
 	getApp: {
 		id: 'modal.open-in-app.get-app',
-		defaultMessage: 'Get Modrinth App',
+		defaultMessage: 'Get 3ellwa Space App',
 	},
 })
 
@@ -273,7 +273,7 @@ defineExpose({ show, hide, open })
 .fullscreen-overlay {
 	position: fixed;
 	inset: 0;
-	background: linear-gradient(to bottom, rgba(66, 131, 92, 0.23) 0%, rgba(17, 35, 43, 0.4) 97%);
+	background: linear-gradient(to bottom, rgba(30, 90, 150, 0.23) 0%, rgba(14, 26, 43, 0.4) 97%);
 	backdrop-filter: blur(12px);
 	opacity: 0;
 	transition: opacity 0.3s ease-out;

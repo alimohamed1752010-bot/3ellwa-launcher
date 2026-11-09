@@ -296,20 +296,20 @@ const messages = defineMessages({
 	errorQueueNotice: {
 		id: 'servers.manage.error.queue-notice',
 		defaultMessage:
-			"If you recently purchased your Modrinth Hosting server, it is currently in a queue and will appear here as soon as it's ready. <warning>Do not attempt to purchase a new server.</warning>",
+			"If you recently purchased your 3ellwa Space Hosting server, it is currently in a queue and will appear here as soon as it's ready. <warning>Do not attempt to purchase a new server.</warning>",
 	},
 	errorSupportNotice: {
 		id: 'servers.manage.error.support-notice',
 		defaultMessage:
-			'If you require personalized support regarding the status of your server, please contact Modrinth Support.',
+			'If you require personalized support regarding the status of your server, please contact 3ellwa Space Support.',
 	},
 	errorDetails: { id: 'servers.manage.error.details', defaultMessage: 'Error details:' },
 	contactSupportButton: {
 		id: 'servers.manage.contact-support-button',
-		defaultMessage: 'Contact Modrinth Support',
+		defaultMessage: 'Contact 3ellwa Space Support',
 	},
 	reloadButton: { id: 'servers.manage.reload-button', defaultMessage: 'Reload' },
-	serversTitle: { id: 'servers.manage.servers-title', defaultMessage: 'Modrinth Hosting' },
+	serversTitle: { id: 'servers.manage.servers-title', defaultMessage: '3ellwa Space Hosting' },
 	searchPlaceholder: {
 		id: 'servers.manage.search-placeholder',
 		defaultMessage: 'Search {count} {count, plural, one {server} other {servers}}...',
@@ -376,7 +376,7 @@ const messages = defineMessages({
 	},
 	resubscribeErrorText: {
 		id: 'servers.manage.resubscribe-error.text',
-		defaultMessage: 'An error occurred while resubscribing to your Modrinth server.',
+		defaultMessage: 'An error occurred while resubscribing to your 3ellwa Space server.',
 	},
 })
 
