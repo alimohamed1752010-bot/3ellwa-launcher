@@ -737,39 +737,6 @@
   "app.instance.navigation.back-to-instance": {
     "message": "인스턴스로 돌아가기"
   },
-  "app.instance.share.empty.description": {
-    "message": "친구들과 이 인스턴스를 공유할 수 있습니다!"
-  },
-  "app.instance.share.empty.heading": {
-    "message": "초대한 친구 없음"
-  },
-  "app.instance.share.empty.invite-friends-button": {
-    "message": "친구 초대"
-  },
-  "app.instance.share.invite-modal.heading": {
-    "message": "{name} 공유"
-  },
-  "app.instance.share.invite-modal.user-limit-reached": {
-    "message": "이 인스턴스는 최대 사용자 제한 {limit}명에 도달했어요."
-  },
-  "app.instance.share.locked.empty-description-prefix": {
-    "message": "이 페이지에 접근하려면"
-  },
-  "app.instance.share.locked.empty-description-suffix": {
-    "message": "계정으로 로그인해야 합니다."
-  },
-  "app.instance.share.locked.linked-account-fallback": {
-    "message": "연동된"
-  },
-  "app.instance.share.locked.signed-out-heading": {
-    "message": "로그인되지 않음"
-  },
-  "app.instance.share.locked.switch-account-button": {
-    "message": "계정 전환"
-  },
-  "app.instance.share.locked.wrong-account-heading": {
-    "message": "잘못된 계정"
-  },
   "app.instance.share.remove-user-modal.effect-access": {
     "message": "이들은 더 이상 해당 공유 인스턴스의 업데이트를 받지 않습니다"
   },
@@ -796,21 +763,6 @@
   },
   "app.instance.share.remove-user-modal.warning-body": {
     "message": "이 공유 인스턴스에서 {username}의 접근을 철회하면, 다시 초대해야 사용자가 업데이트를 받을 수 있어요."
-  },
-  "app.instance.share.sign-in.button": {
-    "message": "로그인"
-  },
-  "app.instance.share.unable-to-connect.description": {
-    "message": "현재 공유 인스턴스 서비스를 이용할 수 없습니다. 잠시 후 다시 시도해 주세요"
-  },
-  "app.instance.share.unable-to-connect.heading": {
-    "message": "연결할 수 없습니다"
-  },
-  "app.instance.share.unlink.body": {
-    "message": "모드팩의 연동을 해제해야 인스턴스를 공유할 수 있어요"
-  },
-  "app.instance.share.unlink.header": {
-    "message": "공유하려면 연동을 해제해야 합니다"
   },
   "app.instance.shared-instance-already-installed.body": {
     "message": "이 공유 인스턴스는 이미 <bold>{instanceName}</bold> 이름으로 설치되어 있습니다. 사본을 하나 더 설치하시겠습니까?"
@@ -4228,9 +4180,6 @@
   },
   "onboarding-checklist.login-minecraft": {
     "message": "Minecraft에 로그인"
-  },
-  "onboarding-checklist.login-modrinth": {
-    "message": "Modrinth에 로그인"
   },
   "onboarding-checklist.title": {
     "message": "시작하기"

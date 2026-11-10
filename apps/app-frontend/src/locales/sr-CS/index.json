@@ -473,39 +473,6 @@
   "app.instance.navigation.back-to-instance": {
     "message": "Nazad na instancu"
   },
-  "app.instance.share.empty.description": {
-    "message": "Možeš dijeliti ovu instancu sa prijateljima!"
-  },
-  "app.instance.share.empty.heading": {
-    "message": "Nema pozvanih prijatelja"
-  },
-  "app.instance.share.empty.invite-friends-button": {
-    "message": "Pozovi prijatelje"
-  },
-  "app.instance.share.invite-modal.heading": {
-    "message": "Dijeli {name}"
-  },
-  "app.instance.share.invite-modal.user-limit-reached": {
-    "message": "Ova instanca je dostigla {limit}-korisnički limit."
-  },
-  "app.instance.share.locked.empty-description-prefix": {
-    "message": "Logiraj se kao"
-  },
-  "app.instance.share.locked.empty-description-suffix": {
-    "message": "za pristup ove stranice."
-  },
-  "app.instance.share.locked.linked-account-fallback": {
-    "message": "povezan račun"
-  },
-  "app.instance.share.locked.signed-out-heading": {
-    "message": "Nisi prijavljen"
-  },
-  "app.instance.share.locked.switch-account-button": {
-    "message": "Promeni nalog"
-  },
-  "app.instance.share.locked.wrong-account-heading": {
-    "message": "Krivi nalog"
-  },
   "app.instance.share.remove-user-modal.effect-access": {
     "message": "Neće više primat ažuriranja za ovu instancu"
   },
@@ -529,9 +496,6 @@
   },
   "app.instance.share.remove-user-modal.user-avatar-alt": {
     "message": "Avatar od {username}"
-  },
-  "app.instance.share.sign-in.button": {
-    "message": "Prijavi se"
   },
   "app.instance.worlds.add-server": {
     "message": "Dodaj server"

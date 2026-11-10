@@ -491,30 +491,6 @@
   "app.instance.mods.successfully-uploaded": {
     "message": "Uploadet"
   },
-  "app.instance.share.empty.description": {
-    "message": "Du kan ændre denne instance med dine venner!"
-  },
-  "app.instance.share.empty.heading": {
-    "message": "Ingen venner inviteret"
-  },
-  "app.instance.share.empty.invite-friends-button": {
-    "message": "Inviter venner"
-  },
-  "app.instance.share.invite-modal.heading": {
-    "message": "Del {name}"
-  },
-  "app.instance.share.locked.empty-description-suffix": {
-    "message": "for at tilgå denne side."
-  },
-  "app.instance.share.locked.signed-out-heading": {
-    "message": "Ikke logget ind"
-  },
-  "app.instance.share.locked.switch-account-button": {
-    "message": "Skift konto"
-  },
-  "app.instance.share.locked.wrong-account-heading": {
-    "message": "Forkert konto"
-  },
   "app.instance.share.remove-user-modal.effects-label": {
     "message": "Hvad vil der ske?"
   },
@@ -526,9 +502,6 @@
   },
   "app.instance.share.remove-user-modal.user-avatar-alt": {
     "message": "{username}'s avatar"
-  },
-  "app.instance.share.sign-in.button": {
-    "message": "Log ind"
   },
   "app.instance.shared-instance-already-installed.install-anyway": {
     "message": "Installer alligevel"

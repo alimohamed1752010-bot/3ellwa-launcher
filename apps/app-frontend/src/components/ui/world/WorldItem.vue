@@ -5,6 +5,7 @@ import {
 	ExternalIcon,
 	EyeIcon,
 	FolderOpenIcon,
+	HistoryIcon,
 	IssuesIcon,
 	Link2Icon,
 	MoreVerticalIcon,
@@ -73,7 +74,7 @@ const { addNotification } = injectNotificationManager()
 
 const emit = defineEmits<{
 	(e: 'play' | 'play-instance' | 'update' | 'stop' | 'refresh' | 'edit' | 'delete' | 'desync'): void
-	(e: 'open-folder', world: SingleplayerWorld): void
+	(e: 'open-folder' | 'backups', world: SingleplayerWorld): void
 }>()
 
 const props = withDefaults(
@@ -187,6 +188,7 @@ const messages = defineMessages({
 		defaultMessage: 'Failed to create shortcut',
 	},
 	moreOptions: { id: 'instance.worlds.more-options', defaultMessage: 'More options' },
+	backups: { id: 'instance.worlds.backups', defaultMessage: 'Backups' },
 	instanceLocked: {
 		id: 'instance.worlds.instance-locked',
 		defaultMessage: 'This instance has been locked',
@@ -379,6 +381,13 @@ const overflowOptions = computed((): ButtonMenuOption[] => [
 			: managed.value
 				? formatMessage(messages.linkedServer)
 				: undefined,
+	},
+	{
+		id: 'backups',
+		label: formatMessage(messages.backups),
+		icon: HistoryIcon,
+		shown: props.world.type === 'singleplayer' && !props.instanceId,
+		action: () => (props.world.type === 'singleplayer' ? emit('backups', props.world) : {}),
 	},
 	{
 		id: 'open-folder',

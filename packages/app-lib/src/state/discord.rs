@@ -72,9 +72,7 @@ impl DiscordGuard {
         }
 
         let activity = Activity::new().state(msg).assets(
-            Assets::new()
-                .large_image("logo")
-                .large_text("3ellwa Space"),
+            Assets::new().large_image("logo").large_text("3ellwa Space"),
         );
 
         // Attempt to set the activity
@@ -119,9 +117,7 @@ impl DiscordGuard {
                 Timestamps::new().start(chrono::Utc::now().timestamp_millis()),
             )
             .assets(
-                Assets::new()
-                    .large_image("logo")
-                    .large_text("3ellwa Space"),
+                Assets::new().large_image("logo").large_text("3ellwa Space"),
             );
 
         let mut client = self.client.write().await;

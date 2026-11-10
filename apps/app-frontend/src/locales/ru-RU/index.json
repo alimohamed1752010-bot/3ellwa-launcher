@@ -728,36 +728,6 @@
   "app.instance.navigation.back-to-instance": {
     "message": "Вернуться к сборке"
   },
-  "app.instance.share.empty.description": {
-    "message": "Поделитесь сборкой со своими друзьями!"
-  },
-  "app.instance.share.empty.heading": {
-    "message": "Нет приглашённых друзей"
-  },
-  "app.instance.share.empty.invite-friends-button": {
-    "message": "Пригласить друзей"
-  },
-  "app.instance.share.invite-modal.heading": {
-    "message": "Доступ к {name}"
-  },
-  "app.instance.share.locked.empty-description-prefix": {
-    "message": "Необходимо войти как"
-  },
-  "app.instance.share.locked.empty-description-suffix": {
-    "message": "для доступа к этой странице."
-  },
-  "app.instance.share.locked.linked-account-fallback": {
-    "message": "связанный аккаунт"
-  },
-  "app.instance.share.locked.signed-out-heading": {
-    "message": "Вход не выполнен"
-  },
-  "app.instance.share.locked.switch-account-button": {
-    "message": "Сменить аккаунт"
-  },
-  "app.instance.share.locked.wrong-account-heading": {
-    "message": "Неправильная учётная запись"
-  },
   "app.instance.share.remove-user-modal.effect-access": {
     "message": "Пользователь больше не будет получать обновления совместной сборки"
   },
@@ -784,21 +754,6 @@
   },
   "app.instance.share.remove-user-modal.warning-body": {
     "message": "Если вы отзовете доступ пользователя {username} к этому общему экземпляру, вам потребуется снова пригласить его, прежде чем он сможет получать обновления."
-  },
-  "app.instance.share.sign-in.button": {
-    "message": "Войти"
-  },
-  "app.instance.share.unable-to-connect.description": {
-    "message": "Сервис сборок недоступен, попробуйте позже"
-  },
-  "app.instance.share.unable-to-connect.heading": {
-    "message": "Не удалось подключиться"
-  },
-  "app.instance.share.unlink.body": {
-    "message": "Отвяжите содержимое, чтобы поделиться сборкой"
-  },
-  "app.instance.share.unlink.header": {
-    "message": "Для обмена необходимо отменить связь"
   },
   "app.instance.shared-instance-already-installed.body": {
     "message": "Совместный контент уже установлен в сборке <bold>{instanceName}</bold>. Создать копию?"
@@ -4204,9 +4159,6 @@
   },
   "onboarding-checklist.login-minecraft": {
     "message": "Войдите в Minecraft"
-  },
-  "onboarding-checklist.login-modrinth": {
-    "message": "Войдите в Modrinth"
   },
   "onboarding-checklist.title": {
     "message": "Начало работы"

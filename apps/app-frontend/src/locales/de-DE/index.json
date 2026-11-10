@@ -737,39 +737,6 @@
   "app.instance.navigation.back-to-instance": {
     "message": "Zurück zur Instanz"
   },
-  "app.instance.share.empty.description": {
-    "message": "Du kannst diese Instanz mit deinen Freunden teilen!"
-  },
-  "app.instance.share.empty.heading": {
-    "message": "Keine Freunde eingeladen"
-  },
-  "app.instance.share.empty.invite-friends-button": {
-    "message": "Freunde einladen"
-  },
-  "app.instance.share.invite-modal.heading": {
-    "message": "{name} teilen"
-  },
-  "app.instance.share.invite-modal.user-limit-reached": {
-    "message": "Diese Instanz hat das Nutzerlimit von {limit} erreicht."
-  },
-  "app.instance.share.locked.empty-description-prefix": {
-    "message": "Du musst dich als"
-  },
-  "app.instance.share.locked.empty-description-suffix": {
-    "message": "anmelden, um diese Seite aufzurufen."
-  },
-  "app.instance.share.locked.linked-account-fallback": {
-    "message": "das verknüpfte Konto"
-  },
-  "app.instance.share.locked.signed-out-heading": {
-    "message": "Nicht angemeldet"
-  },
-  "app.instance.share.locked.switch-account-button": {
-    "message": "Konto wechseln"
-  },
-  "app.instance.share.locked.wrong-account-heading": {
-    "message": "Falsches Konto"
-  },
   "app.instance.share.remove-user-modal.effect-access": {
     "message": "Diese Person wird für diese geteilte Instanz keine Updates mehr erhalten"
   },
@@ -796,21 +763,6 @@
   },
   "app.instance.share.remove-user-modal.warning-body": {
     "message": "Falls du den Zugriff von {username} auf diese geteilte Instanz widerrufst, musst du diese Person erneut einladen, bevor diese Updates erhalten kann."
-  },
-  "app.instance.share.sign-in.button": {
-    "message": "Anmelden"
-  },
-  "app.instance.share.unable-to-connect.description": {
-    "message": "Der Dienst für geteilte Instanzen ist derzeit nicht erreichbar; bitte versuche es später erneut"
-  },
-  "app.instance.share.unable-to-connect.heading": {
-    "message": "Verbindung nicht möglich"
-  },
-  "app.instance.share.unlink.body": {
-    "message": "Du musst die Verknüpfung zu diesem Modpack trennen, um deine Instanz zu teilen"
-  },
-  "app.instance.share.unlink.header": {
-    "message": "Zum Teilen muss die Verknüpfung getrennt werden"
   },
   "app.instance.shared-instance-already-installed.body": {
     "message": "Diese geteilte Instanz ist bereits als <bold>{instanceName}</bold> installiert. Möchtest du wirklich eine weitere Kopie installieren?"
@@ -4228,9 +4180,6 @@
   },
   "onboarding-checklist.login-minecraft": {
     "message": "Bei Minecraft anmelden"
-  },
-  "onboarding-checklist.login-modrinth": {
-    "message": "Bei Modrinth anmelden"
   },
   "onboarding-checklist.title": {
     "message": "Erste Schritte"

@@ -4,7 +4,7 @@ import {
 	CoffeeIcon,
 	EyeOffIcon,
 	GaugeIcon,
-	HeartHandshakeIcon,
+	HistoryIcon,
 	LanguagesIcon,
 	LightBulbIcon,
 	PaintbrushIcon,
@@ -47,6 +47,7 @@ import type { InstanceDefaultsTab } from '@/features/settings/settings-actions'
 import SyncingSettings from '@/features/settings/syncing/syncing-settings.vue'
 import ResourceManagementSettings from '@/features/settings/system/resource-management-settings/index.vue'
 import TroubleshootingSettings from '@/features/settings/system/troubleshooting-settings.vue'
+import WorldBackupsSettings from '@/features/world-backups/world-backups-settings.vue'
 import { appSettingsKeys, appSettingsQueryOptions, set } from '@/helpers/settings.ts'
 import { injectAppUpdateDownloadProgress } from '@/providers/download-progress.ts'
 
@@ -195,6 +196,15 @@ const tabs = [
 	},
 	{
 		name: defineMessage({
+			id: 'app.settings.tabs.world-backups',
+			defaultMessage: 'World backups',
+		}),
+		category: tabCategories.system,
+		icon: HistoryIcon,
+		content: WorldBackupsSettings,
+	},
+	{
+		name: defineMessage({
 			id: 'app.settings.tabs.troubleshooting',
 			defaultMessage: 'Troubleshooting',
 		}),
@@ -262,7 +272,9 @@ function show() {
 }
 
 function showProfile(): void {
-	const profileTabIndex = availableTabs.value.findIndex((tab) => tab.content === SpaceAccountSettings)
+	const profileTabIndex = availableTabs.value.findIndex(
+		(tab) => tab.content === SpaceAccountSettings,
+	)
 	modal.value?.show(undefined, profileTabIndex >= 0 ? profileTabIndex : undefined)
 }
 

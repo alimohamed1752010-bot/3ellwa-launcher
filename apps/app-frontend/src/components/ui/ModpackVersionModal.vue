@@ -5,6 +5,7 @@ import { computed, ref } from 'vue'
 
 import { SwapIcon } from '@/assets/icons/index.js'
 import ModalWrapper from '@/components/ui/modal/ModalWrapper.vue'
+import { useBackupBeforeUpdate } from '@/features/world-backups/use-backup-before-update'
 import { update_managed_modrinth_version } from '@/helpers/instance'
 import { releaseColor } from '@/helpers/utils'
 
@@ -36,8 +37,10 @@ const installedVersion = computed(() => props.instance?.link?.version_id)
 const installing = computed(() => props.instance.install_stage !== 'installed')
 const inProgress = ref(false)
 
+const backupBeforeUpdate = useBackupBeforeUpdate()
 const switchVersion = async (versionId) => {
 	modpackVersionModal.value.hide()
+	if (!(await backupBeforeUpdate(props.instance.id))) return
 	inProgress.value = true
 	await update_managed_modrinth_version(props.instance.id, versionId)
 	inProgress.value = false

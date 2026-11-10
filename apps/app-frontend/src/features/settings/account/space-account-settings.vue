@@ -6,11 +6,11 @@ import { onMounted, ref } from 'vue'
 import { list as listInstances } from '@/helpers/instance'
 import {
 	refreshSpaceAccount,
-	spaceRequest,
 	spaceAccount,
+	spaceRequest,
 	spaceSignIn,
-	spaceSignOut,
 	spaceSigningIn,
+	spaceSignOut,
 	spaceUserName,
 } from '@/helpers/space_account'
 import {
@@ -198,8 +198,16 @@ const input =
 			<div :class="box" data-test="friends">
 				<h3 class="m-0 text-base font-semibold text-contrast">Friends</h3>
 				<form class="flex gap-2" @submit.prevent="addFriend">
-					<input v-model="friendName" :class="input" placeholder="Add a friend by Discord username" />
-					<Button color="brand" :disabled="!friendName.trim() || working === 'friend'" @click="addFriend">
+					<input
+						v-model="friendName"
+						:class="input"
+						placeholder="Add a friend by Discord username"
+					/>
+					<Button
+						color="brand"
+						:disabled="!friendName.trim() || working === 'friend'"
+						@click="addFriend"
+					>
 						Add
 					</Button>
 				</form>
@@ -223,7 +231,11 @@ const input =
 					<Button @click="run('r', () => removeFriend(f.id))">Remove</Button>
 				</div>
 				<p
-					v-if="!friendsState.friends.length && !friendsState.incoming.length && !friendsState.outgoing.length"
+					v-if="
+						!friendsState.friends.length &&
+						!friendsState.incoming.length &&
+						!friendsState.outgoing.length
+					"
 					class="m-0 text-secondary"
 				>
 					No friends yet. They need to have signed in to 3ellwa Space once.
@@ -233,7 +245,9 @@ const input =
 			<!-- Cloud instances -->
 			<div :class="box" data-test="cloud-instances">
 				<div class="flex items-center gap-2">
-					<h3 class="m-0 flex-1 text-base font-semibold text-contrast">Instances in your account</h3>
+					<h3 class="m-0 flex-1 text-base font-semibold text-contrast">
+						Instances in your account
+					</h3>
 					<Button :disabled="cloudStatus.busy" @click="syncInstances">
 						{{ cloudStatus.busy ? 'Syncing...' : 'Sync now' }}
 					</Button>
@@ -280,7 +294,11 @@ const input =
 				</div>
 				<div class="flex gap-2">
 					<input v-model="importCode" :class="input" placeholder="Paste a share code or link" />
-					<Button color="brand" :disabled="!importCode.trim() || working === 'import'" @click="doImport">
+					<Button
+						color="brand"
+						:disabled="!importCode.trim() || working === 'import'"
+						@click="doImport"
+					>
 						{{ working === 'import' ? 'Adding...' : 'Add setup' }}
 					</Button>
 				</div>
@@ -293,7 +311,12 @@ const input =
 					Your saved skins are kept in your account.
 					<span v-if="cloudSkinCount">{{ cloudSkinCount }} not on this PC yet.</span>
 				</p>
-				<Button v-if="cloudSkinCount" color="brand" :disabled="working === 'skins'" @click="restoreSkins">
+				<Button
+					v-if="cloudSkinCount"
+					color="brand"
+					:disabled="working === 'skins'"
+					@click="restoreSkins"
+				>
 					Restore {{ cloudSkinCount }} skin{{ cloudSkinCount === 1 ? '' : 's' }}
 				</Button>
 			</div>

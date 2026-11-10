@@ -180,6 +180,7 @@ import {
 	EyeIcon,
 	EyeOffIcon,
 	FolderOpenIcon,
+	GaugeIcon,
 	LockIcon,
 	MoreVerticalIcon,
 	PackageIcon,
@@ -215,6 +216,7 @@ import type { GameInstance } from '@/helpers/types'
 import InstanceHeaderServerMetadata from './instance-page-header-server-metadata.vue'
 
 const messages = defineMessages({
+	boostFps: { id: 'instance.action.boost-fps', defaultMessage: 'Boost FPS' },
 	createShortcut: {
 		id: 'instance.action.create-shortcut',
 		defaultMessage: 'Create shortcut',
@@ -320,6 +322,7 @@ const emit = defineEmits<{
 	openFolder: []
 	export: []
 	createShortcut: []
+	boostFps: []
 	toggleHidden: []
 	report: [event?: MouseEvent]
 }>()
@@ -383,6 +386,15 @@ const moreActions = computed<ButtonMenuOption[]>(() => {
 			label: formatMessage(messages.exportModpack),
 			icon: PackageIcon,
 			action: () => emit('export'),
+		})
+	}
+
+	if (!props.instance.quarantined && !props.instance.content_locked) {
+		actions.push({
+			id: 'boost-fps',
+			label: formatMessage(messages.boostFps),
+			icon: GaugeIcon,
+			action: () => emit('boostFps'),
 		})
 	}
 

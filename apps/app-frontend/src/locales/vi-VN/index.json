@@ -728,39 +728,6 @@
   "app.instance.navigation.back-to-instance": {
     "message": "Quay lại bản cài đặt"
   },
-  "app.instance.share.empty.description": {
-    "message": "Bạn có thể chia sẻ bản cài đặt này với bạn bè!"
-  },
-  "app.instance.share.empty.heading": {
-    "message": "Chưa mời bạn bè"
-  },
-  "app.instance.share.empty.invite-friends-button": {
-    "message": "Mời bạn bè"
-  },
-  "app.instance.share.invite-modal.heading": {
-    "message": "Chia sẻ {name}"
-  },
-  "app.instance.share.invite-modal.user-limit-reached": {
-    "message": "Bản cài đặt này đã đạt giới hạn {limit} người dùng."
-  },
-  "app.instance.share.locked.empty-description-prefix": {
-    "message": "Bạn cần đăng nhập bằng"
-  },
-  "app.instance.share.locked.empty-description-suffix": {
-    "message": "để truy cập trang này."
-  },
-  "app.instance.share.locked.linked-account-fallback": {
-    "message": "tài khoản đã liên kết"
-  },
-  "app.instance.share.locked.signed-out-heading": {
-    "message": "Chưa đăng nhập"
-  },
-  "app.instance.share.locked.switch-account-button": {
-    "message": "Chuyển tài khoản"
-  },
-  "app.instance.share.locked.wrong-account-heading": {
-    "message": "Sai tài khoản"
-  },
   "app.instance.share.remove-user-modal.effect-access": {
     "message": "Họ sẽ không còn nhận được cập nhật cho bản cài đặt được chia sẻ này"
   },
@@ -787,21 +754,6 @@
   },
   "app.instance.share.remove-user-modal.warning-body": {
     "message": "Nếu bạn thu hồi quyền truy cập của {username} vào bản cài đặt được chia sẻ này, bạn sẽ phải mời lại họ trước khi họ có thể nhận cập nhật."
-  },
-  "app.instance.share.sign-in.button": {
-    "message": "Đăng nhập"
-  },
-  "app.instance.share.unable-to-connect.description": {
-    "message": "Dịch vụ bản cài đặt được chia sẻ hiện không thể truy cập. Vui lòng thử lại sau"
-  },
-  "app.instance.share.unable-to-connect.heading": {
-    "message": "Không thể kết nối"
-  },
-  "app.instance.share.unlink.body": {
-    "message": "Bạn phải gỡ liên kết modpack này để chia sẻ bản cài đặt của mình"
-  },
-  "app.instance.share.unlink.header": {
-    "message": "Cần gỡ liên kết để chia sẻ"
   },
   "app.instance.shared-instance-already-installed.body": {
     "message": "Bản cài đặt được chia sẻ này đã được cài dưới tên <bold>{instanceName}</bold>. Bạn có chắc muốn cài thêm một bản sao không?"
@@ -4126,9 +4078,6 @@
   },
   "onboarding-checklist.login-minecraft": {
     "message": "Đăng nhập Minecraft"
-  },
-  "onboarding-checklist.login-modrinth": {
-    "message": "Đăng nhập Modrinth"
   },
   "onboarding-checklist.title": {
     "message": "Bắt đầu"

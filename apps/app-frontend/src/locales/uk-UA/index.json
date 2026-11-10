@@ -743,48 +743,6 @@
   "app.instance.navigation.back-to-instance": {
     "message": "Назад до примірника"
   },
-  "app.instance.share.empty.description": {
-    "message": "Ви можете поділитися цим примірником із друзями!"
-  },
-  "app.instance.share.empty.heading": {
-    "message": "Немає запрошених друзів"
-  },
-  "app.instance.share.empty.invite-friends-button": {
-    "message": "Запросити друзів"
-  },
-  "app.instance.share.invite-modal.heading": {
-    "message": "Поділитися {name}"
-  },
-  "app.instance.share.invite-modal.user-limit-reached": {
-    "message": "Цей примірник досяг ліміту в {limit} користувачів."
-  },
-  "app.instance.share.limit-reached.description": {
-    "message": "Ви вже завантажили максимальну кількість у {limit} примірників."
-  },
-  "app.instance.share.limit-reached.heading": {
-    "message": "Досягнено обмеження спільних примірників"
-  },
-  "app.instance.share.limit-reached.manage-button": {
-    "message": "Керувати спільними примірниками"
-  },
-  "app.instance.share.locked.empty-description-prefix": {
-    "message": "Ви повинні ввійти як"
-  },
-  "app.instance.share.locked.empty-description-suffix": {
-    "message": "для отримання доступу до цієї сторінки."
-  },
-  "app.instance.share.locked.linked-account-fallback": {
-    "message": "прив'язаний обліковий запис"
-  },
-  "app.instance.share.locked.signed-out-heading": {
-    "message": "Вхід не виконано"
-  },
-  "app.instance.share.locked.switch-account-button": {
-    "message": "Змінити обліковий запис"
-  },
-  "app.instance.share.locked.wrong-account-heading": {
-    "message": "Неправильний обліковий запис"
-  },
   "app.instance.share.remove-user-modal.effect-access": {
     "message": "Він більше не зможе отримувати оновлення для цього спільного примірника"
   },
@@ -811,21 +769,6 @@
   },
   "app.instance.share.remove-user-modal.warning-body": {
     "message": "Якщо ви відкличете доступ {username} до цього спільного примірника, він зможе отримувати оновлення, лише якщо ви знову його запросите."
-  },
-  "app.instance.share.sign-in.button": {
-    "message": "Увійти"
-  },
-  "app.instance.share.unable-to-connect.description": {
-    "message": "Сервіс спільних примірників наразі недоступний, спробуйте знову пізніше"
-  },
-  "app.instance.share.unable-to-connect.heading": {
-    "message": "Не вдалося під'єднатися"
-  },
-  "app.instance.share.unlink.body": {
-    "message": "Ви повинні від'єднати цю збірку, щоб поділитися своїм примірником"
-  },
-  "app.instance.share.unlink.header": {
-    "message": "Спільний доступ вимагає відв'язування"
   },
   "app.instance.shared-instance-already-installed.body": {
     "message": "Цей спільний примірник уже встановлено як <bold>«{instanceName}»</bold>. Справді бажаєте встановити ще одну копію?"
@@ -4261,9 +4204,6 @@
   },
   "onboarding-checklist.login-minecraft": {
     "message": "Увійти в Minecraft"
-  },
-  "onboarding-checklist.login-modrinth": {
-    "message": "Увійти в Modrinth"
   },
   "onboarding-checklist.title": {
     "message": "Почнімо"

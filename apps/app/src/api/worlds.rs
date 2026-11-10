@@ -8,7 +8,7 @@ use theseus::server_address::ServerAddress;
 use theseus::worlds;
 use theseus::worlds::{
     DisplayStatus, ProtocolVersion, ServerPackStatus, ServerStatus, World,
-    WorldType, WorldWithInstance,
+    WorldBackup, WorldType, WorldWithInstance,
 };
 
 pub fn init<R: Runtime>() -> tauri::plugin::TauriPlugin<R> {
@@ -21,6 +21,11 @@ pub fn init<R: Runtime>() -> tauri::plugin::TauriPlugin<R> {
             rename_world,
             reset_world_icon,
             backup_world,
+            world_backup_create,
+            world_backup_list,
+            world_backup_restore,
+            world_backup_delete,
+            world_backup_prune,
             delete_world,
             add_server_to_instance,
             ensure_managed_server_in_instance,
@@ -138,6 +143,90 @@ pub async fn reset_world_icon(instance: &str, world: &str) -> Result<()> {
 pub async fn backup_world(instance: &str, world: &str) -> Result<u64> {
     let instance = get_full_path(instance).await?;
     Ok(worlds::backup_world(&instance, world).await?)
+}
+
+/// Where an instance's world backups live: `<instance>/backups` by default, or
+/// `<backups_root>/<instance id>` when the player picked their own folder.
+async fn world_backups_dir(
+    instance: &str,
+    backups_root: Option<&str>,
+) -> Result<std::path::PathBuf> {
+    match backups_root.filter(|root| !root.trim().is_empty()) {
+        Some(root) => {
+            let root = std::path::PathBuf::from(root);
+            if !root.is_absolute() {
+                return Err(anyhow::anyhow!(
+                    "The backup folder must be a full path"
+                )
+                .into());
+            }
+            let folder: String = instance
+                .chars()
+                .map(|c| {
+                    if c.is_alphanumeric() || c == '-' || c == '_' || c == ' ' {
+                        c
+                    } else {
+                        '_'
+                    }
+                })
+                .collect();
+            Ok(root.join(folder))
+        }
+        None => Ok(get_full_path(instance).await?.join("backups")),
+    }
+}
+
+#[tauri::command]
+pub async fn world_backup_create(
+    instance: &str,
+    world: &str,
+    auto: bool,
+    backups_root: Option<String>,
+) -> Result<WorldBackup> {
+    let dir = world_backups_dir(instance, backups_root.as_deref()).await?;
+    let instance_path = get_full_path(instance).await?;
+    Ok(worlds::create_world_backup(&instance_path, world, &dir, auto).await?)
+}
+
+#[tauri::command]
+pub async fn world_backup_list(
+    instance: &str,
+    backups_root: Option<String>,
+) -> Result<Vec<WorldBackup>> {
+    let dir = world_backups_dir(instance, backups_root.as_deref()).await?;
+    Ok(worlds::list_world_backups(&dir).await?)
+}
+
+#[tauri::command]
+pub async fn world_backup_restore(
+    instance: &str,
+    file_name: &str,
+    backups_root: Option<String>,
+) -> Result<Option<WorldBackup>> {
+    let dir = world_backups_dir(instance, backups_root.as_deref()).await?;
+    let instance_path = get_full_path(instance).await?;
+    Ok(worlds::restore_world_backup(&instance_path, &dir, file_name).await?)
+}
+
+#[tauri::command]
+pub async fn world_backup_delete(
+    instance: &str,
+    file_name: &str,
+    backups_root: Option<String>,
+) -> Result<()> {
+    let dir = world_backups_dir(instance, backups_root.as_deref()).await?;
+    Ok(worlds::delete_world_backup(&dir, file_name).await?)
+}
+
+#[tauri::command]
+pub async fn world_backup_prune(
+    instance: &str,
+    world: &str,
+    keep: usize,
+    backups_root: Option<String>,
+) -> Result<usize> {
+    let dir = world_backups_dir(instance, backups_root.as_deref()).await?;
+    Ok(worlds::prune_world_backups(&dir, world, keep).await?)
 }
 
 #[tauri::command]

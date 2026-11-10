@@ -589,20 +589,50 @@ pub async fn reset_world_icon(instance: &Path, world: &str) -> Result<()> {
 }
 
 pub async fn backup_world(instance: &Path, world: &str) -> Result<u64> {
+    let backup =
+        create_world_backup(instance, world, &instance.join("backups"), false)
+            .await?;
+    Ok(backup.size)
+}
+
+/// A zip of one singleplayer world, as written by [`create_world_backup`].
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct WorldBackup {
+    pub file_name: String,
+    /// Folder name of the world inside `saves/`.
+    pub world: String,
+    /// Unix seconds.
+    pub created: i64,
+    pub size: u64,
+    /// Made automatically (before updates); only these are pruned.
+    pub auto: bool,
+}
+
+const AUTO_BACKUP_SUFFIX: &str = "_auto";
+
+/// Zips `saves/<world>` into `backups_dir`. Auto backups get an `_auto` suffix so pruning never
+/// touches backups the player made on purpose.
+pub async fn create_world_backup(
+    instance: &Path,
+    world: &str,
+    backups_dir: &Path,
+    auto: bool,
+) -> Result<WorldBackup> {
     let world_dir = get_world_dir(instance, world);
     let lock = get_world_session_lock(&world_dir).await?;
-    let backups_dir = instance.join("backups");
+    let backups_dir = backups_dir.to_path_buf();
     let world = world.to_owned();
     let cancel = CancellationToken::new();
     let _cancel_guard = cancel.clone().drop_guard();
 
-    tokio::task::spawn_blocking(move || -> Result<u64> {
+    tokio::task::spawn_blocking(move || -> Result<WorldBackup> {
         let _lock = lock;
         stdfs::create_dir_all(&backups_dir)?;
         let name_base = {
             let now = Local::now();
             let formatted_time = now.format("%Y-%m-%d_%H-%M-%S");
-            format!("{formatted_time}_{world}")
+            let suffix = if auto { AUTO_BACKUP_SUFFIX } else { "" };
+            format!("{formatted_time}_{world}{suffix}")
         };
         let output_path = backups_dir.join(find_available_name(
             &backups_dir,
@@ -671,12 +701,220 @@ pub async fn backup_world(instance: &Path, world: &str) -> Result<u64> {
             )
             .into());
         }
+        let file_name = output_path
+            .file_name()
+            .map(|name| name.to_string_lossy().into_owned())
+            .unwrap_or_default();
         temporary
             .persist_noclobber(output_path)
             .map_err(|error| error.error)?;
-        Ok(size)
+        Ok(WorldBackup {
+            file_name,
+            world,
+            created: Utc::now().timestamp(),
+            size,
+            auto,
+        })
     })
     .await?
+}
+
+/// Lists the world backups in `backups_dir`, newest first. Zips that are not world backups
+/// (no single top-level folder) are skipped.
+pub async fn list_world_backups(
+    backups_dir: &Path,
+) -> Result<Vec<WorldBackup>> {
+    let backups_dir = backups_dir.to_path_buf();
+    tokio::task::spawn_blocking(move || -> Result<Vec<WorldBackup>> {
+        let mut backups = Vec::new();
+        let entries = match stdfs::read_dir(&backups_dir) {
+            Ok(entries) => entries,
+            Err(error) if error.kind() == std::io::ErrorKind::NotFound => {
+                return Ok(backups);
+            }
+            Err(error) => return Err(error.into()),
+        };
+        for entry in entries.flatten() {
+            let path = entry.path();
+            if path.extension().and_then(|e| e.to_str()) != Some("zip") {
+                continue;
+            }
+            let Some(world) = backup_world_folder(&path) else {
+                continue;
+            };
+            let metadata = entry.metadata()?;
+            let created = metadata
+                .modified()
+                .ok()
+                .and_then(|t| t.duration_since(std::time::UNIX_EPOCH).ok())
+                .map_or(0, |d| d.as_secs() as i64);
+            let file_name = entry.file_name().to_string_lossy().into_owned();
+            let stem = file_name.trim_end_matches(".zip");
+            let auto = stem.ends_with(AUTO_BACKUP_SUFFIX)
+                || stem.rsplit_once(" (").is_some_and(|(base, _)| {
+                    base.ends_with(AUTO_BACKUP_SUFFIX)
+                });
+            backups.push(WorldBackup {
+                file_name,
+                world,
+                created,
+                size: metadata.len(),
+                auto,
+            });
+        }
+        backups.sort_by(|a, b| b.created.cmp(&a.created));
+        Ok(backups)
+    })
+    .await?
+}
+
+/// Deletes the oldest automatic backups of `world`, keeping the newest `keep`.
+pub async fn prune_world_backups(
+    backups_dir: &Path,
+    world: &str,
+    keep: usize,
+) -> Result<usize> {
+    let doomed: Vec<_> = list_world_backups(backups_dir)
+        .await?
+        .into_iter()
+        .filter(|backup| backup.auto && backup.world == world)
+        .skip(keep)
+        .collect();
+    for backup in &doomed {
+        io::remove_file(backups_dir.join(&backup.file_name)).await?;
+    }
+    Ok(doomed.len())
+}
+
+/// Deletes one backup zip from `backups_dir`.
+pub async fn delete_world_backup(
+    backups_dir: &Path,
+    file_name: &str,
+) -> Result<()> {
+    let path = backup_file_path(backups_dir, file_name)?;
+    io::remove_file(path).await?;
+    Ok(())
+}
+
+/// Replaces `saves/<world>` with the contents of a backup. The current world (if any) is first
+/// saved as a normal, never-pruned backup, and only removed once the restored copy is fully written.
+/// Returns that safety backup, if one was made.
+pub async fn restore_world_backup(
+    instance: &Path,
+    backups_dir: &Path,
+    file_name: &str,
+) -> Result<Option<WorldBackup>> {
+    let zip_path = backup_file_path(backups_dir, file_name)?;
+    let world = {
+        let zip_path = zip_path.clone();
+        tokio::task::spawn_blocking(move || backup_world_folder(&zip_path))
+            .await?
+            .ok_or_else(|| {
+                ErrorKind::InputError(
+                    "That file is not a world backup".to_string(),
+                )
+            })?
+    };
+    let saves = instance.join("saves");
+    let target = saves.join(&world);
+    let safety = if target.join("level.dat").exists() {
+        Some(create_world_backup(instance, &world, backups_dir, false).await?)
+    } else {
+        None
+    };
+    let lock = if target.exists() {
+        Some(get_world_session_lock(&target).await?)
+    } else {
+        None
+    };
+
+    let staging = saves.join(format!(".{world}.restoring"));
+    let previous = saves.join(format!(".{world}.previous"));
+    {
+        let zip_path = zip_path.clone();
+        let staging = staging.clone();
+        let world = world.clone();
+        tokio::task::spawn_blocking(move || -> Result<()> {
+            let _ = stdfs::remove_dir_all(&staging);
+            stdfs::create_dir_all(&staging)?;
+            let mut zip = zip::ZipArchive::new(std::io::BufReader::new(
+                stdfs::File::open(&zip_path)?,
+            ))?;
+            for index in 0..zip.len() {
+                let mut entry = zip.by_index(index)?;
+                let Some(relative) = entry.enclosed_name() else {
+                    continue;
+                };
+                let Ok(inside) = relative.strip_prefix(&world) else {
+                    continue;
+                };
+                let out = staging.join(inside);
+                if entry.is_dir() {
+                    stdfs::create_dir_all(&out)?;
+                    continue;
+                }
+                if let Some(parent) = out.parent() {
+                    stdfs::create_dir_all(parent)?;
+                }
+                let mut file = stdfs::File::create(&out)?;
+                std::io::copy(&mut entry, &mut file)?;
+            }
+            Ok(())
+        })
+        .await??;
+    }
+
+    drop(lock);
+    if target.exists() {
+        let _ = stdfs::remove_dir_all(&previous);
+        stdfs::rename(&target, &previous)?;
+    }
+    if let Err(error) = stdfs::rename(&staging, &target) {
+        if previous.exists() {
+            let _ = stdfs::rename(&previous, &target);
+        }
+        return Err(error.into());
+    }
+    let _ = stdfs::remove_dir_all(&previous);
+    Ok(safety)
+}
+
+fn backup_file_path(backups_dir: &Path, file_name: &str) -> Result<PathBuf> {
+    let valid = file_name.ends_with(".zip")
+        && Path::new(file_name).file_name().and_then(|n| n.to_str())
+            == Some(file_name);
+    if !valid {
+        return Err(ErrorKind::InputError(format!(
+            "Invalid backup file name: {file_name}"
+        ))
+        .into());
+    }
+    Ok(backups_dir.join(file_name))
+}
+
+/// The single top-level folder of a world backup zip, if it has exactly one.
+fn backup_world_folder(zip_path: &Path) -> Option<String> {
+    let mut zip = zip::ZipArchive::new(std::io::BufReader::new(
+        stdfs::File::open(zip_path).ok()?,
+    ))
+    .ok()?;
+    let mut folder: Option<String> = None;
+    for index in 0..zip.len() {
+        let entry = zip.by_index_raw(index).ok()?;
+        let name = entry.enclosed_name()?;
+        let first = name
+            .components()
+            .next()?
+            .as_os_str()
+            .to_string_lossy()
+            .into_owned();
+        match &folder {
+            None => folder = Some(first),
+            Some(existing) if *existing != first => return None,
+            _ => {}
+        }
+    }
+    folder
 }
 
 fn find_available_name(dir: &Path, file_name: &str, extension: &str) -> String {
@@ -1167,5 +1405,74 @@ mod tests {
             entry.read_to_end(&mut actual).unwrap();
             assert_eq!(actual, expected);
         }
+    }
+
+    #[tokio::test]
+    async fn world_backups_list_prune_and_restore() {
+        use super::{
+            create_world_backup, list_world_backups, prune_world_backups,
+            restore_world_backup,
+        };
+        let instance = tempfile::tempdir().unwrap();
+        let backups = instance.path().join("backups");
+        let world = instance.path().join("saves/My World");
+        fs::create_dir_all(world.join("region")).unwrap();
+        fs::write(world.join("level.dat"), b"version one").unwrap();
+        fs::write(world.join("region/r.0.0.mca"), b"chunks one").unwrap();
+
+        let manual =
+            create_world_backup(instance.path(), "My World", &backups, false)
+                .await
+                .unwrap();
+        assert!(!manual.auto);
+        for _ in 0..3 {
+            create_world_backup(instance.path(), "My World", &backups, true)
+                .await
+                .unwrap();
+        }
+        let listed = list_world_backups(&backups).await.unwrap();
+        assert_eq!(listed.len(), 4);
+        assert!(listed.iter().all(|b| b.world == "My World"));
+        assert_eq!(listed.iter().filter(|b| b.auto).count(), 3);
+
+        let removed =
+            prune_world_backups(&backups, "My World", 1).await.unwrap();
+        assert_eq!(removed, 2);
+        let listed = list_world_backups(&backups).await.unwrap();
+        assert_eq!(listed.len(), 2, "manual backup must survive pruning");
+        assert!(listed.iter().any(|b| b.file_name == manual.file_name));
+
+        // Change the world, then restore the manual backup over it.
+        fs::write(world.join("level.dat"), b"version two").unwrap();
+        fs::remove_file(world.join("region/r.0.0.mca")).unwrap();
+        fs::write(world.join("new.txt"), b"added later").unwrap();
+
+        let safety =
+            restore_world_backup(instance.path(), &backups, &manual.file_name)
+                .await
+                .unwrap()
+                .expect("current world is backed up before restoring");
+        assert!(!safety.auto);
+        assert_eq!(fs::read(world.join("level.dat")).unwrap(), b"version one");
+        assert_eq!(
+            fs::read(world.join("region/r.0.0.mca")).unwrap(),
+            b"chunks one"
+        );
+        assert!(!world.join("new.txt").exists());
+        assert!(!instance.path().join("saves/.My World.restoring").exists());
+        assert!(!instance.path().join("saves/.My World.previous").exists());
+
+        // The safety backup holds the version that was replaced.
+        restore_world_backup(instance.path(), &backups, &safety.file_name)
+            .await
+            .unwrap();
+        assert_eq!(fs::read(world.join("level.dat")).unwrap(), b"version two");
+        assert!(world.join("new.txt").exists());
+
+        assert!(
+            restore_world_backup(instance.path(), &backups, "../evil.zip")
+                .await
+                .is_err()
+        );
     }
 }

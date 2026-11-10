@@ -566,9 +566,6 @@
   "app.instance.mods.successfully-uploaded": {
     "message": "อัปโหลดสำเร็จ"
   },
-  "app.instance.share.unable-to-connect.description": {
-    "message": "ขณะนี้ไม่สามารถเข้าถึงบริการสำหรับชุดเซิร์ฟเวอร์ที่แชร์ได้ โปรดลองใหม่อีกครั้งภายหลัง"
-  },
   "app.instance.worlds.add-server": {
     "message": "เพิ่มเซิร์ฟเวอร์"
   },

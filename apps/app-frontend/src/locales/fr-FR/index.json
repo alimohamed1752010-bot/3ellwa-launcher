@@ -737,39 +737,6 @@
   "app.instance.navigation.back-to-instance": {
     "message": "Retour à l'instance"
   },
-  "app.instance.share.empty.description": {
-    "message": "Vous pouvez partager cette instance avec vos amis !"
-  },
-  "app.instance.share.empty.heading": {
-    "message": "Aucun ami invité"
-  },
-  "app.instance.share.empty.invite-friends-button": {
-    "message": "Inviter des amis"
-  },
-  "app.instance.share.invite-modal.heading": {
-    "message": "Partager {name}"
-  },
-  "app.instance.share.invite-modal.user-limit-reached": {
-    "message": "Cette instance a atteint la limite de {limit} utilisateurs."
-  },
-  "app.instance.share.locked.empty-description-prefix": {
-    "message": "Vous devez vous connecter en tant que"
-  },
-  "app.instance.share.locked.empty-description-suffix": {
-    "message": "pour accéder à cette page."
-  },
-  "app.instance.share.locked.linked-account-fallback": {
-    "message": "le compte lié"
-  },
-  "app.instance.share.locked.signed-out-heading": {
-    "message": "Non connecté"
-  },
-  "app.instance.share.locked.switch-account-button": {
-    "message": "Changer de compte"
-  },
-  "app.instance.share.locked.wrong-account-heading": {
-    "message": "Mauvais compte"
-  },
   "app.instance.share.remove-user-modal.effect-access": {
     "message": "Ils vont désormais cesser de recevoir des mises à jour pour cette instance partagée"
   },
@@ -796,21 +763,6 @@
   },
   "app.instance.share.remove-user-modal.warning-body": {
     "message": "Si vous révoquez l'accès de {username} à cette instance partagée, vous aurez besoin de les inviter de nouveau avant qu'ils puissent recevoir des mises à jour."
-  },
-  "app.instance.share.sign-in.button": {
-    "message": "Se connecter"
-  },
-  "app.instance.share.unable-to-connect.description": {
-    "message": "Le service d'instance partagées n'est pas disponible pour le moment, veuillez réessayer plus tard"
-  },
-  "app.instance.share.unable-to-connect.heading": {
-    "message": "Impossible de se connecter"
-  },
-  "app.instance.share.unlink.body": {
-    "message": "Vous devez délier ce modpack pour partager votre instance"
-  },
-  "app.instance.share.unlink.header": {
-    "message": "Partager nécessite de délier"
   },
   "app.instance.shared-instance-already-installed.body": {
     "message": "Cette instance partagée est déjà installée en tant que <bold>{instanceName}</bold>. Êtes-vous sûr de vouloir installer une autre copie ?"
@@ -4225,9 +4177,6 @@
   },
   "onboarding-checklist.login-minecraft": {
     "message": "Se connecter à Minecraft"
-  },
-  "onboarding-checklist.login-modrinth": {
-    "message": "Se connecter à Modrinth"
   },
   "onboarding-checklist.title": {
     "message": "Premiers pas"

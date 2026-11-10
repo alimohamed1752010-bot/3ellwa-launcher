@@ -734,39 +734,6 @@
   "app.instance.navigation.back-to-instance": {
     "message": "Zpět k instanci"
   },
-  "app.instance.share.empty.description": {
-    "message": "Tuto instanci můžete sdílet se svými přáteli!"
-  },
-  "app.instance.share.empty.heading": {
-    "message": "Žádní pozvaní přátelé"
-  },
-  "app.instance.share.empty.invite-friends-button": {
-    "message": "Pozvat přátele"
-  },
-  "app.instance.share.invite-modal.heading": {
-    "message": "Sdílet {name}"
-  },
-  "app.instance.share.invite-modal.user-limit-reached": {
-    "message": "Tato instance dosáhla limitu {limit} uživatelů."
-  },
-  "app.instance.share.locked.empty-description-prefix": {
-    "message": "Musíte se přihlásit jako"
-  },
-  "app.instance.share.locked.empty-description-suffix": {
-    "message": "pro přístup k této stránce."
-  },
-  "app.instance.share.locked.linked-account-fallback": {
-    "message": "připojený účet"
-  },
-  "app.instance.share.locked.signed-out-heading": {
-    "message": "Nejste přihlášeni"
-  },
-  "app.instance.share.locked.switch-account-button": {
-    "message": "Přepnout účet"
-  },
-  "app.instance.share.locked.wrong-account-heading": {
-    "message": "Špatný účet"
-  },
   "app.instance.share.remove-user-modal.effect-access": {
     "message": "Pro tuto sdílenou instanci již nebudou dostávat aktualizace"
   },
@@ -793,21 +760,6 @@
   },
   "app.instance.share.remove-user-modal.warning-body": {
     "message": "Pokud zrušíte přístup pro {username} k této instanci, budete ho muset znovu přizvat aby mohly dostat aktualizaci instance."
-  },
-  "app.instance.share.sign-in.button": {
-    "message": "Přihlásit se"
-  },
-  "app.instance.share.unable-to-connect.description": {
-    "message": "Služba sdílených instancí není momentálně dostupná, zkuste to prosím znovu později"
-  },
-  "app.instance.share.unable-to-connect.heading": {
-    "message": "Nelze se připojit"
-  },
-  "app.instance.share.unlink.body": {
-    "message": "Musít odpojit tento modpack pro sdílení vaší instance"
-  },
-  "app.instance.share.unlink.header": {
-    "message": "Sdílení vyžaduje odpojení"
   },
   "app.instance.shared-instance-already-installed.body": {
     "message": "Tato sdílená instance je již nainstalovaná jako <bold>{instanceName}</bold>. Jste si jistý, že chcete nainstalovat další kopii?"

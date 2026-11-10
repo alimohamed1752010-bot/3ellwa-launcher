@@ -767,48 +767,6 @@
   "app.instance.navigation.back-to-instance": {
     "message": "Torna all'istanza"
   },
-  "app.instance.share.empty.description": {
-    "message": "Invita chi vuoi a questa istanza!"
-  },
-  "app.instance.share.empty.heading": {
-    "message": "Ancora nessun invito"
-  },
-  "app.instance.share.empty.invite-friends-button": {
-    "message": "Invia un invito"
-  },
-  "app.instance.share.invite-modal.heading": {
-    "message": "Condividi {name}"
-  },
-  "app.instance.share.invite-modal.user-limit-reached": {
-    "message": "L'istanza ha raggiunto il limite di {limit} utenti."
-  },
-  "app.instance.share.limit-reached.description": {
-    "message": "Hai già condiviso il massimo di {limit} istanze."
-  },
-  "app.instance.share.limit-reached.heading": {
-    "message": "Limite di condivisione raggiunto"
-  },
-  "app.instance.share.limit-reached.manage-button": {
-    "message": "Gestisci istanze condivise"
-  },
-  "app.instance.share.locked.empty-description-prefix": {
-    "message": "Devi effettuare l'accesso come"
-  },
-  "app.instance.share.locked.empty-description-suffix": {
-    "message": "per gestire questa pagina."
-  },
-  "app.instance.share.locked.linked-account-fallback": {
-    "message": "l'account collegato"
-  },
-  "app.instance.share.locked.signed-out-heading": {
-    "message": "Accesso non effettuato"
-  },
-  "app.instance.share.locked.switch-account-button": {
-    "message": "Cambia account"
-  },
-  "app.instance.share.locked.wrong-account-heading": {
-    "message": "Account errato"
-  },
   "app.instance.share.remove-user-modal.effect-access": {
     "message": "Non riceveranno più aggiornamenti"
   },
@@ -835,21 +793,6 @@
   },
   "app.instance.share.remove-user-modal.warning-body": {
     "message": "Se revochi l'accesso di {username} a questa istanza condivisa, avrà bisogno di un nuovo invito per ricevere aggiornamenti."
-  },
-  "app.instance.share.sign-in.button": {
-    "message": "Accedi"
-  },
-  "app.instance.share.unable-to-connect.description": {
-    "message": "Il servizio delle istanze condivise non è raggiungibile, riprova più tardi"
-  },
-  "app.instance.share.unable-to-connect.heading": {
-    "message": "Impossibile connettersi"
-  },
-  "app.instance.share.unlink.body": {
-    "message": "Devi scollegare questo pacchetto per condividere l'istanza"
-  },
-  "app.instance.share.unlink.header": {
-    "message": "Scollegamento necessario"
   },
   "app.instance.shared-instance-already-installed.body": {
     "message": "Questa istanza condivisa è già installata come <bold>{instanceName}</bold>. Vuoi davvero installarne un'altra copia?"
@@ -4297,9 +4240,6 @@
   },
   "onboarding-checklist.login-minecraft": {
     "message": "Accedi a Minecraft"
-  },
-  "onboarding-checklist.login-modrinth": {
-    "message": "Accedi a Modrinth"
   },
   "onboarding-checklist.title": {
     "message": "Per iniziare"

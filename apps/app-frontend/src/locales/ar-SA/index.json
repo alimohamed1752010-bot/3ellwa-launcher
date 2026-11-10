@@ -737,39 +737,6 @@
   "app.instance.navigation.back-to-instance": {
     "message": "العودة إلى النسخة"
   },
-  "app.instance.share.empty.description": {
-    "message": "يمكنك مشاركة هذه النسخة مع أصدقائك!"
-  },
-  "app.instance.share.empty.heading": {
-    "message": "لا يوجد أصدقاء مدعوين"
-  },
-  "app.instance.share.empty.invite-friends-button": {
-    "message": "دعوة الأصدقاء"
-  },
-  "app.instance.share.invite-modal.heading": {
-    "message": "شارك {name}"
-  },
-  "app.instance.share.invite-modal.user-limit-reached": {
-    "message": "وصلت هذه النسخة إلى الحد الأقصى المسموح به من المستخدمين ({limit})"
-  },
-  "app.instance.share.locked.empty-description-prefix": {
-    "message": "تحتاج إلى تسجيل الدخول كـ"
-  },
-  "app.instance.share.locked.empty-description-suffix": {
-    "message": "للوصول إلى هذه الصفحة."
-  },
-  "app.instance.share.locked.linked-account-fallback": {
-    "message": "الحساب المرتبط"
-  },
-  "app.instance.share.locked.signed-out-heading": {
-    "message": "لم يتم تسجيل الدخول"
-  },
-  "app.instance.share.locked.switch-account-button": {
-    "message": "تبديل الحسابات"
-  },
-  "app.instance.share.locked.wrong-account-heading": {
-    "message": "حساب خاطئ"
-  },
   "app.instance.share.remove-user-modal.effect-access": {
     "message": "لن يتلقوا أي تحديثات لهذه النسخة المشتركة بعد الآن."
   },
@@ -796,21 +763,6 @@
   },
   "app.instance.share.remove-user-modal.warning-body": {
     "message": "إذا قمت بإلغاء وصول {username}إلى هذه النسخة المشتركة، سوف تحتاج إلى دعوتهم مرة أخرى قبل أن يتمكنوا من تلقي التحديثات."
-  },
-  "app.instance.share.sign-in.button": {
-    "message": "تسجيل الدخول"
-  },
-  "app.instance.share.unable-to-connect.description": {
-    "message": "تعذر الوصول إلى خدمة النسخ المُشاركة في الوقت الحالي، يُرجى المحاولة مرة أخرى لاحقاً."
-  },
-  "app.instance.share.unable-to-connect.heading": {
-    "message": "تعذر الاتصال "
-  },
-  "app.instance.share.unlink.body": {
-    "message": "يجب إلغاء ربط المودباك هذا لمشاركة نسختك"
-  },
-  "app.instance.share.unlink.header": {
-    "message": "تتطلب المشاركة إلغاء الربط"
   },
   "app.instance.shared-instance-already-installed.header": {
     "message": "النسخة المشتركة مثبّتة بالفعل"
@@ -4201,9 +4153,6 @@
   },
   "onboarding-checklist.login-minecraft": {
     "message": "تسجيل الدخول إلى ماين كرافت"
-  },
-  "onboarding-checklist.login-modrinth": {
-    "message": "تسجيل الدخول إلى Modrinth"
   },
   "onboarding-checklist.title": {
     "message": "ابدأ ألان"

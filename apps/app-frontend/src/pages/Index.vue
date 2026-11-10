@@ -20,6 +20,7 @@ import RecentWorldsList from '@/components/ui/world/RecentWorldsList.vue'
 import { useAppSettings } from '@/composables/use-app-settings.ts'
 import { useHiddenInstances } from '@/features/library/hidden-instances/use-hidden-instances'
 import { prefetchSharedInstanceLibrary } from '@/features/library/shared-instances/queries'
+import PlaytimeCard from '@/features/playtime/playtime-card.vue'
 import { traceStartupStep } from '@/helpers/startup-debug'
 import { instanceListQueryOptions } from '@/pages/instance/query-options'
 import { skipCreateInstanceOnboarding } from '@/platform/app-lib/onboarding-checklist/commands'
@@ -129,6 +130,7 @@ function openPageContextMenu(event: MouseEvent) {
 			v-if="recentInstances?.length > 0 && appSettings.showJumpIn"
 			:recent-instances="recentInstances"
 		/>
+		<PlaytimeCard :instances="instances" />
 		<LibrarySection :instances="instances" />
 		<ContextMenu ref="pageOptions" :label="formatMessage(messages.libraryActionsLabel)" />
 	</div>

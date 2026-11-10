@@ -737,39 +737,6 @@
   "app.instance.navigation.back-to-instance": {
     "message": "Kuruluma dön"
   },
-  "app.instance.share.empty.description": {
-    "message": "Bu instance'ı arkadaşlarınla paylaşabilirsin!"
-  },
-  "app.instance.share.empty.heading": {
-    "message": "Henüz davet edilen arkadaş yok"
-  },
-  "app.instance.share.empty.invite-friends-button": {
-    "message": "Arkadaşlarını davet et"
-  },
-  "app.instance.share.invite-modal.heading": {
-    "message": "Paylaş {name}"
-  },
-  "app.instance.share.invite-modal.user-limit-reached": {
-    "message": "Bu örnek {limit} kullanıcı sınırına ulaştı."
-  },
-  "app.instance.share.locked.empty-description-prefix": {
-    "message": "Giriş yapmanız gerekiyor"
-  },
-  "app.instance.share.locked.empty-description-suffix": {
-    "message": "sayfaya giriş yapabilmeniz işin."
-  },
-  "app.instance.share.locked.linked-account-fallback": {
-    "message": "bağlı hesap"
-  },
-  "app.instance.share.locked.signed-out-heading": {
-    "message": "Giriş yapılmadı"
-  },
-  "app.instance.share.locked.switch-account-button": {
-    "message": "Hesap değiştir"
-  },
-  "app.instance.share.locked.wrong-account-heading": {
-    "message": "Hatalı hesap"
-  },
   "app.instance.share.remove-user-modal.effect-access": {
     "message": "Artık bu paylaşılan kurulum için güncelleme almayacaklar"
   },
@@ -796,21 +763,6 @@
   },
   "app.instance.share.remove-user-modal.warning-body": {
     "message": "{username}'nın bu paylaşılan örneğe erişimini iptal ederseniz, bu kişinin güncellemeleri alabilmesi için onu yeniden davet etmeniz gerekecektir."
-  },
-  "app.instance.share.sign-in.button": {
-    "message": "Giriş yap"
-  },
-  "app.instance.share.unable-to-connect.description": {
-    "message": "Paylaşımlı örnekler hizmeti şu anda erişilebilir değil, lütfen sonra tekrar deneyin"
-  },
-  "app.instance.share.unable-to-connect.heading": {
-    "message": "Bağlanılamıyor"
-  },
-  "app.instance.share.unlink.body": {
-    "message": "Örneğini paylaşmak için bu mod paketinin bağlantısını kaldırmalısın"
-  },
-  "app.instance.share.unlink.header": {
-    "message": "Paylaşım bağlantıyı kaldırmayı gerektirir"
   },
   "app.instance.shared-instance-already-installed.body": {
     "message": "Bu paylaşımlı örnek zaten <bold>{instanceName}</bold> olarak yüklü. Başka bir kopya daha yüklemek istediğinize emin misiniz?"
@@ -3721,9 +3673,6 @@
   },
   "onboarding-checklist.login-minecraft": {
     "message": "Minecraft'a giriş yap"
-  },
-  "onboarding-checklist.login-modrinth": {
-    "message": "Modrinth'e giriş yap"
   },
   "onboarding-checklist.title": {
     "message": "Başlarken"

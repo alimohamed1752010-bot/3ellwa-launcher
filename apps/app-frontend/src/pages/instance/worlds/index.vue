@@ -13,6 +13,12 @@
 	/>
 	<EditServerModal ref="editServerModal" :instance="instance" @submit="editServer" />
 	<EditWorldModal ref="editWorldModal" :instance="instance" @submit="editWorld" />
+	<WorldBackupsModal
+		ref="worldBackupsModal"
+		:instance-id="instance.id"
+		:game-running="!!playing"
+		@restored="refreshAllWorlds"
+	/>
 	<ConfirmRemoveWorldModal
 		ref="removeWorldModal"
 		:world="worldToRemove"
@@ -101,6 +107,7 @@
 					@delete="() => !isManagedServerWorld(world) && promptToRemoveWorld(world)"
 					@desync="() => world.type === 'server' && desyncServerModal?.show(world as ServerWorld)"
 					@open-folder="(world: SingleplayerWorld) => showWorldInFolder(instance.id, world.path)"
+					@backups="(world: SingleplayerWorld) => worldBackupsModal?.show(world)"
 				/>
 			</div>
 		</div>
@@ -153,6 +160,7 @@ import EditWorldModal from '@/components/ui/world/modal/EditSingleplayerWorldMod
 import WorldItem from '@/components/ui/world/WorldItem.vue'
 import { useAppEvent } from '@/composables/use-app-event'
 import { handleSevereError } from '@/composables/use-error.js'
+import WorldBackupsModal from '@/features/world-backups/world-backups-modal.vue'
 import { trackEvent } from '@/helpers/analytics'
 import { get_project, get_project_v3 } from '@/helpers/cache.js'
 import { set_synced_option } from '@/helpers/instance'
@@ -242,6 +250,7 @@ const instancePage = injectInstancePage()
 const addServerModal = ref<InstanceType<typeof AddServerModal>>()
 const editServerModal = ref<InstanceType<typeof EditServerModal>>()
 const editWorldModal = ref<InstanceType<typeof EditWorldModal>>()
+const worldBackupsModal = ref<InstanceType<typeof WorldBackupsModal>>()
 const removeWorldModal = ref<InstanceType<typeof ConfirmRemoveWorldModal>>()
 const desyncServerModal = ref<InstanceType<typeof DesyncServerModal>>()
 

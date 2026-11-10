@@ -737,39 +737,6 @@
   "app.instance.navigation.back-to-instance": {
     "message": "Tillbaka till instans"
   },
-  "app.instance.share.empty.description": {
-    "message": "Du kan dela denna instansen med dina vänner!"
-  },
-  "app.instance.share.empty.heading": {
-    "message": "Inga inbjudna vänner"
-  },
-  "app.instance.share.empty.invite-friends-button": {
-    "message": "Bjud in vänner"
-  },
-  "app.instance.share.invite-modal.heading": {
-    "message": "Dela {name}"
-  },
-  "app.instance.share.invite-modal.user-limit-reached": {
-    "message": "Instansen har nått gränsen på {limit} användare."
-  },
-  "app.instance.share.locked.empty-description-prefix": {
-    "message": "Du behöver logga in som"
-  },
-  "app.instance.share.locked.empty-description-suffix": {
-    "message": "för att komma åt den här sidan."
-  },
-  "app.instance.share.locked.linked-account-fallback": {
-    "message": "det länkade kontot"
-  },
-  "app.instance.share.locked.signed-out-heading": {
-    "message": "Inte inloggad"
-  },
-  "app.instance.share.locked.switch-account-button": {
-    "message": "Byt konto"
-  },
-  "app.instance.share.locked.wrong-account-heading": {
-    "message": "Fel konto"
-  },
   "app.instance.share.remove-user-modal.effect-access": {
     "message": "De kommer inte längre att få uppdateringar för den här delade instansen"
   },
@@ -796,21 +763,6 @@
   },
   "app.instance.share.remove-user-modal.warning-body": {
     "message": "Återkallar du {username}s åtkomst till den här delade instansen kommer du behöva bjuda in hen igen innan hen kan få uppdateringar."
-  },
-  "app.instance.share.sign-in.button": {
-    "message": "Logga in"
-  },
-  "app.instance.share.unable-to-connect.description": {
-    "message": "Delade instanser-tjänsten är inte tillgänglig för tillfället, vänligen försök igen senare"
-  },
-  "app.instance.share.unable-to-connect.heading": {
-    "message": "Kunde inte ansluta"
-  },
-  "app.instance.share.unlink.body": {
-    "message": "Du måste avlänka detta modpaket för att dela din instans"
-  },
-  "app.instance.share.unlink.header": {
-    "message": "Delning kräver avlänkning"
   },
   "app.instance.shared-instance-already-installed.body": {
     "message": "Denna delade instansen är redan installerad som <bold>{instanceName}</bold>. Är du säker på att du vill installera en till kopia?"
@@ -3829,9 +3781,6 @@
   },
   "onboarding-checklist.login-minecraft": {
     "message": "Logga på Minecraft"
-  },
-  "onboarding-checklist.login-modrinth": {
-    "message": "Logga in på Modrinth"
   },
   "onboarding-checklist.title": {
     "message": "Kom igång"

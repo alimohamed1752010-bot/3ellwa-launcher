@@ -701,44 +701,8 @@
   "app.instance.navigation.back-to-instance": {
     "message": "Voltar para a Instância"
   },
-  "app.instance.share.empty.heading": {
-    "message": "Nenhum amigo convidado"
-  },
-  "app.instance.share.empty.invite-friends-button": {
-    "message": "Convidar amigos"
-  },
-  "app.instance.share.locked.empty-description-prefix": {
-    "message": "Precisas de entrar como"
-  },
-  "app.instance.share.locked.empty-description-suffix": {
-    "message": "para aceder a esta página."
-  },
-  "app.instance.share.locked.linked-account-fallback": {
-    "message": "a conta conectada"
-  },
-  "app.instance.share.locked.signed-out-heading": {
-    "message": "Não conectado"
-  },
-  "app.instance.share.locked.switch-account-button": {
-    "message": "Alterar conta"
-  },
-  "app.instance.share.locked.wrong-account-heading": {
-    "message": "Conta errada"
-  },
   "app.instance.share.remove-user-modal.remove-button": {
     "message": "Revogar acesso"
-  },
-  "app.instance.share.sign-in.button": {
-    "message": "Iniciar sessão"
-  },
-  "app.instance.share.unable-to-connect.heading": {
-    "message": "Impossível conectar"
-  },
-  "app.instance.share.unlink.body": {
-    "message": "Tens de desconectar este modpack para partilhar a tua instância"
-  },
-  "app.instance.share.unlink.header": {
-    "message": "Partilhar requer desconectar"
   },
   "app.instance.shared-instance-already-installed.header": {
     "message": "Instância partilhada já instalada"

@@ -719,24 +719,6 @@
   "app.instance.navigation.back-to-instance": {
     "message": "Înapoi la instanță"
   },
-  "app.instance.share.empty.description": {
-    "message": "Poți distribui această instanță prietenilor tăi!"
-  },
-  "app.instance.share.empty.heading": {
-    "message": "Niciun prieten invitat"
-  },
-  "app.instance.share.empty.invite-friends-button": {
-    "message": "Invită prieteni"
-  },
-  "app.instance.share.invite-modal.heading": {
-    "message": "Distribuie {name}"
-  },
-  "app.instance.share.invite-modal.user-limit-reached": {
-    "message": "Această instanță a atins limita de utilizatori {limit}."
-  },
-  "app.instance.share.sign-in.button": {
-    "message": "Conectează-te"
-  },
   "app.instance.shared-instance-already-installed.instance": {
     "message": "Instanță"
   },

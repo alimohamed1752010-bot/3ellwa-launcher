@@ -10,7 +10,6 @@ import {
 import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
 import { onBeforeUnmount, onMounted } from 'vue'
 
-import { spaceAccount } from '@/helpers/space_account.ts'
 import { useAppSettings } from '@/composables/use-app-settings.ts'
 import { injectAppSettingsModal } from '@/features/settings/app-settings-modal/context'
 import HiddenInstancesSettings from '@/features/settings/display/hidden-instances-settings/index.vue'
@@ -21,6 +20,7 @@ import {
 	get,
 	set,
 } from '@/helpers/settings.ts'
+import { spaceAccount } from '@/helpers/space_account.ts'
 
 const appSettings = useAppSettings()
 const { formatMessage } = useVIntl()
@@ -251,7 +251,9 @@ onBeforeUnmount(() => {
 			</div>
 			<span
 				v-tooltip="
-					!spaceAccount.value ? formatMessage(messages.syncAcrossDevicesSignedOutTooltip) : undefined
+					!spaceAccount.value
+						? formatMessage(messages.syncAcrossDevicesSignedOutTooltip)
+						: undefined
 				"
 				class="inline-flex shrink-0"
 			>

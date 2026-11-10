@@ -737,39 +737,6 @@
   "app.instance.navigation.back-to-instance": {
     "message": "Volver a la instancia"
   },
-  "app.instance.share.empty.description": {
-    "message": "¡Comparte esta instancia con tus amigos!"
-  },
-  "app.instance.share.empty.heading": {
-    "message": "No hay amigos invitados"
-  },
-  "app.instance.share.empty.invite-friends-button": {
-    "message": "Invitar amigos"
-  },
-  "app.instance.share.invite-modal.heading": {
-    "message": "Compartir {name}"
-  },
-  "app.instance.share.invite-modal.user-limit-reached": {
-    "message": "Esta instancia ha llegado al límite de {limit} usuarios."
-  },
-  "app.instance.share.locked.empty-description-prefix": {
-    "message": "Necesitas iniciar sesión como"
-  },
-  "app.instance.share.locked.empty-description-suffix": {
-    "message": "para acceder a esta página."
-  },
-  "app.instance.share.locked.linked-account-fallback": {
-    "message": "la cuenta vinculada"
-  },
-  "app.instance.share.locked.signed-out-heading": {
-    "message": "No estás registrado"
-  },
-  "app.instance.share.locked.switch-account-button": {
-    "message": "Cambiar de cuenta"
-  },
-  "app.instance.share.locked.wrong-account-heading": {
-    "message": "Cuenta equivocada"
-  },
   "app.instance.share.remove-user-modal.effect-access": {
     "message": "Ya no recibirán actualizaciones para esta instancia"
   },
@@ -796,21 +763,6 @@
   },
   "app.instance.share.remove-user-modal.warning-body": {
     "message": "Si revocas el acceso de {username} a esta instancia, tendrás que invitarlos otra vez para que sigan recibiendo actualizaciones."
-  },
-  "app.instance.share.sign-in.button": {
-    "message": "Inicia sesión"
-  },
-  "app.instance.share.unable-to-connect.description": {
-    "message": "El servicio de instancias compartidas no está disponible, por favor inténtalo otra vez más tarde"
-  },
-  "app.instance.share.unable-to-connect.heading": {
-    "message": "No se puede conectar"
-  },
-  "app.instance.share.unlink.body": {
-    "message": "Debes desvincular este modpack para compartir tu instancia"
-  },
-  "app.instance.share.unlink.header": {
-    "message": "Compartir requiere desvincular"
   },
   "app.instance.shared-instance-already-installed.body": {
     "message": "Esta instancia compartida ya está instalada como <bold>{instanceName}</bold>. ¿Estás seguro que quieres instalar otra copia?"
@@ -4228,9 +4180,6 @@
   },
   "onboarding-checklist.login-minecraft": {
     "message": "Inicia sesión en Minecraft"
-  },
-  "onboarding-checklist.login-modrinth": {
-    "message": "Inicia sesión en Modrinth"
   },
   "onboarding-checklist.title": {
     "message": "Empezar"

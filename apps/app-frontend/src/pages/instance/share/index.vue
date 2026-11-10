@@ -2,9 +2,9 @@
 	<div class="flex flex-col items-center gap-4 py-10 text-center">
 		<h2 class="m-0 text-xl font-semibold text-contrast">Share this setup</h2>
 		<p class="m-0 max-w-md text-secondary">
-			Create a code for {{ instance.name }} (Minecraft version, loader and mod list). Anyone signed in to
-			3ellwa Space can paste it under Settings, 3ellwa Account, Share a setup to get the same instance.
-			Worlds and personal files are never shared.
+			Create a code for {{ instance.name }} (Minecraft version, loader and mod list). Anyone signed
+			in to 3ellwa Space can paste it under Settings, 3ellwa Account, Share a setup to get the same
+			instance. Worlds and personal files are never shared.
 		</p>
 		<Button v-if="!account" color="brand" @click="signIn">Sign in to 3ellwa Space</Button>
 		<template v-else>

@@ -728,36 +728,6 @@
   "app.instance.navigation.back-to-instance": {
     "message": "Powrót do instancji"
   },
-  "app.instance.share.empty.description": {
-    "message": "Możesz udostępnić tę instancję znajomym!"
-  },
-  "app.instance.share.empty.heading": {
-    "message": "Nie zaproszono żadnych znajomych"
-  },
-  "app.instance.share.empty.invite-friends-button": {
-    "message": "Zaproś znajomych"
-  },
-  "app.instance.share.invite-modal.heading": {
-    "message": "Udostępnij {name}"
-  },
-  "app.instance.share.locked.empty-description-prefix": {
-    "message": "Musisz zalogować się jako"
-  },
-  "app.instance.share.locked.empty-description-suffix": {
-    "message": ", by mieć dostęp do tej strony."
-  },
-  "app.instance.share.locked.linked-account-fallback": {
-    "message": "połączone konto"
-  },
-  "app.instance.share.locked.signed-out-heading": {
-    "message": "Nie zalogowano"
-  },
-  "app.instance.share.locked.switch-account-button": {
-    "message": "Zmień konto"
-  },
-  "app.instance.share.locked.wrong-account-heading": {
-    "message": "Złe konto"
-  },
   "app.instance.share.remove-user-modal.effect-access": {
     "message": "Nie będzie w stanie otrzymywać aktualizacji dla tej udostępnionej instancji"
   },
@@ -784,21 +754,6 @@
   },
   "app.instance.share.remove-user-modal.warning-body": {
     "message": "Jeśli pozbawisz użytkownika {username} dostępu do tej współdzielonej instancji, musisz zaprosić go ponownie, aby mógł otrzymywać aktualizacje."
-  },
-  "app.instance.share.sign-in.button": {
-    "message": "Zaloguj się"
-  },
-  "app.instance.share.unable-to-connect.description": {
-    "message": "Usługa współdzielonych instancji jest obecnie niedostępna, spróbuj ponownie później"
-  },
-  "app.instance.share.unable-to-connect.heading": {
-    "message": "Nie można nawiązać połączenia"
-  },
-  "app.instance.share.unlink.body": {
-    "message": "Musisz odłączyć paczkę modów, aby udostępnić swoją instancję"
-  },
-  "app.instance.share.unlink.header": {
-    "message": "Udostępnianie wymaga odłączenia"
   },
   "app.instance.shared-instance-already-installed.body": {
     "message": "Ta udostępniona instancja jest już zainstalowana jako <bold>{instanceName} </bold>. Czy na pewno chcesz zainstalować jej kopię?"
@@ -4210,9 +4165,6 @@
   },
   "onboarding-checklist.login-minecraft": {
     "message": "Zaloguj się do Minecraft"
-  },
-  "onboarding-checklist.login-modrinth": {
-    "message": "Zaloguj się na Modrinth"
   },
   "onboarding-checklist.title": {
     "message": "Pierwsze kroki"

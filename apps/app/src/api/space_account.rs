@@ -249,7 +249,7 @@ pub async fn space_account_request<R: Runtime>(
     Ok(SpaceReply { status, body })
 }
 
-const STORE_NAMES: [&str; 1] = ["instance-map"];
+const STORE_NAMES: [&str; 2] = ["instance-map", "launcher-prefs"];
 
 fn store_path<R: Runtime>(
     app: &tauri::AppHandle<R>,

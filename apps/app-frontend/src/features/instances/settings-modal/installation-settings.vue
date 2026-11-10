@@ -17,6 +17,7 @@ import { computed, ref } from 'vue'
 
 import { useManagedContentPolicy } from '@/composables/instances/use-managed-content-policy'
 import { useAppSettings } from '@/composables/use-app-settings.ts'
+import { useBackupBeforeUpdate } from '@/features/world-backups/use-backup-before-update'
 import { trackEvent } from '@/helpers/analytics'
 import { get_project_versions, get_version } from '@/helpers/cache'
 import {
@@ -46,6 +47,7 @@ const appEvents = injectAppEvents()
 const filePicker = injectFilePicker()
 const { formatMessage } = useVIntl()
 const queryClient = useQueryClient()
+const backupBeforeUpdate = useBackupBeforeUpdate()
 const debug = useDebugLogger('AppInstallationSettings')
 const appSettings = useAppSettings()
 
@@ -461,6 +463,7 @@ provideInstallationSettings({
 			versionId: version.id,
 			instanceId: instance.value.id,
 		})
+		if (!(await backupBeforeUpdate(instance.value.id))) return
 		await update_managed_modrinth_version(instance.value.id, version.id)
 		await queryClient.invalidateQueries({
 			queryKey: ['linkedModpackInfo', instance.value.id],

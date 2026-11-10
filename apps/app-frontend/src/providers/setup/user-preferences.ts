@@ -3,7 +3,6 @@ import {
 	type AuthProvider,
 	setupUserPreferencesProvider,
 } from '@modrinth/ui'
-
 import { computed, ref, watchEffect } from 'vue'
 
 import { refreshSpaceAccount, spaceAccount } from '@/helpers/space_account.ts'

@@ -737,39 +737,6 @@
   "app.instance.navigation.back-to-instance": {
     "message": "Vissza a példányhoz"
   },
-  "app.instance.share.empty.description": {
-    "message": "Ezt a példányt megoszthatod a barátaiddal!"
-  },
-  "app.instance.share.empty.heading": {
-    "message": "Nincsenek barátok meghívva"
-  },
-  "app.instance.share.empty.invite-friends-button": {
-    "message": "Barátok meghívása"
-  },
-  "app.instance.share.invite-modal.heading": {
-    "message": "{name} megosztása"
-  },
-  "app.instance.share.invite-modal.user-limit-reached": {
-    "message": "Ez a példány elérte a {limit} felhasználós korlátot."
-  },
-  "app.instance.share.locked.empty-description-prefix": {
-    "message": "Be kell jelentkezned mint"
-  },
-  "app.instance.share.locked.empty-description-suffix": {
-    "message": ", hogy hozzáférj ehhez az oldalhoz."
-  },
-  "app.instance.share.locked.linked-account-fallback": {
-    "message": "az összekapcsolt fiók"
-  },
-  "app.instance.share.locked.signed-out-heading": {
-    "message": "Nem vagy bejelentkezve"
-  },
-  "app.instance.share.locked.switch-account-button": {
-    "message": "Fiókváltás"
-  },
-  "app.instance.share.locked.wrong-account-heading": {
-    "message": "Helytelen fiók"
-  },
   "app.instance.share.remove-user-modal.effect-access": {
     "message": "Többé nem fog frissítéseket kapni ehhez a megosztott példányhoz"
   },
@@ -796,21 +763,6 @@
   },
   "app.instance.share.remove-user-modal.warning-body": {
     "message": "Ha megvonod {username} hozzáférését ehhez a megosztott példányhoz, újra meg kell hívnod, mielőtt frissítéseket kaphatna."
-  },
-  "app.instance.share.sign-in.button": {
-    "message": "Bejelentkezés"
-  },
-  "app.instance.share.unable-to-connect.description": {
-    "message": "A megosztott példányok szolgáltatás pillanatnyilag nem érhető el. Kérjük, próbáld újra később"
-  },
-  "app.instance.share.unable-to-connect.heading": {
-    "message": "Nem sikerült csatlakozni"
-  },
-  "app.instance.share.unlink.body": {
-    "message": "A példány megosztásához le kell választanod ezt a modcsomagot"
-  },
-  "app.instance.share.unlink.header": {
-    "message": "A megosztáshoz le kell választani"
   },
   "app.instance.shared-instance-already-installed.body": {
     "message": "Ez a megosztott példány már telepítve van <bold>{instanceName} </bold> néven. Biztosan telepíteni szeretnél egy másik másolatot?"
@@ -4228,9 +4180,6 @@
   },
   "onboarding-checklist.login-minecraft": {
     "message": "Bejelentkezés a Minecraftba"
-  },
-  "onboarding-checklist.login-modrinth": {
-    "message": "Jelentkezz be a Modrinthba"
   },
   "onboarding-checklist.title": {
     "message": "Első lépések"

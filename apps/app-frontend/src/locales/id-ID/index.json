@@ -443,9 +443,6 @@
   "app.instance.mods.successfully-uploaded": {
     "message": "Berhasil diunggah"
   },
-  "app.instance.share.invite-modal.heading": {
-    "message": "Bagikan {name}"
-  },
   "app.instance.shared-instance-already-installed.instance": {
     "message": "Instans"
   },

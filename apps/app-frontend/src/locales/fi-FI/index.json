@@ -719,39 +719,6 @@
   "app.instance.navigation.back-to-instance": {
     "message": "Takaisin instanssiin"
   },
-  "app.instance.share.empty.description": {
-    "message": "Voit jakaa tämän instanssin kavereidesi kanssa!"
-  },
-  "app.instance.share.empty.heading": {
-    "message": "Ei kutsuttuja kavereita"
-  },
-  "app.instance.share.empty.invite-friends-button": {
-    "message": "Kutsu kavereita"
-  },
-  "app.instance.share.invite-modal.heading": {
-    "message": "Jaa {name}"
-  },
-  "app.instance.share.invite-modal.user-limit-reached": {
-    "message": "Tämän instanssin {limit} käyttäjän raja on täynnä."
-  },
-  "app.instance.share.locked.empty-description-prefix": {
-    "message": "Kirjaudu sisään käyttäjällä"
-  },
-  "app.instance.share.locked.empty-description-suffix": {
-    "message": "päästäksesi sisään tälle sivulle."
-  },
-  "app.instance.share.locked.linked-account-fallback": {
-    "message": "linkitetty käyttäjä"
-  },
-  "app.instance.share.locked.signed-out-heading": {
-    "message": "Kirjaudu sisään"
-  },
-  "app.instance.share.locked.switch-account-button": {
-    "message": "Vaihda tiliä"
-  },
-  "app.instance.share.locked.wrong-account-heading": {
-    "message": "Väärä tili"
-  },
   "app.instance.share.remove-user-modal.effect-access": {
     "message": "Hän ei enää saa päivityksiä tästä jaetusta instanssista"
   },
@@ -778,12 +745,6 @@
   },
   "app.instance.share.remove-user-modal.warning-body": {
     "message": "Jos poistat pääsyoikeuden {username} -käyttäjältä, hänet tulee kutsua uudelleen, ennen kuin he voivat saada päivityksiä tähän jaettuun instanssiin."
-  },
-  "app.instance.share.sign-in.button": {
-    "message": "Kirjaudu sisään"
-  },
-  "app.instance.share.unable-to-connect.description": {
-    "message": "Instanssinjakopalvelu ei ole saatavilla tällä hetkellä. Kokeile uudelleen myöhemmin."
   },
   "app.instance.shared-instance-wrong-account.sign-in-as-label": {
     "message": "Kirjaudu sisään nimellä"

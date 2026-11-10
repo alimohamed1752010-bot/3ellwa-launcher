@@ -131,6 +131,7 @@ import { useManagedContentPolicy } from '@/composables/instances/use-managed-con
 import { useSyncedPackActions } from '@/composables/instances/use-synced-pack-actions'
 import { useAppEvent } from '@/composables/use-app-event'
 import { useAppSettings } from '@/composables/use-app-settings.ts'
+import { useBackupBeforeUpdate } from '@/features/world-backups/use-backup-before-update'
 import { trackEvent } from '@/helpers/analytics'
 import { get_project_versions, get_version, get_version_many } from '@/helpers/cache.js'
 import { install_bulk_update_content } from '@/helpers/install'
@@ -1038,6 +1039,8 @@ async function getDeleteDependencyWarning(items: ContentItem[]) {
 	return dependents.length > 0 ? { items, dependents } : null
 }
 
+const backupBeforeUpdate = useBackupBeforeUpdate()
+
 const bulkUpdateMutation = useMutation({
 	mutationFn: ({
 		instanceId,
@@ -1066,11 +1069,13 @@ async function bulkUpdateSelections(selections: UpdateAllSelection[]) {
 		return [{ project_path: item.file_path, version_id: selection.version.id }]
 	})
 	if (!updates.length) return
+	if (!(await backupBeforeUpdate(instanceId))) return
 	await bulkUpdateMutation.mutateAsync({ instanceId, updates })
 }
 
 async function updateProject(mod: ContentItem) {
 	if (!canUpdateProject(mod) || mod.locked) return
+	if (!(await backupBeforeUpdate(instance.value.id))) return
 	const operation = beginContentOperation(mod)
 	if (!operation) return
 
@@ -1101,6 +1106,7 @@ async function updateProject(mod: ContentItem) {
 async function switchProjectVersion(mod: ContentItem, version: Labrinth.Versions.v2.Version) {
 	if (!canChangeContentVersion(mod)) return
 	if (!mod.file_path) return
+	if (!(await backupBeforeUpdate(instance.value.id))) return
 	const operation = beginContentOperation(mod)
 	if (!operation) return
 
@@ -1486,6 +1492,7 @@ async function handleModpackUpdateConfirm() {
 
 	const version = pendingModpackUpdateVersion.value
 	pendingModpackUpdateVersion.value = null
+	if (!(await backupBeforeUpdate(instance.value.id))) return
 	const requestId = activeUpdateRequestId.value
 
 	contentUpdaterModal.value?.hide()

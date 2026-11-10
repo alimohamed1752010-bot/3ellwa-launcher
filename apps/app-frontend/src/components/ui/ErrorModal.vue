@@ -177,9 +177,9 @@ async function copyToClipboard(text) {
 					<template v-if="metadata.network">
 						<h3>Network issues</h3>
 						<p>
-							It looks like there were issues with 3ellwa Space connecting to Microsoft's
-							servers. This is often the result of a poor connection, so we recommend trying again
-							to see if it works. If issues continue to persist, follow the steps in
+							It looks like there were issues with 3ellwa Space connecting to Microsoft's servers.
+							This is often the result of a poor connection, so we recommend trying again to see if
+							it works. If issues continue to persist, follow the steps in
 							<a
 								href="https://support.modrinth.com/en/articles/9038231-minecraft-sign-in-issues#h_e71a5f805f"
 							>
@@ -191,9 +191,9 @@ async function copyToClipboard(text) {
 					<template v-else-if="metadata.hostsFile">
 						<h3>Network issues</h3>
 						<p>
-							3ellwa Space tried to connect to Microsoft / Xbox / Minecraft services, but the
-							remote server rejected the connection. This may indicate that these services are
-							blocked by the hosts file. Please visit
+							3ellwa Space tried to connect to Microsoft / Xbox / Minecraft services, but the remote
+							server rejected the connection. This may indicate that these services are blocked by
+							the hosts file. Please visit
 							<a
 								href="https://support.modrinth.com/en/articles/9038231-minecraft-sign-in-issues#h_d694a29256"
 							>
@@ -230,9 +230,8 @@ async function copyToClipboard(text) {
 					<template v-if="metadata.readOnly">
 						<h3>Change directory permissions</h3>
 						<p>
-							It looks like 3ellwa Space is unable to write to the directory you selected.
-							Please adjust the permissions of the directory and try again or cancel the directory
-							change.
+							It looks like 3ellwa Space is unable to write to the directory you selected. Please
+							adjust the permissions of the directory and try again or cancel the directory change.
 						</p>
 					</template>
 					<template v-else-if="metadata.notEnoughSpace">
@@ -244,8 +243,8 @@ async function copyToClipboard(text) {
 					</template>
 					<template v-else>
 						<p>
-							3ellwa Space is unable to migrate to the new directory you selected. Please
-							contact support for help or cancel the directory change.
+							3ellwa Space is unable to migrate to the new directory you selected. Please contact
+							support for help or cancel the directory change.
 						</p>
 					</template>
 

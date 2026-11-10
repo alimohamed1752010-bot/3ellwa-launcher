@@ -234,10 +234,58 @@
     "message": "Use these behavior settings everywhere you're signed in. Turn this off to keep separate settings on this device."
   },
   "app.behavior-settings.sync-across-devices.signed-out-tooltip": {
-    "message": "Sign into a 3ellwa Space account to sync settings."
+    "message": "Sign into a 3ellwa account to sync settings."
   },
   "app.behavior-settings.sync-across-devices.title": {
     "message": "Sync behavior across devices"
+  },
+  "app.boost-fps.boost": {
+    "message": "Add {count, plural, one {# mod} other {# mods}}"
+  },
+  "app.boost-fps.done-text": {
+    "message": "Added {count, plural, one {# mod} other {# mods}}. Play to try it out."
+  },
+  "app.boost-fps.done-title": {
+    "message": "FPS boost added"
+  },
+  "app.boost-fps.intro": {
+    "message": "Adds popular performance mods that make the game run smoother without changing how it plays. You can remove them any time from the Content tab."
+  },
+  "app.boost-fps.memory-option": {
+    "message": "Also give the game {gb} GB of memory (now {current} GB)"
+  },
+  "app.boost-fps.nothing": {
+    "message": "Nothing to add, you’re all set"
+  },
+  "app.boost-fps.reason.culling": {
+    "message": "Skips drawing hidden entities"
+  },
+  "app.boost-fps.reason.logic": {
+    "message": "Faster game logic and ticks"
+  },
+  "app.boost-fps.reason.memory": {
+    "message": "Uses less memory"
+  },
+  "app.boost-fps.reason.rendering": {
+    "message": "Faster rendering, more FPS"
+  },
+  "app.boost-fps.reason.startup": {
+    "message": "Faster loading, fewer bugs"
+  },
+  "app.boost-fps.status.conflict": {
+    "message": "Skipped, you already have a mod that does this"
+  },
+  "app.boost-fps.status.installed": {
+    "message": "Already installed"
+  },
+  "app.boost-fps.status.unavailable": {
+    "message": "Not available for this version"
+  },
+  "app.boost-fps.title": {
+    "message": "Boost FPS"
+  },
+  "app.boost-fps.vanilla": {
+    "message": "Performance mods need a mod loader. Create a Fabric or NeoForge instance to use Boost FPS."
   },
   "app.browse.add-servers-to-instance": {
     "message": "Adding server to instance"
@@ -319,6 +367,96 @@
   },
   "app.content.sync-resource-packs-disabled": {
     "message": "Turn on resource pack syncing in app settings first."
+  },
+  "app.crash-helper.copied": {
+    "message": "Copied"
+  },
+  "app.crash-helper.copy-log": {
+    "message": "Copy log"
+  },
+  "app.crash-helper.details": {
+    "message": "Error"
+  },
+  "app.crash-helper.disable-mod": {
+    "message": "Disable {name}"
+  },
+  "app.crash-helper.disabled": {
+    "message": "{name} disabled"
+  },
+  "app.crash-helper.duplicate.body": {
+    "message": "Keep one copy and disable or remove the other."
+  },
+  "app.crash-helper.duplicate.headline": {
+    "message": "The same mod is installed twice"
+  },
+  "app.crash-helper.find-mod": {
+    "message": "Find {name}"
+  },
+  "app.crash-helper.fixed": {
+    "message": "Done. Try playing again."
+  },
+  "app.crash-helper.gpu.body": {
+    "message": "Update your graphics driver from NVIDIA, AMD or Intel’s website, then restart your computer. On laptops, make sure the game uses the dedicated graphics card."
+  },
+  "app.crash-helper.gpu.headline": {
+    "message": "Your graphics driver couldn’t start the game"
+  },
+  "app.crash-helper.incompatible.body": {
+    "message": "Two or more mods conflict with each other. Disable one of them and try again."
+  },
+  "app.crash-helper.incompatible.headline": {
+    "message": "Some mods don’t work together"
+  },
+  "app.crash-helper.java.body": {
+    "message": "This version of Minecraft or one of its mods needs {needed, select, other {Java {needed}} unknown {a newer Java}}. 3ellwa Space can pick the right Java automatically."
+  },
+  "app.crash-helper.java.fix": {
+    "message": "Use the recommended Java"
+  },
+  "app.crash-helper.java.headline": {
+    "message": "Wrong Java version"
+  },
+  "app.crash-helper.missing.body": {
+    "message": "{mod, select, unknown {A mod} other {{mod}}} needs {missing} to run. Install it, or disable the mod that needs it."
+  },
+  "app.crash-helper.missing.headline": {
+    "message": "A mod is missing something it needs"
+  },
+  "app.crash-helper.mixin.body": {
+    "message": "A mod could not hook into the game. It is usually outdated or made for a different Minecraft version."
+  },
+  "app.crash-helper.mixin.headline": {
+    "message": "A mod failed to load"
+  },
+  "app.crash-helper.mod-error.body": {
+    "message": "The crash report points at the mods below. Disable one, or check for an update."
+  },
+  "app.crash-helper.mod-error.headline": {
+    "message": "A mod caused the crash"
+  },
+  "app.crash-helper.oom.body": {
+    "message": "Minecraft used all the memory it was given. Big modpacks often need more than the default."
+  },
+  "app.crash-helper.oom.fix": {
+    "message": "Give it {gb} GB of memory"
+  },
+  "app.crash-helper.oom.headline": {
+    "message": "The game ran out of memory"
+  },
+  "app.crash-helper.open-logs": {
+    "message": "Open logs"
+  },
+  "app.crash-helper.play-again": {
+    "message": "Play again"
+  },
+  "app.crash-helper.title": {
+    "message": "{name} crashed"
+  },
+  "app.crash-helper.unknown.body": {
+    "message": "Check the log for the first red error, or copy the log and ask for help. Mods you added most recently are the usual suspects."
+  },
+  "app.crash-helper.unknown.headline": {
+    "message": "We couldn’t tell exactly why"
   },
   "app.debug-export.canceling": {
     "message": "Canceling export…"
@@ -489,7 +627,7 @@
     "message": "Use these feature settings everywhere you're signed in. Turn this off to keep separate settings on this device."
   },
   "app.features-settings.sync-across-devices.signed-out-tooltip": {
-    "message": "Sign into a 3ellwa Space account to sync settings."
+    "message": "Sign into a 3ellwa account to sync settings."
   },
   "app.features-settings.sync-across-devices.title": {
     "message": "Sync features across devices"
@@ -791,50 +929,8 @@
   "app.instance.server.status.unknown": {
     "message": "Status unknown"
   },
-  "app.instance.share.empty.description": {
-    "message": "You can share this instance with your friends!"
-  },
-  "app.instance.share.empty.heading": {
-    "message": "No friends invited"
-  },
-  "app.instance.share.empty.invite-friends-button": {
-    "message": "Invite friends"
-  },
   "app.instance.share.invite-friends": {
     "message": "Invite friends"
-  },
-  "app.instance.share.invite-modal.heading": {
-    "message": "Share {name}"
-  },
-  "app.instance.share.invite-modal.user-limit-reached": {
-    "message": "This instance has reached the {limit}-user limit."
-  },
-  "app.instance.share.limit-reached.description": {
-    "message": "You've shared a maximum of {limit} instances already."
-  },
-  "app.instance.share.limit-reached.heading": {
-    "message": "Shared instance limit reached"
-  },
-  "app.instance.share.limit-reached.manage-button": {
-    "message": "Manage shared instances"
-  },
-  "app.instance.share.locked.empty-description-prefix": {
-    "message": "You need to sign in as"
-  },
-  "app.instance.share.locked.empty-description-suffix": {
-    "message": "to access this page."
-  },
-  "app.instance.share.locked.linked-account-fallback": {
-    "message": "the linked account"
-  },
-  "app.instance.share.locked.signed-out-heading": {
-    "message": "Not signed in"
-  },
-  "app.instance.share.locked.switch-account-button": {
-    "message": "Switch account"
-  },
-  "app.instance.share.locked.wrong-account-heading": {
-    "message": "Wrong account"
   },
   "app.instance.share.remove-user-modal.effect-access": {
     "message": "They will no longer receive updates for this shared instance"
@@ -862,21 +958,6 @@
   },
   "app.instance.share.remove-user-modal.warning-body": {
     "message": "If you revoke {username}'s access to this shared instance, you'll need to invite them again before they can receive updates."
-  },
-  "app.instance.share.sign-in.button": {
-    "message": "Sign in"
-  },
-  "app.instance.share.unable-to-connect.description": {
-    "message": "The shared instances service is not accessible at the moment, please try again later"
-  },
-  "app.instance.share.unable-to-connect.heading": {
-    "message": "Unable to connect"
-  },
-  "app.instance.share.unlink.body": {
-    "message": "You must unlink this modpack to share your instance"
-  },
-  "app.instance.share.unlink.header": {
-    "message": "Sharing requires unlinking"
   },
   "app.instance.shared-instance-already-installed.body": {
     "message": "This shared instance is already installed as <bold>{instanceName}</bold>. Are you sure you want to install another copy?"
@@ -1585,6 +1666,27 @@
   },
   "app.notification.warning": {
     "message": "Warning"
+  },
+  "app.playtime.across": {
+    "message": "across {count, plural, one {# instance} other {# instances}}"
+  },
+  "app.playtime.hours": {
+    "message": "{h} h {m} min"
+  },
+  "app.playtime.hours-only": {
+    "message": "{h} h"
+  },
+  "app.playtime.minutes": {
+    "message": "{m} min"
+  },
+  "app.playtime.most-played": {
+    "message": "Most played"
+  },
+  "app.playtime.title": {
+    "message": "Your playtime"
+  },
+  "app.playtime.total": {
+    "message": "{time} played"
   },
   "app.project.actions.label": {
     "message": "Project actions"
@@ -3293,6 +3395,9 @@
   "app.settings.tabs.resources": {
     "message": "Resources"
   },
+  "app.settings.tabs.space-account": {
+    "message": "3ellwa Account"
+  },
   "app.settings.tabs.syncing": {
     "message": "Syncing"
   },
@@ -3301,6 +3406,9 @@
   },
   "app.settings.tabs.window": {
     "message": "Window"
+  },
+  "app.settings.tabs.world-backups": {
+    "message": "World backups"
   },
   "app.settings.troubleshooting.clear-cache": {
     "message": "Clear cache"
@@ -3325,6 +3433,33 @@
   },
   "app.settings.troubleshooting.report-ad.title": {
     "message": "Report an ad"
+  },
+  "app.settings.world-backups.auto.description": {
+    "message": "Before mods or a modpack are updated, every singleplayer world in that instance is saved as a backup. Restore from the Worlds tab, under a world’s menu."
+  },
+  "app.settings.world-backups.auto.title": {
+    "message": "Back up worlds before updates"
+  },
+  "app.settings.world-backups.folder.choose": {
+    "message": "Choose folder"
+  },
+  "app.settings.world-backups.folder.default": {
+    "message": "Default: the backups folder inside each instance"
+  },
+  "app.settings.world-backups.folder.description": {
+    "message": "Backups stay on this computer. Pick a folder inside OneDrive, Google Drive or Dropbox to also keep a copy in your own cloud."
+  },
+  "app.settings.world-backups.folder.title": {
+    "message": "Backup folder"
+  },
+  "app.settings.world-backups.folder.use-default": {
+    "message": "Use default"
+  },
+  "app.settings.world-backups.keep.description": {
+    "message": "Per world. Older automatic backups are deleted. Backups you make yourself are never deleted."
+  },
+  "app.settings.world-backups.keep.title": {
+    "message": "Automatic backups to keep"
   },
   "app.shared-instance-publish.preparing": {
     "message": "Preparing update…"
@@ -3680,6 +3815,54 @@
   "app.welcome-screen.title": {
     "message": "Welcome to 3ellwa Space"
   },
+  "app.world-backups.auto.done-text": {
+    "message": "Backed up {count, plural, one {# world} other {# worlds}} before updating. You can restore them from the Worlds tab."
+  },
+  "app.world-backups.auto.done-title": {
+    "message": "Worlds backed up"
+  },
+  "app.world-backups.auto.failed-text": {
+    "message": "Couldn't back up your worlds first ({error}). Close the game if it's open and try again, or turn off automatic backups in Settings."
+  },
+  "app.world-backups.auto.failed-title": {
+    "message": "Update cancelled"
+  },
+  "app.world-backups.modal.automatic": {
+    "message": "Automatic"
+  },
+  "app.world-backups.modal.back-up-now": {
+    "message": "Back up now"
+  },
+  "app.world-backups.modal.backed-up-title": {
+    "message": "Backup saved"
+  },
+  "app.world-backups.modal.confirm-restore": {
+    "message": "Yes, restore"
+  },
+  "app.world-backups.modal.empty": {
+    "message": "No backups yet. Back up now, or one is made automatically before you update mods."
+  },
+  "app.world-backups.modal.game-running": {
+    "message": "Close the game to back up or restore worlds."
+  },
+  "app.world-backups.modal.manual": {
+    "message": "Manual"
+  },
+  "app.world-backups.modal.restore": {
+    "message": "Restore"
+  },
+  "app.world-backups.modal.restore-note": {
+    "message": "Restoring replaces the world with the backup. Your current world is backed up first, so you can always undo."
+  },
+  "app.world-backups.modal.restored-text": {
+    "message": "{name} is back to {date}. The version you replaced was saved as a backup."
+  },
+  "app.world-backups.modal.restored-title": {
+    "message": "World restored"
+  },
+  "app.world-backups.modal.title": {
+    "message": "Backups of {name}"
+  },
   "app.world.server-modal.placeholder-address": {
     "message": "example.modrinth.gg"
   },
@@ -3841,6 +4024,9 @@
   },
   "installation-settings.unpublish-shared-instance.modal.admonition-body": {
     "message": "This deletes the shared instance from 3ellwa Space's servers. People using it in 3ellwa Space will stop receiving updates, but your local instance and its content will stay on this device."
+  },
+  "instance.action.boost-fps": {
+    "message": "Boost FPS"
   },
   "instance.action.create-shortcut": {
     "message": "Create shortcut"
@@ -4325,6 +4511,9 @@
   "instance.worlds.actions.label": {
     "message": "World actions"
   },
+  "instance.worlds.backups": {
+    "message": "Backups"
+  },
   "instance.worlds.cant_connect": {
     "message": "Can't connect to server"
   },
@@ -4477,9 +4666,6 @@
   },
   "onboarding-checklist.login-minecraft": {
     "message": "Sign in to Minecraft"
-  },
-  "onboarding-checklist.login-modrinth": {
-    "message": "Sign in to 3ellwa Space"
   },
   "onboarding-checklist.title": {
     "message": "Getting started"

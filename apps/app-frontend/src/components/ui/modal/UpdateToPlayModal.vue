@@ -30,6 +30,7 @@ import {
 import dayjs from 'dayjs'
 import { computed, ref } from 'vue'
 
+import { useBackupBeforeUpdate } from '@/features/world-backups/use-backup-before-update'
 import { get_project_many, get_version, get_version_many } from '@/helpers/cache.js'
 import { wait_for_install_job } from '@/helpers/install'
 import { update_managed_modrinth_version } from '@/helpers/instance'
@@ -249,11 +250,13 @@ async function checkUpdateAvailable(inst: GameInstance): Promise<DependencyDiff[
 	return null
 }
 
+const backupBeforeUpdate = useBackupBeforeUpdate()
 async function handleUpdate() {
 	const serverProjectId = instance.value?.link?.project_id
 	if (serverProjectId) startInstallingServer(serverProjectId)
 	try {
 		if (modpackVersionId.value && instance.value) {
+			if (!(await backupBeforeUpdate(instance.value.id))) return
 			const job = await update_managed_modrinth_version(instance.value.id, modpackVersionId.value)
 			await wait_for_install_job(appEvents, job.job_id)
 			await onUpdateComplete.value()

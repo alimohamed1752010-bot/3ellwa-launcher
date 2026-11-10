@@ -1,22 +1,7 @@
 <script setup lang="ts">
-import {
-	CheckIcon,
-	CopyIcon,
-	DownloadIcon,
-	FolderOpenIcon,
-	LoaderCircleIcon,
-	TrashIcon,
-} from '@modrinth/assets'
-import {
-	Button,
-	defineMessages,
-	injectNotificationManager,
-	IntlFormatted,
-	Toggle,
-	useVIntl,
-} from '@modrinth/ui'
+import { DownloadIcon, FolderOpenIcon, LoaderCircleIcon, TrashIcon } from '@modrinth/assets'
+import { Button, defineMessages, injectNotificationManager, Toggle, useVIntl } from '@modrinth/ui'
 import { useMutation, useQueryClient } from '@tanstack/vue-query'
-import { openUrl } from '@tauri-apps/plugin-opener'
 import { ref } from 'vue'
 
 import {
@@ -25,18 +10,15 @@ import {
 } from '@/components/ui/download-manager/debug-info-export'
 import ConfirmModalWrapper from '@/components/ui/modal/ConfirmModalWrapper.vue'
 import { useAppSettings } from '@/composables/use-app-settings.ts'
-import { get_ads_debug_state } from '@/helpers/ads.js'
 import { purge_cache_types } from '@/helpers/cache.js'
 import { appSettingsKeys, get, set } from '@/helpers/settings.ts'
-import { copyToClipboard, showAppDbBackupsFolder } from '@/helpers/utils.js'
+import { showAppDbBackupsFolder } from '@/helpers/utils.js'
 
-const { addNotification, handleError } = injectNotificationManager()
+const { handleError } = injectNotificationManager()
 const { formatMessage } = useVIntl()
 const appSettings = useAppSettings()
 const queryClient = useQueryClient()
 const clearCacheConfirmModal = ref<InstanceType<typeof ConfirmModalWrapper> | null>(null)
-const copyingAdDetails = ref(false)
-const copiedAdDetails = ref(false)
 
 const copyDetailsMutation = useMutation({
 	networkMode: 'always',
@@ -179,43 +161,6 @@ async function openDbBackupsFolder() {
 
 async function handleExportDebugInfo() {
 	await exportDebugInfo(formatMessage(messages.exportDebugInfo)).catch(handleError)
-}
-
-function openSupport() {
-	openUrl('https://support.modrinth.com')
-}
-
-async function handleCopyAdDetails() {
-	copyingAdDetails.value = true
-
-	try {
-		const adReport = (await get_ads_debug_state()) as
-			| ({ current_ad?: string } & Record<string, unknown>)
-			| null
-
-		if (!adReport) {
-			addNotification({
-				type: 'error',
-				title: formatMessage(messages.noAdLoadedTitle),
-				text: formatMessage(messages.noAdLoadedText),
-			})
-			return
-		}
-
-		const { current_ad: currentAd, ...info } = adReport
-		await copyToClipboard(
-			`CURRENT_AD: ${currentAd ?? 'unknown'}\n\nINFO:\n${JSON.stringify(info, null, 2)}`,
-		)
-
-		copiedAdDetails.value = true
-		setTimeout(() => {
-			copiedAdDetails.value = false
-		}, 3000)
-	} catch (error) {
-		handleError(error as Error)
-	} finally {
-		copyingAdDetails.value = false
-	}
 }
 </script>
 

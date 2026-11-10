@@ -737,39 +737,6 @@
   "app.instance.navigation.back-to-instance": {
     "message": "返回实例"
   },
-  "app.instance.share.empty.description": {
-    "message": "你可以将此实例分享给你的好友！"
-  },
-  "app.instance.share.empty.heading": {
-    "message": "没有邀请好友"
-  },
-  "app.instance.share.empty.invite-friends-button": {
-    "message": "邀请好友"
-  },
-  "app.instance.share.invite-modal.heading": {
-    "message": "分享 {name}"
-  },
-  "app.instance.share.invite-modal.user-limit-reached": {
-    "message": "该实例已达 {limit} 人上限。"
-  },
-  "app.instance.share.locked.empty-description-prefix": {
-    "message": "你需要登录账号"
-  },
-  "app.instance.share.locked.empty-description-suffix": {
-    "message": "才能访问此页面。"
-  },
-  "app.instance.share.locked.linked-account-fallback": {
-    "message": "已关联的账号"
-  },
-  "app.instance.share.locked.signed-out-heading": {
-    "message": "未登录"
-  },
-  "app.instance.share.locked.switch-account-button": {
-    "message": "切换账号"
-  },
-  "app.instance.share.locked.wrong-account-heading": {
-    "message": "账号错误"
-  },
   "app.instance.share.remove-user-modal.effect-access": {
     "message": "对方将不再收到该共享实例的后续更新"
   },
@@ -796,21 +763,6 @@
   },
   "app.instance.share.remove-user-modal.warning-body": {
     "message": "若撤销 {username} 对该共享实例的访问权限，你需要重新向其发送邀请才能使其接收后续更新。"
-  },
-  "app.instance.share.sign-in.button": {
-    "message": "登录"
-  },
-  "app.instance.share.unable-to-connect.description": {
-    "message": "共享实例服务暂时无法访问，请稍后再试"
-  },
-  "app.instance.share.unable-to-connect.heading": {
-    "message": "连接失败"
-  },
-  "app.instance.share.unlink.body": {
-    "message": "你必须先取消关联此整合包才能分享你的实例"
-  },
-  "app.instance.share.unlink.header": {
-    "message": "分享前需要取消关联"
   },
   "app.instance.shared-instance-already-installed.body": {
     "message": "本地已安装该共享实例，名称为 <bold>{instanceName}</bold>。确定要再安装一份吗？"
@@ -4228,9 +4180,6 @@
   },
   "onboarding-checklist.login-minecraft": {
     "message": "登录 Minecraft 账号"
-  },
-  "onboarding-checklist.login-modrinth": {
-    "message": "登录 Modrinth 账号"
   },
   "onboarding-checklist.title": {
     "message": "新手引导"

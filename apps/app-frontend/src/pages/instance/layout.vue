@@ -4,6 +4,7 @@
 			:class="['p-6 pr-2 pb-4', { 'shrink-0': isFixedRender }]"
 			@contextmenu.prevent.stop="(event) => handleRightClick(event)"
 		>
+			<BoostFpsModal v-if="instance" ref="boostFpsModal" :instance="instance" />
 			<ExportModal v-if="!instance.quarantined" ref="exportModal" :instance="instance" />
 			<ConfirmDeleteInstanceModal
 				ref="deleteConfirmModal"
@@ -63,6 +64,7 @@
 				@settings="() => settingsModal?.show()"
 				@open-folder="() => instance && showInstanceInFolder(instance.id)"
 				@export="() => !instance?.quarantined && exportModal?.show()"
+				@boost-fps="() => boostFpsModal?.show()"
 				@create-shortcut="() => createShortcut()"
 				@toggle-hidden="() => toggleHiddenFromLibrary()"
 				@report="reportSharedInstance"
@@ -142,6 +144,7 @@ import { useAppEvent } from '@/composables/use-app-event'
 import { useAppSettings } from '@/composables/use-app-settings.ts'
 import { handleSevereError } from '@/composables/use-error.js'
 import { useInstanceConsole } from '@/composables/useInstanceConsole'
+import BoostFpsModal from '@/features/boost-fps/boost-fps-modal.vue'
 import { injectInstanceLaunchState } from '@/features/instances/launch-state'
 import { useLinkedServer } from '@/features/instances/linked-server/use-linked-server'
 import InstanceSettingsModal from '@/features/instances/settings-modal/index.vue'
@@ -420,6 +423,7 @@ const sharedInstanceUpdateModal = ref<InstanceType<typeof SharedInstanceUpdateMo
 const sharedInstanceReportModal = ref<InstanceType<typeof SharedInstanceInstallModal>>()
 const deleteConfirmModal = ref<InstanceType<typeof ConfirmDeleteInstanceModal>>()
 const settingsModal = ref<InstanceType<typeof InstanceSettingsModal>>()
+const boostFpsModal = ref<InstanceType<typeof BoostFpsModal>>()
 const selectedInstanceToDelete = ref<GameInstance | null>(null)
 const hiddenSharedInstanceUpdateKey = ref<string | null>(null)
 

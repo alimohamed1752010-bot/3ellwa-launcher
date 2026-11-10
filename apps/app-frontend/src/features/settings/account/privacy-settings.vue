@@ -1,22 +1,11 @@
 <script setup lang="ts">
-import { Settings2Icon } from '@modrinth/assets'
-import {
-	Button,
-	defineMessages,
-	injectNotificationManager,
-	injectPageContext,
-	Toggle,
-	useVIntl,
-} from '@modrinth/ui'
+import { defineMessages, Toggle, useVIntl } from '@modrinth/ui'
 import { ref, watch } from 'vue'
 
-import { open_ads_consent_preferences } from '@/helpers/ads.js'
 import { optInAnalytics, optOutAnalytics } from '@/helpers/analytics'
 import { get, set } from '@/helpers/settings.ts'
 
 const { formatMessage } = useVIntl()
-const { handleError } = injectNotificationManager()
-const { adConsentAvailable } = injectPageContext()
 const settings = ref(await get())
 
 const messages = defineMessages({
@@ -52,10 +41,6 @@ const messages = defineMessages({
 			'Show 3ellwa Space as your current activity on Discord. This does not affect Rich Presence added to instances by mods. Requires an app restart.',
 	},
 })
-
-async function manageAdsPreferences() {
-	await open_ads_consent_preferences().catch(handleError)
-}
 
 watch(
 	settings,

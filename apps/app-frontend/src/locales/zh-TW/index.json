@@ -737,39 +737,6 @@
   "app.instance.navigation.back-to-instance": {
     "message": "回到實例"
   },
-  "app.instance.share.empty.description": {
-    "message": "你可以與好友共用這個實例！"
-  },
-  "app.instance.share.empty.heading": {
-    "message": "未邀請任何好友"
-  },
-  "app.instance.share.empty.invite-friends-button": {
-    "message": "邀請好友"
-  },
-  "app.instance.share.invite-modal.heading": {
-    "message": "共用「{name}」"
-  },
-  "app.instance.share.invite-modal.user-limit-reached": {
-    "message": "這個實例已達到 {limit} 位使用者的上限。"
-  },
-  "app.instance.share.locked.empty-description-prefix": {
-    "message": "你需要以"
-  },
-  "app.instance.share.locked.empty-description-suffix": {
-    "message": "登入才能存取這個頁面。"
-  },
-  "app.instance.share.locked.linked-account-fallback": {
-    "message": "已連結的帳號"
-  },
-  "app.instance.share.locked.signed-out-heading": {
-    "message": "未登入"
-  },
-  "app.instance.share.locked.switch-account-button": {
-    "message": "切換帳號"
-  },
-  "app.instance.share.locked.wrong-account-heading": {
-    "message": "帳號錯誤"
-  },
   "app.instance.share.remove-user-modal.effect-access": {
     "message": "他不會再收到這個共用實例的更新"
   },
@@ -796,21 +763,6 @@
   },
   "app.instance.share.remove-user-modal.warning-body": {
     "message": "如果你撤銷了 {username} 對這個共用實例的存取權，你需要重新邀請他，他才會收到更新。"
-  },
-  "app.instance.share.sign-in.button": {
-    "message": "登入"
-  },
-  "app.instance.share.unable-to-connect.description": {
-    "message": "目前無法存取共用實例服務，請稍後再試"
-  },
-  "app.instance.share.unable-to-connect.heading": {
-    "message": "無法連線"
-  },
-  "app.instance.share.unlink.body": {
-    "message": "你必須先與模組包取消連結才能共用實例"
-  },
-  "app.instance.share.unlink.header": {
-    "message": "共用前需要取消連結"
   },
   "app.instance.shared-instance-already-installed.body": {
     "message": "這個共用實例已經在本機安裝，名稱為「<bold>{instanceName}</bold>」。確定要再安裝一個複本嗎？"
@@ -4228,9 +4180,6 @@
   },
   "onboarding-checklist.login-minecraft": {
     "message": "登入 Minecraft"
-  },
-  "onboarding-checklist.login-modrinth": {
-    "message": "登入 Modrinth"
   },
   "onboarding-checklist.title": {
     "message": "開始使用"

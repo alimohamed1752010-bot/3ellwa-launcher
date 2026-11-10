@@ -7,12 +7,8 @@ import { ref } from 'vue'
 
 import type { AppEvents } from '@/providers/app-events'
 
-import {
-	get_content_items,
-	list as listInstances,
-	add_project_from_version,
-} from './instance'
 import { install_create_instance, wait_for_install_job } from './install'
+import { add_project_from_version, get_content_items, list as listInstances } from './instance'
 import { get_all as getRunning } from './process.js'
 import {
 	add_and_equip_custom_skin,
@@ -99,7 +95,8 @@ const uuid = () =>
 
 async function getDoc<T>(key: string): Promise<{ value: T | null; version: number }> {
 	const reply = await spaceRequest('GET', `/api/sync/${key}`)
-	if (reply.status !== 200) throw new Error(`Could not load ${key} from your account (${reply.status})`)
+	if (reply.status !== 200)
+		throw new Error(`Could not load ${key} from your account (${reply.status})`)
 	const data = JSON.parse(reply.body)
 	return { value: (data.value ?? null) as T | null, version: data.version ?? 0 }
 }
@@ -124,7 +121,17 @@ export async function buildManifest(inst: GameInstance): Promise<Manifest> {
 	const items = await get_content_items(inst.id).catch(() => [])
 	const mods: ModEntry[] = []
 	let external = 0
-	for (const it of items as unknown as Array<Record<string, any>>) {
+	type LooseContentItem = {
+		project?: { id?: string }
+		version?: { id?: string }
+		external?: boolean
+		file_name?: string
+		project_type?: string
+		projectType?: string
+		enabled?: boolean
+		disabled?: boolean
+	}
+	for (const it of items as unknown as LooseContentItem[]) {
 		const pid = it.project?.id
 		const vid = it.version?.id
 		if (!pid || !vid || it.external) {
@@ -196,12 +203,12 @@ export function syncInstances(): Promise<void> {
 				for (const [localId, syncId] of Object.entries(map.local)) {
 					if (!local.some((i) => i.id === localId)) {
 						if (doc.items[syncId]) {
-							delete doc.items[syncId]
+							Reflect.deleteProperty(doc.items, syncId)
 							doc.deleted[syncId] = Date.now()
 							changed = true
 						}
-						delete map.local[localId]
-						delete map.hash[syncId]
+						Reflect.deleteProperty(map.local, localId)
+						Reflect.deleteProperty(map.hash, syncId)
 					}
 				}
 
@@ -218,7 +225,11 @@ export function syncInstances(): Promise<void> {
 			}
 			throw new Error('Your instances changed on another PC. Will retry shortly.')
 		} catch (e) {
-			cloudStatus.value = { busy: false, last: cloudStatus.value.last, error: String((e as Error)?.message ?? e) }
+			cloudStatus.value = {
+				busy: false,
+				last: cloudStatus.value.last,
+				error: String((e as Error)?.message ?? e),
+			}
 		} finally {
 			syncing = null
 		}
@@ -282,7 +293,7 @@ export async function forgetCloudInstance(syncId: string): Promise<void> {
 		const doc: InstancesDoc = value ?? { items: {}, deleted: {} }
 		doc.items ??= {}
 		doc.deleted ??= {}
-		delete doc.items[syncId]
+		Reflect.deleteProperty(doc.items, syncId)
 		doc.deleted[syncId] = Date.now()
 		if (await putDoc('instances', doc, version)) break
 	}
@@ -316,7 +327,8 @@ export async function importShared(codeOrLink: string): Promise<RestoreResult> {
 	if (!/^[A-Za-z0-9]{6,32}$/.test(code)) throw new Error('That does not look like a share code.')
 	const reply = await spaceRequest('GET', `/api/shared/${code}`)
 	const data = JSON.parse(reply.body || '{}')
-	if (reply.status !== 200) throw new Error(data.error ?? `Could not find that setup (${reply.status})`)
+	if (reply.status !== 200)
+		throw new Error(data.error ?? `Could not find that setup (${reply.status})`)
 	const result = await createFromManifest(data.manifest as Manifest, null)
 	await syncInstances()
 	return result
@@ -327,7 +339,8 @@ type SkinsDoc = { skins: Record<string, { name?: string; variant: string; png: s
 
 function b64(bytes: Uint8Array): string {
 	let s = ''
-	for (let i = 0; i < bytes.length; i += 0x8000) s += String.fromCharCode(...bytes.subarray(i, i + 0x8000))
+	for (let i = 0; i < bytes.length; i += 0x8000)
+		s += String.fromCharCode(...bytes.subarray(i, i + 0x8000))
 	return btoa(s)
 }
 const unb64 = (s: string) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0))
@@ -386,7 +399,8 @@ export async function refreshFriends(): Promise<void> {
 export async function requestFriend(username: string): Promise<string> {
 	const reply = await spaceRequest('POST', '/api/friends/request', { username })
 	const data = JSON.parse(reply.body || '{}')
-	if (reply.status !== 200) throw new Error(data.error ?? `Could not send the request (${reply.status})`)
+	if (reply.status !== 200)
+		throw new Error(data.error ?? `Could not send the request (${reply.status})`)
 	await refreshFriends()
 	return data.status as string
 }

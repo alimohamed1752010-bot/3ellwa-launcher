@@ -54,7 +54,11 @@ async function defaultsFromLocal(): Promise<UserPreferences> {
 			users: 'rows',
 		},
 		sidebars: { right_aligned_search: false, left_aligned_content: false },
-		social: { friend_privacy: 'none', shared_instances_privacy: 'none', hosting_access_privacy: 'none' },
+		social: {
+			friend_privacy: 'none',
+			shared_instances_privacy: 'none',
+			hosting_access_privacy: 'none',
+		},
 	} as UserPreferences
 }
 

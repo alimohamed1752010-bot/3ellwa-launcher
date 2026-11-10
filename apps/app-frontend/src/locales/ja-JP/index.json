@@ -737,39 +737,6 @@
   "app.instance.navigation.back-to-instance": {
     "message": "インスタンスに戻る"
   },
-  "app.instance.share.empty.description": {
-    "message": "フレンドとこのインスタンスをシェアしましょう！"
-  },
-  "app.instance.share.empty.heading": {
-    "message": "まだ誰も招待していないようです"
-  },
-  "app.instance.share.empty.invite-friends-button": {
-    "message": "フレンドを招待"
-  },
-  "app.instance.share.invite-modal.heading": {
-    "message": "{name} をシェアする"
-  },
-  "app.instance.share.invite-modal.user-limit-reached": {
-    "message": "このインスタンスは上限の{limit}人に達しました。"
-  },
-  "app.instance.share.locked.empty-description-prefix": {
-    "message": "このページにアクセスするには"
-  },
-  "app.instance.share.locked.empty-description-suffix": {
-    "message": "としてサインインする必要があります。"
-  },
-  "app.instance.share.locked.linked-account-fallback": {
-    "message": "リンクされたアカウント"
-  },
-  "app.instance.share.locked.signed-out-heading": {
-    "message": "サインインしていません"
-  },
-  "app.instance.share.locked.switch-account-button": {
-    "message": "アカウントを切り替える"
-  },
-  "app.instance.share.locked.wrong-account-heading": {
-    "message": "アカウントが違います"
-  },
   "app.instance.share.remove-user-modal.effect-access": {
     "message": "このインスタンスのアップデートは受信できなくなります"
   },
@@ -796,21 +763,6 @@
   },
   "app.instance.share.remove-user-modal.warning-body": {
     "message": "もし{username}のアクセス権を取り消した場合、彼らが再びアップデートを受け取れるようにするには、もう一度招待し直す必要があります。"
-  },
-  "app.instance.share.sign-in.button": {
-    "message": "サインイン"
-  },
-  "app.instance.share.unable-to-connect.description": {
-    "message": "インスタンスの共有は現在ご利用いただけません。しばらくしてからもう一度お試しください"
-  },
-  "app.instance.share.unable-to-connect.heading": {
-    "message": "接続エラー"
-  },
-  "app.instance.share.unlink.body": {
-    "message": "インスタンスを共有するには、このModパックのリンクを解除する必要があります"
-  },
-  "app.instance.share.unlink.header": {
-    "message": "共有にはリンクを解除する必要があります"
   },
   "app.instance.shared-instance-already-installed.body": {
     "message": "この共有インスタンスはすでに<bold> {instanceName} </bold>としてインストールされています。別のコピーをインストールしてもよろしいですか？"
@@ -3334,9 +3286,6 @@
   },
   "onboarding-checklist.login-minecraft": {
     "message": "Minecraftにサインイン"
-  },
-  "onboarding-checklist.login-modrinth": {
-    "message": "Modrinthへサインイン"
   },
   "onboarding-checklist.title": {
     "message": "はじめる"

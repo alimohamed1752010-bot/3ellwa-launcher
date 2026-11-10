@@ -11,7 +11,6 @@ import {
 import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
 import { onBeforeUnmount, onMounted } from 'vue'
 
-import { spaceAccount } from '@/helpers/space_account.ts'
 import { useAppSettings } from '@/composables/use-app-settings.ts'
 import {
 	QUICK_INSTANCE_LIMIT_MAX,
@@ -26,6 +25,7 @@ import {
 	get,
 	set,
 } from '@/helpers/settings.ts'
+import { spaceAccount } from '@/helpers/space_account.ts'
 import { globalSyncedOptionsQueryOptions, syncedOptionsKeys } from '@/helpers/synced-options'
 import { screenshotKeys } from '@/pages/instance/query-options.ts'
 
@@ -261,7 +261,9 @@ onBeforeUnmount(() => {
 			</div>
 			<span
 				v-tooltip="
-					!spaceAccount.value ? formatMessage(messages.syncAcrossDevicesSignedOutTooltip) : undefined
+					!spaceAccount.value
+						? formatMessage(messages.syncAcrossDevicesSignedOutTooltip)
+						: undefined
 				"
 				class="inline-flex shrink-0"
 			>
