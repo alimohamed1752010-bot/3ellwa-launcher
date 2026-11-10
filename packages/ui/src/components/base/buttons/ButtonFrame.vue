@@ -99,6 +99,9 @@ const classes = computed(() => [
 	sizeClasses[props.size],
 	props.iconOnly ? iconOnlySizeClasses[props.size] : '',
 	props.circular ? '!rounded-full' : '',
+	props.type === 'colored' && ['brand', 'green'].includes(props.color ?? 'brand')
+		? 'button-frame--brand'
+		: '',
 ])
 const style = computed((): CSSProperties | undefined => {
 	if ((props.type === 'outlined' || props.type === 'quiet') && !props.color) return undefined
@@ -161,6 +164,27 @@ defineExpose({ element })
 		linear-gradient(#000 0 0);
 	-webkit-mask-composite: xor;
 	mask-composite: exclude;
+}
+
+.button-frame--brand {
+	background-image: var(--brand-button-gradient, none);
+	background-size: 160% 100%;
+	background-position: 0% 0;
+	box-shadow:
+		0 0 0 1px rgba(255, 255, 255, 0.1) inset,
+		0 6px 22px -8px var(--color-brand-shadow);
+	transition:
+		background-position 0.5s ease,
+		box-shadow 0.25s ease,
+		scale 0.1s ease;
+}
+
+.button-frame--brand:not(:disabled):not([aria-disabled='true']):hover,
+.button-frame--brand:not(:disabled):not([aria-disabled='true']):focus-visible {
+	background-position: 100% 0;
+	box-shadow:
+		0 0 0 1px rgba(255, 255, 255, 0.18) inset,
+		0 8px 30px -6px var(--color-brand-shadow);
 }
 
 .button-frame--outlined {

@@ -219,7 +219,27 @@ html {
 
 	--shadow-button: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.15);
 
-	--color-focus-ring: #ea80ff;
+	--color-focus-ring: #73f5ff;
+
+	// 3ellwa Space brand (matches 3ellwa.space)
+	--brand-text-gradient: linear-gradient(
+		100deg,
+		#0757ff 0%,
+		#00aaff 35%,
+		#73f5ff 70%,
+		#00bfff 100%
+	);
+	--brand-button-gradient: linear-gradient(
+		100deg,
+		#1f8bff 0%,
+		#00aaff 32%,
+		#5ee8ff 72%,
+		#00bfff 100%
+	);
+	--brand-glow: 0 0 0 1px rgba(115, 245, 255, 0.18), 0 8px 28px -10px rgba(0, 170, 255, 0.65);
+	--color-chrome-bg: var(--color-raised-bg);
+	--color-chrome-border: var(--surface-5);
+	--app-sky: none;
 }
 
 .light-mode,
@@ -367,7 +387,11 @@ html {
 
 	--shadow-card: rgba(0, 0, 0, 0.25) 0px 2px 4px 0px;
 
-	--brand-gradient-bg: linear-gradient(0deg, rgba(12, 26, 40, 0.2) 0%, rgba(40, 120, 190, 0.1) 100%);
+	--brand-gradient-bg: linear-gradient(
+		0deg,
+		rgba(12, 26, 40, 0.2) 0%,
+		rgba(40, 120, 190, 0.1) 100%
+	);
 	--brand-gradient-strong-bg: linear-gradient(270deg, #090e14 10%, #121a24 100%);
 	--brand-gradient-button: rgba(255, 255, 255, 0.08);
 	--brand-gradient-border: rgba(155, 215, 255, 0.08);
@@ -409,28 +433,55 @@ html {
 
 .oled-mode {
 	@extend .dark-mode;
-	--surface-1: #000000;
-	--surface-1-5: #050506;
-	--surface-2: #09090a;
-	--surface-2-5: #0c0d11;
-	--surface-3: #101013;
-	--surface-4: #1b1b20;
-	--surface-5: #25262b;
+	// Deep-space palette shared with 3ellwa.space
+	--surface-1: #02040a;
+	--surface-1-5: #040811;
+	--surface-2: #060c18;
+	--surface-2-5: #08101e;
+	--surface-3: #0a1424;
+	--surface-4: #0f1c31;
+	--surface-5: #182a44;
 
-	--color-ad: #0d1828;
+	--color-text-primary: #eaf6ff;
+	--color-text-default: #a9bfd4;
+	--color-text-tertiary: #7d97b0;
+
+	--color-button-border: rgba(115, 245, 255, 0.12);
+	--color-divider-dark: #2a4262;
+	--color-accent-contrast: #00121f;
+
+	--color-brand: #00aaff;
+	--color-brand-highlight: rgba(0, 170, 255, 0.16);
+	--color-brand-shadow: rgba(0, 170, 255, 0.6);
+	--color-button-text-selected: #73f5ff;
+
+	--color-tooltip-bg: #0f1c31;
+	--color-ad: #0a1830;
+
+	--color-chrome-bg: #050a14;
+	--color-chrome-border: rgba(115, 245, 255, 0.11);
+	--app-sky:
+		radial-gradient(1100px 560px at 50% -14%, rgba(7, 87, 255, 0.17), transparent 62%),
+		radial-gradient(760px 480px at 100% 35%, rgba(0, 170, 255, 0.05), transparent 60%),
+		radial-gradient(700px 520px at 0% 95%, rgba(115, 245, 255, 0.035), transparent 60%);
+
+	--shadow-card: 0 0 0 1px rgba(115, 245, 255, 0.06), 0 6px 18px -8px rgba(0, 0, 0, 0.6);
 
 	--brand-gradient-bg: linear-gradient(
-		0deg,
-		rgba(22, 50, 75, 0.15) 0%,
-		rgba(40, 120, 190, 0.1) 100%
+		180deg,
+		rgba(7, 87, 255, 0.07) 0%,
+		rgba(0, 170, 255, 0.02) 100%
 	);
 	--brand-gradient-strong-bg: linear-gradient(
 		270deg,
-		rgba(9, 14, 22, 0.6) 10%,
-		rgba(18, 27, 38, 0.5) 100%
+		rgba(6, 14, 28, 0.7) 10%,
+		rgba(12, 26, 46, 0.6) 100%
 	);
+	--brand-gradient-button: rgba(115, 245, 255, 0.06);
+	--brand-gradient-border: rgba(115, 245, 255, 0.1);
+	--brand-gradient-fade-out-color: linear-gradient(to bottom, rgba(3, 6, 13, 0), #03060d 80%);
 
-	--color-gradient-button-bg: linear-gradient(180deg, #1b1b20 0%, #25262b 100%);
+	--color-gradient-button-bg: linear-gradient(180deg, #0f1c31 0%, #182a44 100%);
 }
 
 .retro-mode {

@@ -74,7 +74,7 @@ defineOptions({
 .router-link-active,
 .subpage-active {
 	svg {
-		filter: drop-shadow(0 0 0.5rem black);
+		filter: drop-shadow(0 0 0.4rem rgba(0, 170, 255, 0.55));
 	}
 }
 
@@ -82,6 +82,9 @@ defineOptions({
 	@apply text-[--color-button-text-selected];
 	&::before {
 		background-color: var(--color-button-bg-selected);
+		box-shadow:
+			inset 0 0 0 1px rgba(115, 245, 255, 0.22),
+			0 0 18px -6px rgba(0, 170, 255, 0.7);
 		scale: 1;
 		opacity: 1;
 	}

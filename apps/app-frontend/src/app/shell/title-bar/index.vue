@@ -32,12 +32,14 @@ const messages = defineMessages({
 <template>
 	<div
 		data-tauri-drag-region
-		class="app-title-bar relative z-[2] flex bg-bg-raised pl-1 [grid-area:status] [.mac-traffic-lights_&]:pl-20"
+		class="app-title-bar relative z-[2] flex bg-[--color-chrome-bg] pl-1 [grid-area:status] [.mac-traffic-lights_&]:pl-20"
 	>
 		<div data-tauri-drag-region class="flex min-w-0 flex-1 items-center overflow-hidden p-2">
 			<div class="flex shrink-0 items-center gap-2 pointer-events-none">
-				<img :src="logoUrl" alt="" class="size-7 shrink-0" />
-				<span class="text-base font-semibold leading-none text-contrast">3ellwa Space</span>
+				<img :src="logoUrl" alt="" class="brand-emblem size-8 shrink-0" />
+				<span class="brand-wordmark text-base font-semibold leading-none text-contrast"
+					>3ellwa <b>Space</b></span
+				>
 			</div>
 			<div data-tauri-drag-region class="ml-2 flex shrink-0 items-center gap-2">
 				<IconButton
@@ -92,5 +94,21 @@ const messages = defineMessages({
 .app-title-bar {
 	height: var(--top-bar-height);
 	padding-right: var(--window-controls-width, 0px);
+}
+
+.brand-emblem {
+	filter: drop-shadow(0 0 6px rgba(0, 170, 255, 0.55));
+}
+
+.brand-wordmark {
+	letter-spacing: 0.01em;
+}
+
+.brand-wordmark b {
+	font-weight: 700;
+	background: var(--brand-text-gradient);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
 }
 </style>

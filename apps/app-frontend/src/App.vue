@@ -2031,9 +2031,7 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 		<UnknownPackWarningModal ref="unknownPackWarningModal" />
 		<InstanceActionModals ref="instanceActionModals" />
 		<SharedInstanceModals ref="sharedInstanceModals" />
-		<div
-			class="app-grid-navbar bg-bg-raised flex flex-col p-[0.5rem] pt-0 gap-[0.25rem] w-[--left-bar-width]"
-		>
+		<div class="app-grid-navbar flex flex-col p-[0.5rem] pt-0 gap-[0.25rem] w-[--left-bar-width]">
 			<NavButton
 				v-tooltip.right="formatMessage(messages.home)"
 				to="/"
@@ -2239,7 +2237,7 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 	grid-template-rows: auto minmax(0, 1fr);
 	position: relative;
 	//z-index: 0;
-	background-color: var(--color-raised-bg);
+	background-color: var(--color-chrome-bg);
 	height: 100vh;
 }
 
@@ -2267,6 +2265,8 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 	bottom: 0;
 	height: calc(100vh - var(--top-bar-height));
 	background-color: var(--color-bg);
+	background-image: var(--app-sky);
+	background-repeat: no-repeat;
 	border-top-left-radius: var(--radius-xl);
 
 	display: grid;
@@ -2313,7 +2313,7 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 	bottom: calc(-1 * var(--left-bar-width));
 	border-radius: var(--radius-xl);
 	box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.1) inset;
-	border-color: var(--surface-5);
+	border-color: var(--color-chrome-border);
 	border-width: 1px;
 	border-style: solid;
 	pointer-events: none;
