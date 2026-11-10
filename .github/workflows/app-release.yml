@@ -1,10 +1,23 @@
-name: 3ellwa Space release (macOS + Linux)
+name: 3ellwa Space release
+
+# Push a tag like v1.0.4 (matching apps/app-frontend/package.json) to build every platform,
+# upload to the 3ellwa-space-releases R2 bucket and point https://3ellwa.space/updates.json at it.
+# The tag message becomes the update notes. A manual run builds only, unless "publish" is ticked.
 
 on:
   push:
     tags:
       - 'v*'
   workflow_dispatch:
+    inputs:
+      publish:
+        description: Upload and switch the live update feed
+        type: boolean
+        default: false
+      notes:
+        description: Update notes (manual publish only)
+        type: string
+        required: false
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -15,12 +28,38 @@ env:
   pnpm_config_color: always
 
 jobs:
+  version:
+    name: Check version
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.v.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: v
+        name: Read app version
+        shell: bash
+        run: |
+          VERSION=$(node -p "require('./apps/app-frontend/package.json').version")
+          if ! [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Version '$VERSION' must be plain x.y.z (the Windows installer rejects suffixes)"; exit 1
+          fi
+          if [[ "$GITHUB_REF_TYPE" == "tag" && "${GITHUB_REF_NAME#v}" != "$VERSION" ]]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match package.json version $VERSION"; exit 1
+          fi
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
   build:
     name: Build (${{ matrix.name }})
+    needs: version
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         include:
+          - name: Windows
+            runner: windows-latest
+            rust-targets: ''
+            build-args: --bundles nsis
+            bundle-dir: target/release/bundle
           - name: macOS
             runner: macos-latest
             rust-targets: aarch64-apple-darwin,x86_64-apple-darwin
@@ -73,6 +112,7 @@ jobs:
             libwebkit2gtk-4.1-dev libayatana-appindicator3-dev librsvg2-dev rpm
 
       - name: Use production environment
+        shell: bash
         run: cp packages/app-lib/.env.prod packages/app-lib/.env
 
       - name: Install dependencies
@@ -91,8 +131,133 @@ jobs:
           name: 3ellwa-space-${{ matrix.name }}
           if-no-files-found: error
           path: |
+            ${{ matrix.bundle-dir }}/nsis/*${{ needs.version.outputs.version }}*-setup.exe
+            ${{ matrix.bundle-dir }}/nsis/*${{ needs.version.outputs.version }}*-setup.nsis.zip*
             ${{ matrix.bundle-dir }}/macos/*.app.tar.gz*
             ${{ matrix.bundle-dir }}/dmg/*.dmg
             ${{ matrix.bundle-dir }}/appimage/*.AppImage*
             ${{ matrix.bundle-dir }}/deb/*.deb
             ${{ matrix.bundle-dir }}/rpm/*.rpm
+
+  publish:
+    name: Publish to 3ellwa.space
+    needs: [version, build]
+    if: github.ref_type == 'tag' || inputs.publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      VERSION: ${{ needs.version.outputs.version }}
+      BUCKET: 3ellwa-space-releases
+      BASE_URL: https://3ellwa.space/dl/
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download bundles
+        uses: actions/download-artifact@v4
+        with:
+          path: bundles
+          pattern: 3ellwa-space-*
+
+      - name: Collect release files
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir out
+          pick() { # pick <glob> <published name>; exactly one match required
+            shopt -s nullglob globstar
+            local m=( bundles/**/$1 )
+            if [ "${#m[@]}" -ne 1 ]; then echo "::error::expected one file for '$1', found ${#m[@]}"; exit 1; fi
+            cp "${m[0]}" "out/$2"
+          }
+          V="$VERSION"
+          pick "*_${V}_x64-setup.exe"            "3ellwa-Space_${V}_x64-setup.exe"
+          pick "*_${V}_x64-setup.nsis.zip"       "3ellwa-Space_${V}_x64-setup.nsis.zip"
+          pick "*_${V}_x64-setup.nsis.zip.sig"   "windows.sig"
+          pick "*_${V}_universal.dmg"            "3ellwa-Space_${V}_universal.dmg"
+          pick "*.app.tar.gz"                    "3ellwa-Space_${V}_universal.app.tar.gz"
+          pick "*.app.tar.gz.sig"                "macos.sig"
+          pick "*_${V}_amd64.AppImage"           "3ellwa-Space_${V}_amd64.AppImage"
+          pick "*_${V}_amd64.AppImage.tar.gz"    "3ellwa-Space_${V}_amd64.AppImage.tar.gz"
+          pick "*_${V}_amd64.AppImage.tar.gz.sig" "linux.sig"
+          pick "*_${V}_amd64.deb"                "3ellwa-Space_${V}_amd64.deb"
+          pick "*-${V}-1.x86_64.rpm"             "3ellwa-Space-${V}-1.x86_64.rpm"
+          ls -la out
+
+      - name: Write updates.json
+        shell: bash
+        env:
+          MANUAL_NOTES: ${{ inputs.notes }}
+        run: |
+          set -euo pipefail
+          NOTES="$MANUAL_NOTES"
+          if [ "$GITHUB_REF_TYPE" = "tag" ]; then
+            git fetch --force origin "refs/tags/$GITHUB_REF_NAME:refs/tags/$GITHUB_REF_NAME"
+            NOTES=$(git for-each-ref "refs/tags/$GITHUB_REF_NAME" --format='%(contents:subject)')
+            [ "$NOTES" = "$(git log -1 --format=%s "$GITHUB_REF_NAME")" ] && NOTES=""  # lightweight tag
+          fi
+          [ -n "$NOTES" ] || NOTES="Version $VERSION"
+          export NOTES
+          python3 - <<'EOF'
+          import datetime, json, os
+          v, base = os.environ['VERSION'], os.environ['BASE_URL']
+          sig = lambda n: open(f'out/{n}.sig').read().strip()
+          mac = {'signature': sig('macos'), 'url': f'{base}3ellwa-Space_{v}_universal.app.tar.gz'}
+          feed = {
+              'version': v,
+              'installer': f'3ellwa-Space_{v}_x64-setup.exe',
+              'downloads': {
+                  'macos': f'3ellwa-Space_{v}_universal.dmg',
+                  'appimage': f'3ellwa-Space_{v}_amd64.AppImage',
+                  'deb': f'3ellwa-Space_{v}_amd64.deb',
+                  'rpm': f'3ellwa-Space-{v}-1.x86_64.rpm',
+              },
+              'updater': {
+                  'version': v,
+                  'notes': os.environ['NOTES'],
+                  'pub_date': datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
+                  'platforms': {
+                      'windows-x86_64': {'signature': sig('windows'), 'url': f'{base}3ellwa-Space_{v}_x64-setup.nsis.zip'},
+                      'darwin-aarch64': mac,
+                      'darwin-x86_64': mac,
+                      'linux-x86_64': {'signature': sig('linux'), 'url': f'{base}3ellwa-Space_{v}_amd64.AppImage.tar.gz'},
+                  },
+              },
+          }
+          json.dump(feed, open('updates.json', 'w'), indent=2)
+          print(json.dumps(feed['updater']['platforms'], indent=2)[:400])
+          EOF
+
+      - name: Upload files to R2
+        shell: bash
+        run: |
+          set -euo pipefail
+          for f in out/3ellwa-Space*; do
+            name=$(basename "$f")
+            for attempt in 1 2 3; do
+              npx --yes wrangler@4 r2 object put "$BUCKET/$name" --file "$f" --remote && break
+              [ "$attempt" = 3 ] && { echo "::error::upload failed: $name"; exit 1; }
+              sleep 10
+            done
+          done
+
+      - name: Switch the live update feed
+        shell: bash
+        run: |
+          npx --yes wrangler@4 r2 object put "$BUCKET/updates.json" --file updates.json \
+            --content-type application/json --remote
+          sleep 5
+          LIVE=$(curl -fsS https://3ellwa.space/updates.json | python3 -c "import json,sys; print(json.load(sys.stdin)['version'])")
+          [ "$LIVE" = "$VERSION" ] || { echo "::error::live feed shows $LIVE, expected $VERSION"; exit 1; }
+          echo "Live update feed now serves $LIVE"
+
+      - name: Create GitHub release
+        if: github.ref_type == 'tag'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" out/3ellwa-Space* \
+            --title "3ellwa Space $VERSION" --notes "$(python3 -c "import json; print(json.load(open('updates.json'))['updater']['notes'])")"
