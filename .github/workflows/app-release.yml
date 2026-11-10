@@ -1,0 +1,98 @@
+name: 3ellwa Space release (macOS + Linux)
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  TURBO_TELEMETRY_DISABLED: 1
+  pnpm_config_color: always
+
+jobs:
+  build:
+    name: Build (${{ matrix.name }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: macOS
+            runner: macos-latest
+            rust-targets: aarch64-apple-darwin,x86_64-apple-darwin
+            build-args: --target universal-apple-darwin
+            bundle-dir: target/universal-apple-darwin/release/bundle
+          - name: Linux
+            runner: ubuntu-22.04
+            rust-targets: ''
+            build-args: --bundles appimage,deb,rpm
+            bundle-dir: target/release/bundle
+
+    runs-on: ${{ matrix.runner }}
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Install Rust targets
+        if: matrix.rust-targets != ''
+        shell: bash
+        run: |
+          IFS=',' read -ra TARGETS <<< "${{ matrix.rust-targets }}"
+          rustup show
+          rustup target add "${TARGETS[@]}"
+
+      - name: Cache Rust build
+        uses: Swatinem/rust-cache@v2
+        with:
+          key: ${{ matrix.name }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Install Linux build dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential curl wget file xdg-utils libxdo-dev libssl-dev \
+            libwebkit2gtk-4.1-dev libayatana-appindicator3-dev librsvg2-dev rpm
+
+      - name: Use production environment
+        run: cp packages/app-lib/.env.prod packages/app-lib/.env
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build app
+        run: pnpm --filter=@modrinth/app run tauri build --config tauri-release.conf.json ${{ matrix.build-args }}
+        env:
+          TAURI_BUNDLER_DMG_IGNORE_CI: 'true'
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ''
+
+      - name: Upload bundles
+        uses: actions/upload-artifact@v4
+        with:
+          name: 3ellwa-space-${{ matrix.name }}
+          if-no-files-found: error
+          path: |
+            ${{ matrix.bundle-dir }}/macos/*.app.tar.gz*
+            ${{ matrix.bundle-dir }}/dmg/*.dmg
+            ${{ matrix.bundle-dir }}/appimage/*.AppImage*
+            ${{ matrix.bundle-dir }}/deb/*.deb
+            ${{ matrix.bundle-dir }}/rpm/*.rpm
