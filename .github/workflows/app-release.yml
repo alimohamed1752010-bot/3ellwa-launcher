@@ -230,6 +230,60 @@ jobs:
           print(json.dumps(feed['updater']['platforms'], indent=2)[:400])
           EOF
 
+      - name: Keep storage under 9 GB
+        shell: bash
+        env:
+          KEEP_VERSIONS: 3
+          LIMIT_BYTES: 9000000000
+        run: |
+          python3 - <<'EOF'
+          import glob, json, os, re, sys, urllib.parse, urllib.request
+          acct, token, bucket = os.environ['CLOUDFLARE_ACCOUNT_ID'], os.environ['CLOUDFLARE_API_TOKEN'], os.environ['BUCKET']
+          new, keep_n, limit = os.environ['VERSION'], int(os.environ['KEEP_VERSIONS']), int(os.environ['LIMIT_BYTES'])
+          api = f'https://api.cloudflare.com/client/v4/accounts/{acct}/r2/buckets'
+
+          def call(url, method='GET'):
+              req = urllib.request.Request(url, method=method, headers={'Authorization': f'Bearer {token}'})
+              with urllib.request.urlopen(req, timeout=60) as r:
+                  d = json.load(r)
+              if not d.get('success'):
+                  sys.exit(f'Cloudflare API error: {d.get("errors")}')
+              return d
+
+          def objects(b):
+              out, cursor = [], ''
+              while True:
+                  d = call(f'{api}/{b}/objects?per_page=1000' + (f'&cursor={urllib.parse.quote(cursor)}' if cursor else ''))
+                  out += d['result']
+                  info = d.get('result_info') or {}
+                  if not info.get('is_truncated'):
+                      return out
+                  cursor = info['cursor']
+
+          ver = lambda k: (m := re.search(r'[_-](\d+\.\d+\.\d+)[_-]', k)) and m.group(1)
+          vkey = lambda v: tuple(map(int, v.split('.')))
+          try:
+              live = json.load(urllib.request.urlopen('https://3ellwa.space/updates.json', timeout=30))['version']
+          except Exception:
+              live = None
+
+          mine = objects(bucket)
+          versions = sorted({ver(o['key']) for o in mine if ver(o['key'])} | {new}, key=vkey, reverse=True)
+          keep = set(versions[:keep_n]) | {new} | ({live} if live else set())
+          incoming = {os.path.basename(f): os.path.getsize(f) for f in glob.glob('out/3ellwa-Space*')}
+          doomed = [o for o in mine if ver(o['key']) and ver(o['key']) not in keep]
+          kept = sum(o['size'] for o in mine if o not in doomed and o['key'] not in incoming)
+          others = sum(o['size'] for b in call(api)['result']['buckets'] if b['name'] != bucket for o in objects(b['name']))
+          total = kept + sum(incoming.values()) + others + 10_000
+          print(f'Keeping versions {sorted(keep, key=vkey)}; removing {len(doomed)} old files')
+          print(f'Account R2 after this release: {total / 1e9:.2f} GB (limit {limit / 1e9:.0f} GB)')
+          if total > limit:
+              sys.exit('::error::Release would put R2 over the 9 GB limit; nothing uploaded. Lower KEEP_VERSIONS or clean up.')
+          for o in doomed:
+              call(f'{api}/{bucket}/objects/{urllib.parse.quote(o["key"])}', method='DELETE')
+              print('deleted', o['key'])
+          EOF
+
       - name: Upload files to R2
         shell: bash
         run: |
